@@ -4,7 +4,7 @@ MAKE_ROUTING = MAKE_ROUTING_NULLROUTING
 COORDINATOR ?= 0 # Set coordinator to zero if it hasn't been defined.
 CFLAGS += -Xpreprocessor -DMYAPP_AS_COORDINATOR=$(COORDINATOR) 
 CFLAGS += -Xpreprocessor -DENERGEST_CONF_ON=1
-modules += os/services/simple_energest
+#modules += os/services/simple_energest
 #CFLAGS += -Xpreprocessor -DTSCH_SCHEDULE_CONF_WITH_6TISCH_MINIMAL=1
 #CFLAGS += -Xpreprocessor -DTSCH_CONF_JOIN_HOPPING_SEQUENCE='(uint8_t[]){26}'
 

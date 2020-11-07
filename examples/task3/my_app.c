@@ -30,9 +30,19 @@
  *
  */
 
+
+
 /**
+ * \file 
+ * 		my_app.c
+ * \author 
+ * 		Pieter Hendriks <pieter.hendriks@student.uantwerpen.be>
+ * 		Gabriele Paris <gabriele.paris@student.uantwerpen.be>
+ * 
+ * work based on 
+ * 
  * \file
- *         NullNet broadcast example
+ *        NullNet broadcast example
  * \author
 *         Simon Duquennoy <simon.duquennoy@ri.se>
  *
@@ -44,8 +54,7 @@
 #include <string.h>
 #include <stdio.h> /* For printf() */
 #include "inttypes.h"
-
-#include "sys/energest.h"
+#include "power_logging.h"
 
 /* Log configuration */
 #include "sys/log.h"
@@ -59,21 +68,6 @@
 // #if MAC_CONF_WITH_TSCH
 static linkaddr_t coordinator_addr =  {{ 0x00,0x12,0x4b,0x00,0x19,0x32,0xe2,0x61 }};
 // #endif /* MAC_CONF_WITH_TSCH */
-
-
-
-/* All eneergy consumptions are in mW, data from:
-   Accurate Online Energy Consumption Estimation of IoT Devices Using Energest
-*/
-#define VCC 3.3f
-#define wc_CPU 0.01535f * VCC * 1000
-#define wc_LPM 0.00959f * VCC * 1000
-#define wc_deep_LPM 0.00258f * VCC * 1000
-#define wc_LISTEN 0.02832f * VCC * 1000
-#define wc_Rx 0.03014f * VCC * 1000
-#define wc_Tx 0.03112f * VCC * 1000
-
-
 
 /*---------------------------------------------------------------------------*/
 PROCESS(my_app, "MyApplication");
@@ -128,57 +122,28 @@ PROCESS_THREAD(my_app, ev, data)
   PROCESS_END();
 }
 /*---------------------------------------------------------------------------*/
-PROCESS(myapp_energest_record, "energest example process");
+PROCESS(myapp_power_logging, "Power use logging");
 /*---------------------------------------------------------------------------*/
-static inline unsigned long to_seconds(uint64_t time)
-{
-  return (unsigned long)(time / (double)(ENERGEST_SECOND));
-}
+
 /*---------------------------------------------------------------------------*/
 /*
- * This Process will periodically print energest values for the last minute.
+ * This Process will periodically print power use.
  *
  */
-PROCESS_THREAD(myapp_energest_record, ev, data)
+PROCESS_THREAD(myapp_power_logging, ev, data)
 {
   static struct etimer periodic_timer;
-  static unsigned long sec = 0;
   #define step 10
-	static uint64_t results[5] = {0, 0, 0, 0, 0};
   PROCESS_BEGIN();
 
   etimer_set(&periodic_timer, CLOCK_SECOND * step);
   while(1) {
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
-    sec += step;
     etimer_reset(&periodic_timer);
-
-    /*
-     * Update all energest times. Should always be called before energest
-     * times are read.
-     */
-    energest_flush();
-
-		results[0] = energest_type_time(ENERGEST_TYPE_CPU)*wc_CPU;
-		results[1] = energest_type_time(ENERGEST_TYPE_LPM)*wc_LPM;
-		results[2] = energest_type_time(ENERGEST_TYPE_DEEP_LPM)*wc_deep_LPM;
-		results[3] = energest_type_time(ENERGEST_TYPE_TRANSMIT)*wc_Tx;
-		LOG_INFO("Got energest transmit time: %"PRIu64, energest_type_time(ENERGEST_TYPE_TRANSMIT));
-		LOG_INFO(", which is %"PRIu64" in seconds.", energest_type_time(ENERGEST_TYPE_TRANSMIT));
-		const float x = wc_Tx;
-		LOG_INFO(". We then multiply that by %f, to get %f", x, energest_type_time(ENERGEST_TYPE_TRANSMIT)*x);
-		results[4] = energest_type_time(ENERGEST_TYPE_LISTEN)*wc_Rx;
-
-    LOG_INFO("ENERGEST: %lu sec\n", sec);
-    LOG_INFO("\tCPU:\t%"PRIu64" mJ\n", results[0]);
-    LOG_INFO("\tLPM:\t%"PRIu64" mJ\n", results[1]);
-    LOG_INFO("\tDeep:\t%"PRIu64" mJ\n", results[2]);
-    LOG_INFO("\tTx:\t%"PRIu64" mJ\n", results[3]);
-    LOG_INFO("\tRx:\t%"PRIu64" mJ\n", results[4]);
-    LOG_INFO("Total:\t%"PRIu64" mJ\n", results[0] + results[1] + results[2] + results[3] + results[4]);
+		logPowerUse();
   }
   PROCESS_END();
 	#undef step
 }
 
-AUTOSTART_PROCESSES(&my_app,&myapp_energest_record);
+AUTOSTART_PROCESSES(&my_app,&myapp_power_logging);
