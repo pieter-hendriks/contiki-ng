@@ -1,3 +1,5 @@
-**/.vscode/
-**/build/
-**/*.o
+.vscode 
+.vscode/
+build/
+/examples/task3/example_stuff/
+*.o

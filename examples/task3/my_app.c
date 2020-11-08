@@ -37,15 +37,6 @@
  * 		my_app.c
  * \author 
  * 		Pieter Hendriks <pieter.hendriks@student.uantwerpen.be>
- * 		Gabriele Paris <gabriele.paris@student.uantwerpen.be>
- * 
- * work based on 
- * 
- * \file
- *        NullNet broadcast example
- * \author
-*         Simon Duquennoy <simon.duquennoy@ri.se>
- *
  */
 #include "conf_my_app.h"
 #include "contiki.h"
@@ -53,10 +44,12 @@
 #include "net/nullnet/nullnet.h"
 #include <string.h>
 #include <stdio.h> /* For printf() */
+#include <stdlib.h> // malloc
 #include "inttypes.h"
 #include "power_logging.h"
 #include "net/mac/tsch/tsch.h"
 #include "os/sys/platform.h"
+#include "os/net/packetbuf.h"
 
 /* Log configuration */
 #include "sys/log.h"
@@ -64,10 +57,21 @@
 #define LOG_LEVEL LOG_LEVEL_INFO
 
 /* Configuration */
-#define SEND_INTERVAL (8 * CLOCK_SECOND)
+#define SEND_INTERVAL 8 * CLOCK_SECOND
+#define PACKET_SIZE 32 // in bytes, data section
+// Define the runtime, coordinator will run longer to allow attachment etc.
+// We start counting non-coord runtime from when attachment occurs.
+#if MYAPP_AS_COORDINATOR == 1
+#define RUNTIME CLOCK_SECOND * 240
+#elif MYAPP_AS_COORDINATOR == 0
+#define RUNTIME CLOCK_SECOND * 120
+#endif
 
 // #if MAC_CONF_WITH_TSCH
+#if MYAPP_AS_COORDINATOR == 0
 static linkaddr_t coordinator_addr =  {{ 0x00,0x12,0x4b,0x00,0x19,0x32,0xe2,0x61 }};
+//static linkaddr_t sender_addr = {{ 0x00,0x12,0x4b,0x00,0x19,0x32,0xe4,0x89 }};
+#endif
 // #endif /* MAC_CONF_WITH_TSCH */
 
 /*---------------------------------------------------------------------------*/
@@ -76,37 +80,49 @@ PROCESS(my_app, "MyApplication");
 void input_callback(const void *data, uint16_t len,
   const linkaddr_t *src, const linkaddr_t *dest)
 {
-  if(len == sizeof(unsigned)) {
+	// Sanity check, ensure the packet is the size we expect.
+  // if (len == PACKET_SiZE) // Commented because was having issues with this parameter. 
+	// TODO: REMOVE ABOVE COMMENT, needs to work with length check somehow.
     unsigned count;
+
     memcpy(&count, data, sizeof(count));
-		rtimer_clock_t t0 = RTIMER_NOW();
+		rtimer_clock_t sentTime;
+		memcpy(&sentTime, data+sizeof(count), sizeof(sentTime));
     LOG_INFO("<--- Received %u from ", count);
     LOG_INFO_LLADDR(src);
-		LOG_INFO_(" at time %lu", t0);
+		LOG_INFO_(" at time %lu, sent at time %lu (latency is %lu)", RTIMER_NOW(), sentTime, RTIMER_NOW() - sentTime);
     LOG_INFO_("\n");
-  } else {
-
-		LOG_INFO("Received packet with different length.\n");
+	if(len != PACKET_SIZE) {
+  //} else {
+		LOG_INFO("Received packet with different length (%u), from ", len);
+		LOG_INFO_LLADDR(src);
+		LOG_INFO_(".\n");
 	}
 }
 /*---------------------------------------------------------------------------*/
+
+void send_callback(void *ptr, int status, int num_tx) {
+	rtimer_clock_t time = RTIMER_NOW();
+	LOG_INFO("Packet actually sent (send callback) at %lu. Status = %i, num_tx = %i \n", time, status, num_tx);
+}
+
 PROCESS_THREAD(my_app, ev, data)
 {
 	static struct etimer shutdown_timer;
 	#if MYAPP_AS_COORDINATOR == 0
   static struct etimer periodic_timer;
+	static unsigned count = 0; // count the amount of packets we've sent
 	#endif
-  static unsigned count = 0;
-
+  //static uint8_t packetBuffer[PACKET_SIZE];
+	
   PROCESS_BEGIN();
 	LOG_INFO("Main thread starting.\n");
-	etimer_set(&shutdown_timer, CLOCK_SECOND * 120);
-	tsch_set_coordinator(linkaddr_cmp(&coordinator_addr, &linkaddr_node_addr));
-
-  /* Initialize NullNet */
-  nullnet_buf = (uint8_t *)&count;
-  nullnet_len = sizeof(count);
-  nullnet_set_input_callback(input_callback);
+	etimer_set(&shutdown_timer, RUNTIME);
+	NETSTACK_MAC.init();
+	NETSTACK_RADIO.init();
+	NETSTACK_NETWORK.init();
+	tsch_set_coordinator(MYAPP_AS_COORDINATOR);
+	nullnet_set_input_callback(&input_callback);
 
 #if MYAPP_AS_COORDINATOR == 0
 	LOG_INFO("Not the coordinator (DEF = %u), beginning periodic sending loop.\n", MYAPP_AS_COORDINATOR);
@@ -116,20 +132,31 @@ PROCESS_THREAD(my_app, ev, data)
 		LOG_INFO("Periodic timer ran out, performing one send iteration.\n");
 		// Don't try to send when we don't have an associated network. 
 		if (tsch_is_associated) {
-			LOG_INFO("---> Sending %u to ", count);
-			LOG_INFO_LLADDR(NULL);
+			// Clear any previously made packets.
+			packetbuf_clear();
+			// Put our stuff into the packetbuf
+			uint8_t* myBuffer = malloc(PACKET_SIZE);
 			rtimer_clock_t t0 = RTIMER_NOW();
+			memcpy(myBuffer, &count, sizeof(count));
+			memcpy(myBuffer+sizeof(count), &t0, sizeof(t0));
+			memset(myBuffer+sizeof(count)+sizeof(t0), 0, PACKET_SIZE-sizeof(count)-sizeof(t0));
+			packetbuf_copyfrom(myBuffer, PACKET_SIZE);
+			packetbuf_set_addr(PACKETBUF_ADDR_RECEIVER, &coordinator_addr);
+			// Add our packet to TSCH send queue.
+			NETSTACK_MAC.send(&send_callback, packetbuf_dataptr());
+
+			LOG_INFO("---> Sending %u to ", count);
+			LOG_INFO_LLADDR(&coordinator_addr);
 			LOG_INFO_(" at time %lu", t0);
 			LOG_INFO_("\n");
-			
-			memcpy(nullnet_buf, &count, sizeof(count));
-			nullnet_len = sizeof(count);
 
-			NETSTACK_NETWORK.output(NULL);
-			count++;
+			// Update packet count
+			++count;
+			free(myBuffer);
 		} else {
 			if (!tsch_is_coordinator) {
 				LOG_INFO("Not sending because not associated yet.\n");
+				etimer_reset(&shutdown_timer);
 			} else {
 				LOG_INFO("Not associated, am coordinator. Should be impossible.\n");
 			}
