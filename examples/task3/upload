@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# Force my_app object to be re-built every time
+# Important because our Makefile might change defines based on command line arguments,
+# Which will result in different binary for my_app.o,
+# So must be accounted for by re-building it.
+touch my_app.c
+
+if [ -z "$1" ]; then
+	echo "Please enter an argument to the script."
+	echo "Value should be either 0 or 1 (number of /dev/ttyUSBx port)"
+	echo "If another value is required, please update the script."
+	exit 1
+elif [ "$1" -eq "0" ]; then
+	echo "Parameter is '0', setting COORD=1"
+	COORD=1
+elif [ "$1" -eq "1" ]; then
+	echo "Parameter is '1', setting COORD=0"
+	COORD=0
+else
+	echo "Invalid argument value: '$1', please use '0' or '1'"
+	echo "Or update the script, if another value is required."
+	exit 1
+fi
+echo "About to run the following command: make my_app.upload PORT=/dev/ttyUSB$1 COORDINATOR=$COORD"
+make my_app.upload PORT=/dev/ttyUSB$1 COORDINATOR=$COORD
+
