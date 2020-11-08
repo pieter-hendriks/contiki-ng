@@ -52,11 +52,11 @@
 #define LOG_LEVEL LOG_LEVEL_INFO
 
 /* Configuration */
-#define SEND_INTERVAL (8 * CLOCK_SECOND)
+#define SEND_INTERVAL (0.1 * CLOCK_SECOND)
 
 #if MAC_CONF_WITH_TSCH
 #include "net/mac/tsch/tsch.h"
-static linkaddr_t coordinator_addr =  {{ 0x00,0x12,0x4b,0x00,0x19,0x32,0xe1,0x69 }};
+static linkaddr_t coordinator_addr =  {{ 0x00,0x12,0x4b,0x00,0x19,0x32,0xe3,0x5d }};
 #endif /* MAC_CONF_WITH_TSCH */
 
 
@@ -72,10 +72,6 @@ const float wc_LISTEN =  0.02832 * vcc * 1000;
 const float wc_Rx =  0.03014 * vcc * 1000;
 const float wc_Tx =  0.03112 * vcc * 1000;
 
-static inline unsigned long to_seconds(uint64_t time)
-{
-  return (unsigned long)(time / ENERGEST_SECOND);
-}
 
 
 /*---------------------------------------------------------------------------*/
@@ -87,18 +83,57 @@ void input_callback(const void *data, uint16_t len,
   if(len == sizeof(unsigned)) {
     unsigned count;
     memcpy(&count, data, sizeof(count));
-    LOG_INFO("<--- Received %u from ", count);
-    LOG_INFO_LLADDR(src);
-    LOG_INFO_("\n");
+    //LOG_INFO("<--- Received %u from ", count);
+    //LOG_INFO_LLADDR(src);
+    //LOG_INFO_("\n");
   }
 }
 /*---------------------------------------------------------------------------*/
 PROCESS_THREAD(nullnet_example_process, ev, data)
 {
-  static struct etimer periodic_timer;
-  static unsigned count = 0;
+  static struct etimer timer;
 
   PROCESS_BEGIN();
+
+#if MAC_CONF_WITH_TSCH
+  tsch_set_coordinator(linkaddr_cmp(&coordinator_addr, &linkaddr_node_addr));
+#endif /* MAC_CONF_WITH_TSCH */
+
+
+  nullnet_set_input_callback(input_callback);
+
+  etimer_set(&timer, CLOCK_SECOND * 10);
+
+  while(1) {
+    /* Wait for the periodic timer to expire and then restart the timer. */
+    PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&timer));
+    etimer_reset(&timer);
+  }
+
+
+  PROCESS_END();
+}
+
+
+/*---------------------------------------------------------------------------*/
+PROCESS(energest_example_process, "energest example process");
+/*---------------------------------------------------------------------------*/
+static inline unsigned long to_seconds(uint64_t time)
+{
+  return (unsigned long)(time / ENERGEST_SECOND);
+}
+/*---------------------------------------------------------------------------*/
+/*
+ * This Process will periodically print energest values for the last minute.
+ *
+ */
+PROCESS_THREAD(energest_example_process, ev, data)
+{
+  static struct etimer periodic_timer;
+  const unsigned long step = 10;
+
+  PROCESS_BEGIN();
+  printf("sec;CPU;LPM;Deep;Tx;Rx");
 
   energest_init();
   ENERGEST_ON(ENERGEST_TYPE_CPU);
@@ -107,30 +142,15 @@ PROCESS_THREAD(nullnet_example_process, ev, data)
   ENERGEST_ON(ENERGEST_TYPE_TRANSMIT);
   ENERGEST_ON(ENERGEST_TYPE_LISTEN);
 
-#if MAC_CONF_WITH_TSCH
-  tsch_set_coordinator(linkaddr_cmp(&coordinator_addr, &linkaddr_node_addr));
-#endif /* MAC_CONF_WITH_TSCH */
-
-  /* Initialize NullNet */
-  nullnet_buf = (uint8_t *)&count;
-  nullnet_len = sizeof(count);
-  nullnet_set_input_callback(input_callback);
-
-  etimer_set(&periodic_timer, SEND_INTERVAL);
+  etimer_set(&periodic_timer, CLOCK_SECOND * step);
   while(1) {
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
-    LOG_INFO("---> Sending %u to ", count);
-    LOG_INFO_LLADDR(NULL);
-    LOG_INFO_("\n");
-    
-    memcpy(nullnet_buf, &count, sizeof(count));
-    nullnet_len = sizeof(count);
-
-    NETSTACK_NETWORK.output(NULL);
-    count++;
-    
     etimer_reset(&periodic_timer);
 
+    /*
+     * Update all energest times. Should always be called before energest
+     * times are read.
+     */
     energest_flush();
 
     unsigned long mj_CPU = (unsigned long)(to_seconds(energest_type_time(ENERGEST_TYPE_CPU))*wc_CPU);
@@ -138,17 +158,16 @@ PROCESS_THREAD(nullnet_example_process, ev, data)
     unsigned long mj_deep_LPM = (unsigned long)(to_seconds(energest_type_time(ENERGEST_TYPE_DEEP_LPM))*wc_deep_LPM);
     unsigned long mj_Tx = (unsigned long)(to_seconds(energest_type_time(ENERGEST_TYPE_TRANSMIT))*wc_Tx);
     unsigned long mj_Rx = (unsigned long)(to_seconds(energest_type_time(ENERGEST_TYPE_LISTEN))*wc_Rx);
-    LOG_INFO("ENERGEST: %lu sec\n", to_seconds(ENERGEST_GET_TOTAL_TIME()));
-
-    LOG_INFO("\tCPU:\t%lu mJ\n", mj_CPU);
-    LOG_INFO("\tLPM:\t%lu mJ\n", mj_LPM);
-    LOG_INFO("\tDeep:\t%lu mJ\n", mj_deep_LPM);
-    LOG_INFO("\tTx:\t%lu mJ\n", mj_Tx);
-    LOG_INFO("\tRx:\t%lu mJ\n", mj_Rx);
-    LOG_INFO("Total:\t%lu mJ\n", mj_CPU + mj_LPM + mj_deep_LPM + mj_Tx + mj_Rx);
+    printf("%lu;", to_seconds(ENERGEST_GET_TOTAL_TIME()));
+    printf("%lu;", mj_CPU);
+    printf("%lu;", mj_LPM);
+    printf("%lu;", mj_deep_LPM);
+    printf("%lu;", mj_Tx);
+    printf("%lu;", mj_Rx);
+    printf("\n");
   }
 
   PROCESS_END();
 }
 
-AUTOSTART_PROCESSES(&nullnet_example_process);
+AUTOSTART_PROCESSES(&nullnet_example_process,&energest_example_process);
