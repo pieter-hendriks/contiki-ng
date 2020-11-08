@@ -5,6 +5,7 @@ MAKE_NET = MAKE_NET_NULLNET
 COORDINATOR ?= 0 # Set coordinator to zero if it hasn't been defined.
 CFLAGS += -Xpreprocessor -DMYAPP_AS_COORDINATOR=$(COORDINATOR)
 CFLAGS += -Xpreprocessor -DENERGEST_CONF_ON=1
+#CFLAGS += -Xpreprocessor -DTSCH_CONF_CHECK_TIME_AT_ASSOCIATION=1
 #CFLAGS += -Xpreprocessor -DBUILD_WITH_SHELL=1
 #CFLAGS += -Xpreprocessor -DTSCH_LOG_CONF_PER_SLOT=1
 #modules += os/services/shell

@@ -48,6 +48,8 @@
 #include "inttypes.h"
 #include "power_logging.h"
 #include "net/mac/tsch/tsch.h"
+#include "net/mac/tsch/tsch-schedule.h"
+#include "net/mac/tsch/tsch-types.h"
 #include "os/sys/platform.h"
 #include "os/net/packetbuf.h"
 
@@ -63,6 +65,7 @@
 // We start counting non-coord runtime from when attachment occurs.
 #if MYAPP_AS_COORDINATOR == 1
 #define RUNTIME CLOCK_SECOND * 240
+static bool hasReceived = false;
 #elif MYAPP_AS_COORDINATOR == 0
 #define RUNTIME CLOCK_SECOND * 120
 #endif
@@ -83,15 +86,33 @@ void input_callback(const void *data, uint16_t len,
 	// Sanity check, ensure the packet is the size we expect.
   // if (len == PACKET_SiZE) // Commented because was having issues with this parameter. 
 	// TODO: REMOVE ABOVE COMMENT, needs to work with length check somehow.
+		#if MYAPP_AS_COORDINATOR == 1
     unsigned count;
 
     memcpy(&count, data, sizeof(count));
-		rtimer_clock_t sentTime;
+		uint64_t sentTime;
 		memcpy(&sentTime, data+sizeof(count), sizeof(sentTime));
     LOG_INFO("<--- Received %u from ", count);
     LOG_INFO_LLADDR(src);
-		LOG_INFO_(" at time %lu, sent at time %lu (latency is %lu)", RTIMER_NOW(), sentTime, RTIMER_NOW() - sentTime);
+		LOG_INFO_(" at time %"PRIu64", sent at time %"PRIu64" (latency is %"PRIu64")", tsch_get_network_uptime_ticks(), sentTime, tsch_get_network_uptime_ticks() - sentTime);
     LOG_INFO_("\n");
+		if (!hasReceived) {
+			hasReceived = true;
+			energest_init();
+			LOG_INFO("Received first packet - assuming network convergence, now resetting power info.");
+			struct tsch_slotframe* sf = tsch_schedule_get_slotframe_by_handle(0);
+			if (sf == 0) {
+				LOG_ERR("No tsch_slotframe with handle 0, this should be impossible.");
+			}
+			// sf valid, check for links now
+			// Might need to implement while (link == 0) --> try different channel/timeslots, in order to avoid removing other links.
+			// for param1:  * b0 = Transmit, b1 = Receive, b2 = Shared, b3 = Timekeeping, b4 = reserved
+			tsch_schedule_add_link(sf, LINK_OPTION_RX, LINK_TYPE_NORMAL, src, 0, 0, 1);
+		}
+		tsch_schedule_print();
+		#else
+		LOG_INFO("Woahhhhhh dude, sender has received a packet!");
+		#endif
 	if(len != PACKET_SIZE) {
   //} else {
 		LOG_INFO("Received packet with different length (%u), from ", len);
@@ -102,8 +123,8 @@ void input_callback(const void *data, uint16_t len,
 /*---------------------------------------------------------------------------*/
 
 void send_callback(void *ptr, int status, int num_tx) {
-	rtimer_clock_t time = RTIMER_NOW();
-	LOG_INFO("Packet actually sent (send callback) at %lu. Status = %i, num_tx = %i \n", time, status, num_tx);
+	uint64_t time = tsch_get_network_uptime_ticks();
+	LOG_INFO("Packet actually sent (send callback) at %"PRIu64". Status = %i, num_tx = %i \n", time, status, num_tx);
 }
 
 PROCESS_THREAD(my_app, ev, data)
@@ -116,6 +137,8 @@ PROCESS_THREAD(my_app, ev, data)
   //static uint8_t packetBuffer[PACKET_SIZE];
 	
   PROCESS_BEGIN();
+
+	energest_init();
 	LOG_INFO("Main thread starting.\n");
 	etimer_set(&shutdown_timer, RUNTIME);
 	NETSTACK_MAC.init();
@@ -129,25 +152,44 @@ PROCESS_THREAD(my_app, ev, data)
   etimer_set(&periodic_timer, SEND_INTERVAL);
   while(1) {
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
+
 		LOG_INFO("Periodic timer ran out, performing one send iteration.\n");
 		// Don't try to send when we don't have an associated network. 
 		if (tsch_is_associated) {
+			if (count == 0) {
+				// reset energest after network convergence
+				energest_init();
+				// Initialize our static link once we're associated
+				struct tsch_slotframe* sf = tsch_schedule_get_slotframe_by_handle(0);
+				if (sf == 0) {
+					LOG_ERR("No tsch_slotframe with handle 0, this should be impossible.");
+					break;
+				}
+				// sf valid, check for links now
+				// struct tsch_link* link = 0;
+				// Might need to implement while (link == 0) --> try different channel/timeslots, in order to avoid removing other links.
+				tsch_schedule_add_link(sf, LINK_OPTION_TX, LINK_TYPE_NORMAL, &tsch_broadcast_address, 0, 0, 1);
+				LOG_INFO("Link added!");
+			}
 			// Clear any previously made packets.
 			packetbuf_clear();
 			// Put our stuff into the packetbuf
 			uint8_t* myBuffer = malloc(PACKET_SIZE);
-			rtimer_clock_t t0 = RTIMER_NOW();
+			uint64_t t0 = tsch_get_network_uptime_ticks();
 			memcpy(myBuffer, &count, sizeof(count));
 			memcpy(myBuffer+sizeof(count), &t0, sizeof(t0));
 			memset(myBuffer+sizeof(count)+sizeof(t0), 0, PACKET_SIZE-sizeof(count)-sizeof(t0));
 			packetbuf_copyfrom(myBuffer, PACKET_SIZE);
 			packetbuf_set_addr(PACKETBUF_ADDR_RECEIVER, &coordinator_addr);
 			// Add our packet to TSCH send queue.
+			tsch_schedule_print();
 			NETSTACK_MAC.send(&send_callback, packetbuf_dataptr());
+			tsch_schedule_print();
 
-			LOG_INFO("---> Sending %u to ", count);
+			// 
+			LOG_INFO("---> Added packet %u to send queue (with dest ", count);
 			LOG_INFO_LLADDR(&coordinator_addr);
-			LOG_INFO_(" at time %lu", t0);
+			LOG_INFO_(") at time %"PRIu64".", t0);
 			LOG_INFO_("\n");
 
 			// Update packet count
@@ -157,6 +199,7 @@ PROCESS_THREAD(my_app, ev, data)
 			if (!tsch_is_coordinator) {
 				LOG_INFO("Not sending because not associated yet.\n");
 				etimer_reset(&shutdown_timer);
+				count = 0;
 			} else {
 				LOG_INFO("Not associated, am coordinator. Should be impossible.\n");
 			}
