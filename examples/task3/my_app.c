@@ -59,7 +59,7 @@
 #define LOG_LEVEL LOG_LEVEL_INFO
 
 /* Configuration */
-#define SEND_INTERVAL 8 * CLOCK_SECOND
+#define SEND_INTERVAL CLOCK_SECOND
 #define PACKET_SIZE 32 // in bytes, data section
 // Define the runtime, coordinator will run longer to allow attachment etc.
 // We start counting non-coord runtime from when attachment occurs.
