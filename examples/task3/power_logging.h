@@ -28,8 +28,9 @@
 #define wc_Tx 0.03112f * VCC * 1000
 static inline unsigned long to_seconds(uint64_t time)
 {
-  return (unsigned long)(time / (double)(ENERGEST_SECOND));
+  return (unsigned long)(time / ENERGEST_SECOND);
 }
+
 void logPowerUse(/*unsigned stepSize*/) {
 	//static unsigned long sec = 0;
   //sec += stepSize;
