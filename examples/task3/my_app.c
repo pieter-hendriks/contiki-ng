@@ -55,6 +55,8 @@
 #include <stdio.h> /* For printf() */
 #include "inttypes.h"
 #include "power_logging.h"
+#include "net/mac/tsch/tsch.h"
+#include "os/sys/platform.h"
 
 /* Log configuration */
 #include "sys/log.h"
@@ -64,7 +66,6 @@
 /* Configuration */
 #define SEND_INTERVAL (8 * CLOCK_SECOND)
 
-#include "net/mac/tsch/tsch.h"
 // #if MAC_CONF_WITH_TSCH
 static linkaddr_t coordinator_addr =  {{ 0x00,0x12,0x4b,0x00,0x19,0x32,0xe2,0x61 }};
 // #endif /* MAC_CONF_WITH_TSCH */
@@ -78,20 +79,28 @@ void input_callback(const void *data, uint16_t len,
   if(len == sizeof(unsigned)) {
     unsigned count;
     memcpy(&count, data, sizeof(count));
+		rtimer_clock_t t0 = RTIMER_NOW();
     LOG_INFO("<--- Received %u from ", count);
     LOG_INFO_LLADDR(src);
+		LOG_INFO_(" at time %lu", t0);
     LOG_INFO_("\n");
-  }
+  } else {
+
+		LOG_INFO("Received packet with different length.\n");
+	}
 }
 /*---------------------------------------------------------------------------*/
 PROCESS_THREAD(my_app, ev, data)
 {
+	static struct etimer shutdown_timer;
 	#if MYAPP_AS_COORDINATOR == 0
   static struct etimer periodic_timer;
 	#endif
   static unsigned count = 0;
 
   PROCESS_BEGIN();
+	LOG_INFO("Main thread starting.\n");
+	etimer_set(&shutdown_timer, CLOCK_SECOND * 120);
 	tsch_set_coordinator(linkaddr_cmp(&coordinator_addr, &linkaddr_node_addr));
 
   /* Initialize NullNet */
@@ -99,14 +108,18 @@ PROCESS_THREAD(my_app, ev, data)
   nullnet_len = sizeof(count);
   nullnet_set_input_callback(input_callback);
 
-	#if MYAPP_AS_COORDINATOR == 0
+#if MYAPP_AS_COORDINATOR == 0
+	LOG_INFO("Not the coordinator (DEF = %u), beginning periodic sending loop.\n", MYAPP_AS_COORDINATOR);
   etimer_set(&periodic_timer, SEND_INTERVAL);
   while(1) {
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
+		LOG_INFO("Periodic timer ran out, performing one send iteration.\n");
 		// Don't try to send when we don't have an associated network. 
 		if (tsch_is_associated) {
 			LOG_INFO("---> Sending %u to ", count);
 			LOG_INFO_LLADDR(NULL);
+			rtimer_clock_t t0 = RTIMER_NOW();
+			LOG_INFO_(" at time %lu", t0);
 			LOG_INFO_("\n");
 			
 			memcpy(nullnet_buf, &count, sizeof(count));
@@ -114,11 +127,24 @@ PROCESS_THREAD(my_app, ev, data)
 
 			NETSTACK_NETWORK.output(NULL);
 			count++;
-		} 
+		} else {
+			if (!tsch_is_coordinator) {
+				LOG_INFO("Not sending because not associated yet.\n");
+			} else {
+				LOG_INFO("Not associated, am coordinator. Should be impossible.\n");
+			}
+		}
+		if (etimer_expired(&shutdown_timer)) {
+			break;
+		}
     etimer_reset(&periodic_timer);
   }
-	#endif
-
+#else
+	LOG_INFO("The coordinator (DEF = %u), waiting for the shutdown timer.\n", MYAPP_AS_COORDINATOR);
+	PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&shutdown_timer));
+#endif
+	LOG_INFO("Shutdown timer has expired, shutting down main thread, setting input_callback to null.\n");
+  nullnet_set_input_callback(NULL);
   PROCESS_END();
 }
 
@@ -133,16 +159,21 @@ PROCESS(myapp_power_logging, "Power use logging");
  */
 PROCESS_THREAD(myapp_power_logging, ev, data)
 {
+	static struct etimer shutdown_timer;
   static struct etimer periodic_timer;
   #define step 10
   PROCESS_BEGIN();
-
+	etimer_set(&shutdown_timer, CLOCK_SECOND * 120);
   etimer_set(&periodic_timer, CLOCK_SECOND * step);
   while(1) {
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
     etimer_reset(&periodic_timer);
 		logPowerUse();
+		if (etimer_expired(&shutdown_timer)) {
+			break;
+		}
   }
+	LOG_INFO("Shutdown timer has expired, shutting down power log thread.\n");
   PROCESS_END();
 	#undef step
 }
