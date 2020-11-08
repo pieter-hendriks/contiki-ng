@@ -84,7 +84,7 @@ void input_callback(const void *data, uint16_t len,
   const linkaddr_t *src, const linkaddr_t *dest)
 {
 	// Sanity check, ensure the packet is the size we expect.
-  // if (len == PACKET_SiZE) // Commented because was having issues with this parameter. 
+  if (len == PACKET_SIZE) {// Commented because was having issues with this parameter. 
 	// TODO: REMOVE ABOVE COMMENT, needs to work with length check somehow.
 		#if MYAPP_AS_COORDINATOR == 1
     unsigned count;
@@ -107,14 +107,14 @@ void input_callback(const void *data, uint16_t len,
 			// sf valid, check for links now
 			// Might need to implement while (link == 0) --> try different channel/timeslots, in order to avoid removing other links.
 			// for param1:  * b0 = Transmit, b1 = Receive, b2 = Shared, b3 = Timekeeping, b4 = reserved
-			tsch_schedule_add_link(sf, LINK_OPTION_RX, LINK_TYPE_NORMAL, src, 0, 0, 1);
+			tsch_schedule_add_link(sf, LINK_OPTION_RX, LINK_TYPE_NORMAL, src, 1, 1, 1);
 		}
 		tsch_schedule_print();
 		#else
 		LOG_INFO("Woahhhhhh dude, sender has received a packet!");
 		#endif
-	if(len != PACKET_SIZE) {
-  //} else {
+	//if(len != PACKET_SIZE) {
+  } else {
 		LOG_INFO("Received packet with different length (%u), from ", len);
 		LOG_INFO_LLADDR(src);
 		LOG_INFO_(".\n");
@@ -129,7 +129,6 @@ void send_callback(void *ptr, int status, int num_tx) {
 
 PROCESS_THREAD(my_app, ev, data)
 {
-	static struct etimer shutdown_timer;
 	#if MYAPP_AS_COORDINATOR == 0
   static struct etimer periodic_timer;
 	static unsigned count = 0; // count the amount of packets we've sent
@@ -140,7 +139,6 @@ PROCESS_THREAD(my_app, ev, data)
 
 	energest_init();
 	LOG_INFO("Main thread starting.\n");
-	etimer_set(&shutdown_timer, RUNTIME);
 	NETSTACK_MAC.init();
 	NETSTACK_RADIO.init();
 	NETSTACK_NETWORK.init();
@@ -168,7 +166,7 @@ PROCESS_THREAD(my_app, ev, data)
 				// sf valid, check for links now
 				// struct tsch_link* link = 0;
 				// Might need to implement while (link == 0) --> try different channel/timeslots, in order to avoid removing other links.
-				tsch_schedule_add_link(sf, LINK_OPTION_TX, LINK_TYPE_NORMAL, &tsch_broadcast_address, 0, 0, 1);
+				tsch_schedule_add_link(sf, LINK_OPTION_TX, LINK_TYPE_NORMAL, &tsch_broadcast_address, 1, 1, 1);
 				LOG_INFO("Link added!");
 			}
 			// Clear any previously made packets.
@@ -198,22 +196,17 @@ PROCESS_THREAD(my_app, ev, data)
 		} else {
 			if (!tsch_is_coordinator) {
 				LOG_INFO("Not sending because not associated yet.\n");
-				etimer_reset(&shutdown_timer);
 				count = 0;
 			} else {
 				LOG_INFO("Not associated, am coordinator. Should be impossible.\n");
 			}
 		}
-		if (etimer_expired(&shutdown_timer)) {
-			break;
-		}
     etimer_reset(&periodic_timer);
   }
 #else
-	LOG_INFO("The coordinator (DEF = %u), waiting for the shutdown timer.\n", MYAPP_AS_COORDINATOR);
-	PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&shutdown_timer));
+	LOG_INFO("The coordinator (DEF = %u).\n", MYAPP_AS_COORDINATOR);
 #endif
-	LOG_INFO("Shutdown timer has expired, shutting down main thread, setting input_callback to null.\n");
+	LOG_INFO("Process ending, shutting down main thread, setting input_callback to null.\n");
   nullnet_set_input_callback(NULL);
   PROCESS_END();
 }
@@ -229,21 +222,16 @@ PROCESS(myapp_power_logging, "Power use logging");
  */
 PROCESS_THREAD(myapp_power_logging, ev, data)
 {
-	static struct etimer shutdown_timer;
   static struct etimer periodic_timer;
   #define step 10
   PROCESS_BEGIN();
-	etimer_set(&shutdown_timer, CLOCK_SECOND * 120);
   etimer_set(&periodic_timer, CLOCK_SECOND * step);
   while(1) {
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
     etimer_reset(&periodic_timer);
 		logPowerUse();
-		if (etimer_expired(&shutdown_timer)) {
-			break;
-		}
   }
-	LOG_INFO("Shutdown timer has expired, shutting down power log thread.\n");
+	LOG_INFO("Process ending, shutting down power log thread.\n");
   PROCESS_END();
 	#undef step
 }
