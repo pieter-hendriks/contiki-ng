@@ -1,0 +1,3 @@
+- Ensure packets are actually sent on the planned slot.
+- Split the code for each into seperate headers, and include based on MYAPP_AS_COORDINATOR
+		- Code will be a lot cleaner, the amount of #ifdef in current setup makes it hard to follow.
