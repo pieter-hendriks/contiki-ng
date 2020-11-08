@@ -1,0 +1,1 @@
+The directories with each task are available under examples/task1, examples/task2 and examples/task3 (or through symlinks in project root). 

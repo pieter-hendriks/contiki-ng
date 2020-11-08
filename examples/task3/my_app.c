@@ -60,7 +60,7 @@
 
 /* Configuration */
 #define SEND_INTERVAL CLOCK_SECOND
-#define PACKET_SIZE 32 // in bytes, data section
+#define PACKET_SIZE 52 // in bytes, data section
 // Define the runtime, coordinator will run longer to allow attachment etc.
 // We start counting non-coord runtime from when attachment occurs.
 #if MYAPP_AS_COORDINATOR == 1
@@ -88,18 +88,30 @@ void input_callback(const void *data, uint16_t len,
 	// TODO: REMOVE ABOVE COMMENT, needs to work with length check somehow.
 		#if MYAPP_AS_COORDINATOR == 1
     unsigned count;
-
-    memcpy(&count, data, sizeof(count));
+		uint16_t currentOffset = 0;
+    memcpy(&count, data + currentOffset, sizeof(count)); currentOffset += sizeof(count);
 		uint64_t sentTime;
-		memcpy(&sentTime, data+sizeof(count), sizeof(sentTime));
+		memcpy(&sentTime, data + currentOffset, sizeof(sentTime)); currentOffset += sizeof(sentTime);
     LOG_INFO("<--- Received %u from ", count);
     LOG_INFO_LLADDR(src);
 		LOG_INFO_(" at time %"PRIu64", sent at time %"PRIu64" (latency is %"PRIu64")", tsch_get_network_uptime_ticks(), sentTime, tsch_get_network_uptime_ticks() - sentTime);
     LOG_INFO_("\n");
+		uint64_t senderPower[5] = {0, 0, 0, 0, 0};
+		memcpy(&(senderPower[0]), data + currentOffset, sizeof(uint64_t)); currentOffset += sizeof(uint64_t);
+		memcpy(&(senderPower[1]), data + currentOffset, sizeof(uint64_t)); currentOffset += sizeof(uint64_t);
+		memcpy(&(senderPower[2]), data + currentOffset, sizeof(uint64_t)); currentOffset += sizeof(uint64_t);
+		memcpy(&(senderPower[3]), data + currentOffset, sizeof(uint64_t)); currentOffset += sizeof(uint64_t);
+		memcpy(&(senderPower[4]), data + currentOffset, sizeof(uint64_t)); currentOffset += sizeof(uint64_t);
+		LOG_INFO("Sending node power info:\n\tCPU:%"PRIu64" ticks\n\tLPM:%"PRIu64" ticks\n\tDEEPLPM:%"PRIu64" ticks\n\tTX:%"PRIu64" ticks\n\tRX:%"PRIu64" ticks\n", senderPower[0], senderPower[1], senderPower[2], senderPower[3], senderPower[4]);
+
+
+		LOG_INFO("Own power info: ");
+		logPowerUse();
+
 		if (!hasReceived) {
 			hasReceived = true;
 			energest_init();
-			LOG_INFO("Received first packet - assuming network convergence, now resetting power info.");
+			LOG_INFO("Received first packet - assuming network convergence, now resetting power info.\n");
 			struct tsch_slotframe* sf = tsch_schedule_get_slotframe_by_handle(0);
 			if (sf == 0) {
 				LOG_ERR("No tsch_slotframe with handle 0, this should be impossible.");
@@ -174,9 +186,24 @@ PROCESS_THREAD(my_app, ev, data)
 			// Put our stuff into the packetbuf
 			uint8_t* myBuffer = malloc(PACKET_SIZE);
 			uint64_t t0 = tsch_get_network_uptime_ticks();
-			memcpy(myBuffer, &count, sizeof(count));
-			memcpy(myBuffer+sizeof(count), &t0, sizeof(t0));
-			memset(myBuffer+sizeof(count)+sizeof(t0), 0, PACKET_SIZE-sizeof(count)-sizeof(t0));
+			uint8_t currentOffset = 0;
+			memcpy(myBuffer + currentOffset, &count, sizeof(count)); currentOffset += sizeof(count);
+			memcpy(myBuffer + currentOffset, &t0, sizeof(t0)); currentOffset += sizeof(t0);
+			uint64_t value = energest_type_time(ENERGEST_TYPE_CPU);
+			memcpy(myBuffer + currentOffset, &value, sizeof(value)); currentOffset+= sizeof(value);
+			value = energest_type_time(ENERGEST_TYPE_DEEP_LPM);
+			memcpy(myBuffer + currentOffset, &value, sizeof(value)); currentOffset+= sizeof(value);
+			value = energest_type_time(ENERGEST_TYPE_LPM);
+			memcpy(myBuffer + currentOffset, &value, sizeof(value)); currentOffset+= sizeof(value);
+			value = energest_type_time(ENERGEST_TYPE_LISTEN);
+			memcpy(myBuffer + currentOffset, &value, sizeof(value)); currentOffset+= sizeof(value);
+			value = energest_type_time(ENERGEST_TYPE_TRANSMIT);
+			memcpy(myBuffer + currentOffset, &value, sizeof(value)); currentOffset+=sizeof(value);
+
+			if (currentOffset != PACKET_SIZE) {
+				LOG_ERR("Unexpected result, buffer offset does not equal PACKET_SIZE");
+			}
+			
 			packetbuf_copyfrom(myBuffer, PACKET_SIZE);
 			packetbuf_set_addr(PACKETBUF_ADDR_RECEIVER, &coordinator_addr);
 			// Add our packet to TSCH send queue.
@@ -206,34 +233,8 @@ PROCESS_THREAD(my_app, ev, data)
 #else
 	LOG_INFO("The coordinator (DEF = %u).\n", MYAPP_AS_COORDINATOR);
 #endif
-	LOG_INFO("Process ending, shutting down main thread, setting input_callback to null.\n");
-  nullnet_set_input_callback(NULL);
+	// LOG_INFO("Process ending, shutting down main thread, setting input_callback to null.\n");
+  // nullnet_set_input_callback(NULL);
   PROCESS_END();
 }
-
-/*---------------------------------------------------------------------------*/
-PROCESS(myapp_power_logging, "Power use logging");
-/*---------------------------------------------------------------------------*/
-
-/*---------------------------------------------------------------------------*/
-/*
- * This Process will periodically print power use.
- *
- */
-PROCESS_THREAD(myapp_power_logging, ev, data)
-{
-  static struct etimer periodic_timer;
-  #define step 10
-  PROCESS_BEGIN();
-  etimer_set(&periodic_timer, CLOCK_SECOND * step);
-  while(1) {
-    PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
-    etimer_reset(&periodic_timer);
-		logPowerUse();
-  }
-	LOG_INFO("Process ending, shutting down power log thread.\n");
-  PROCESS_END();
-	#undef step
-}
-
-AUTOSTART_PROCESSES(&my_app,&myapp_power_logging);
+AUTOSTART_PROCESSES(&my_app);

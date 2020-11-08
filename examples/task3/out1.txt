@@ -1,0 +1,2398 @@
+using saved target 'zoul'
+rlwrap ../../tools/serial-io/serialdump -b115200 /dev/ttyUSB0
+connecting to /dev/ttyUSB0 [OK]
+[INFO: MyApp     ] <--- Received 0 from 0012.4b00.1932.e489 at time 10835, sent at time 10824 (latency is 11)
+[INFO: MyApp     ] Sending node power info:
+	CPU:0 ticks
+	LPM:0 ticks
+	DEEPLPM:0 ticks
+	TX:0 ticks
+	RX:0 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	11974 ticks
+[INFO: PowerLogging] 	LPM:	110766 ticks
+[INFO: PowerLogging] 	Deep:	2649232 ticks
+[INFO: PowerLogging] 	Tx:	397 ticks
+[INFO: PowerLogging] 	Rx:	97622 ticks
+[INFO: PowerLogging] Total:	2771972 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[INFO: MyApp     ] Received first packet - assuming network convergence, now resetting power info.
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 1 from 0012.4b00.1932.e489 at time 10960, sent at time 10951 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:2900 ticks
+	LPM:27759 ticks
+	DEEPLPM:1246 ticks
+	TX:1109 ticks
+	RX:92 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	2297 ticks
+[INFO: PowerLogging] 	LPM:	2563 ticks
+[INFO: PowerLogging] 	Deep:	26501 ticks
+[INFO: PowerLogging] 	Tx:	33 ticks
+[INFO: PowerLogging] 	Rx:	2283 ticks
+[INFO: PowerLogging] Total:	31361 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 2 from 0012.4b00.1932.e489 at time 11094, sent at time 11085 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:6043 ticks
+	LPM:57870 ticks
+	DEEPLPM:2397 ticks
+	TX:2297 ticks
+	RX:184 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	5123 ticks
+[INFO: PowerLogging] 	LPM:	5386 ticks
+[INFO: PowerLogging] 	Deep:	55264 ticks
+[INFO: PowerLogging] 	Tx:	66 ticks
+[INFO: PowerLogging] 	Rx:	4727 ticks
+[INFO: PowerLogging] Total:	65773 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 3 from 0012.4b00.1932.e489 at time 11220, sent at time 11211 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:9059 ticks
+	LPM:85700 ticks
+	DEEPLPM:3665 ticks
+	TX:3406 ticks
+	RX:276 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	7939 ticks
+[INFO: PowerLogging] 	LPM:	8065 ticks
+[INFO: PowerLogging] 	Deep:	81882 ticks
+[INFO: PowerLogging] 	Tx:	99 ticks
+[INFO: PowerLogging] 	Rx:	7012 ticks
+[INFO: PowerLogging] Total:	97886 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 4 from 0012.4b00.1932.e489 at time 11345, sent at time 11335 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:12077 ticks
+	LPM:113644 ticks
+	DEEPLPM:4814 ticks
+	TX:4513 ticks
+	RX:368 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	10759 ticks
+[INFO: PowerLogging] 	LPM:	10697 ticks
+[INFO: PowerLogging] 	Deep:	108548 ticks
+[INFO: PowerLogging] 	Tx:	132 ticks
+[INFO: PowerLogging] 	Rx:	9295 ticks
+[INFO: PowerLogging] Total:	130004 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 5 from 0012.4b00.1932.e489 at time 11472, sent at time 11462 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:15105 ticks
+	LPM:141822 ticks
+	DEEPLPM:6050 ticks
+	TX:5619 ticks
+	RX:460 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	13705 ticks
+[INFO: PowerLogging] 	LPM:	13222 ticks
+[INFO: PowerLogging] 	Deep:	135192 ticks
+[INFO: PowerLogging] 	Tx:	165 ticks
+[INFO: PowerLogging] 	Rx:	11581 ticks
+[INFO: PowerLogging] Total:	162119 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 6 from 0012.4b00.1932.e489 at time 11605, sent at time 11596 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:18101 ticks
+	LPM:171483 ticks
+	DEEPLPM:7471 ticks
+	TX:6803 ticks
+	RX:552 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	16557 ticks
+[INFO: PowerLogging] 	LPM:	15991 ticks
+[INFO: PowerLogging] 	Deep:	163973 ticks
+[INFO: PowerLogging] 	Tx:	198 ticks
+[INFO: PowerLogging] 	Rx:	14026 ticks
+[INFO: PowerLogging] Total:	196521 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 7 from 0012.4b00.1932.e489 at time 11731, sent at time 11722 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:21117 ticks
+	LPM:199299 ticks
+	DEEPLPM:8752 ticks
+	TX:7909 ticks
+	RX:644 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	19390 ticks
+[INFO: PowerLogging] 	LPM:	18647 ticks
+[INFO: PowerLogging] 	Deep:	190598 ticks
+[INFO: PowerLogging] 	Tx:	231 ticks
+[INFO: PowerLogging] 	Rx:	16311 ticks
+[INFO: PowerLogging] Total:	228635 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 8 from 0012.4b00.1932.e489 at time 11857, sent at time 11847 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:24134 ticks
+	LPM:227245 ticks
+	DEEPLPM:9901 ticks
+	TX:9016 ticks
+	RX:736 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	22227 ticks
+[INFO: PowerLogging] 	LPM:	21261 ticks
+[INFO: PowerLogging] 	Deep:	217263 ticks
+[INFO: PowerLogging] 	Tx:	264 ticks
+[INFO: PowerLogging] 	Rx:	18597 ticks
+[INFO: PowerLogging] Total:	260751 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 9 from 0012.4b00.1932.e489 at time 11991, sent at time 11981 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:27166 ticks
+	LPM:257378 ticks
+	DEEPLPM:11142 ticks
+	TX:10203 ticks
+	RX:828 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	25087 ticks
+[INFO: PowerLogging] 	LPM:	24069 ticks
+[INFO: PowerLogging] 	Deep:	246004 ticks
+[INFO: PowerLogging] 	Tx:	297 ticks
+[INFO: PowerLogging] 	Rx:	21060 ticks
+[INFO: PowerLogging] Total:	295160 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 10 from 0012.4b00.1932.e489 at time 12117, sent at time 12108 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:30188 ticks
+	LPM:285179 ticks
+	DEEPLPM:12433 ticks
+	TX:11308 ticks
+	RX:920 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	27932 ticks
+[INFO: PowerLogging] 	LPM:	26697 ticks
+[INFO: PowerLogging] 	Deep:	272647 ticks
+[INFO: PowerLogging] 	Tx:	330 ticks
+[INFO: PowerLogging] 	Rx:	23346 ticks
+[INFO: PowerLogging] Total:	327276 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 11 from 0012.4b00.1932.e489 at time 12242, sent at time 12232 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:33209 ticks
+	LPM:313124 ticks
+	DEEPLPM:13579 ticks
+	TX:12418 ticks
+	RX:1012 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	30781 ticks
+[INFO: PowerLogging] 	LPM:	29297 ticks
+[INFO: PowerLogging] 	Deep:	299314 ticks
+[INFO: PowerLogging] 	Tx:	363 ticks
+[INFO: PowerLogging] 	Rx:	25629 ticks
+[INFO: PowerLogging] Total:	359392 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 12 from 0012.4b00.1932.e489 at time 12368, sent at time 12360 (latency is 8)
+[INFO: MyApp     ] Sending node power info:
+	CPU:36279 ticks
+	LPM:341257 ticks
+	DEEPLPM:14817 ticks
+	TX:13529 ticks
+	RX:1104 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	33725 ticks
+[INFO: PowerLogging] 	LPM:	31811 ticks
+[INFO: PowerLogging] 	Deep:	325968 ticks
+[INFO: PowerLogging] 	Tx:	448 ticks
+[INFO: PowerLogging] 	Rx:	27878 ticks
+[INFO: PowerLogging] Total:	391504 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 13 from 0012.4b00.1932.e489 at time 12503, sent at time 12494 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:39380 ticks
+	LPM:370943 ticks
+	DEEPLPM:16108 ticks
+	TX:14681 ticks
+	RX:1248 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	36588 ticks
+[INFO: PowerLogging] 	LPM:	34590 ticks
+[INFO: PowerLogging] 	Deep:	354730 ticks
+[INFO: PowerLogging] 	Tx:	481 ticks
+[INFO: PowerLogging] 	Rx:	30326 ticks
+[INFO: PowerLogging] Total:	425908 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 14 from 0012.4b00.1932.e489 at time 12628, sent at time 12619 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:42403 ticks
+	LPM:398773 ticks
+	DEEPLPM:17369 ticks
+	TX:15792 ticks
+	RX:1340 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	39434 ticks
+[INFO: PowerLogging] 	LPM:	37226 ticks
+[INFO: PowerLogging] 	Deep:	381363 ticks
+[INFO: PowerLogging] 	Tx:	514 ticks
+[INFO: PowerLogging] 	Rx:	32611 ticks
+[INFO: PowerLogging] Total:	458023 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 15 from 0012.4b00.1932.e489 at time 12754, sent at time 12744 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:45426 ticks
+	LPM:426466 ticks
+	DEEPLPM:18765 ticks
+	TX:16902 ticks
+	RX:1432 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	42400 ticks
+[INFO: PowerLogging] 	LPM:	39734 ticks
+[INFO: PowerLogging] 	Deep:	408005 ticks
+[INFO: PowerLogging] 	Tx:	547 ticks
+[INFO: PowerLogging] 	Rx:	34895 ticks
+[INFO: PowerLogging] Total:	490139 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 16 from 0012.4b00.1932.e489 at time 12888, sent at time 12879 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:48468 ticks
+	LPM:456598 ticks
+	DEEPLPM:19996 ticks
+	TX:18087 ticks
+	RX:1524 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	45256 ticks
+[INFO: PowerLogging] 	LPM:	42492 ticks
+[INFO: PowerLogging] 	Deep:	436791 ticks
+[INFO: PowerLogging] 	Tx:	580 ticks
+[INFO: PowerLogging] 	Rx:	37337 ticks
+[INFO: PowerLogging] Total:	524539 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 17 from 0012.4b00.1932.e489 at time 13014, sent at time 13005 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:51492 ticks
+	LPM:484417 ticks
+	DEEPLPM:21267 ticks
+	TX:19195 ticks
+	RX:1616 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	48105 ticks
+[INFO: PowerLogging] 	LPM:	45139 ticks
+[INFO: PowerLogging] 	Deep:	463411 ticks
+[INFO: PowerLogging] 	Tx:	613 ticks
+[INFO: PowerLogging] 	Rx:	39622 ticks
+[INFO: PowerLogging] Total:	556655 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 18 from 0012.4b00.1932.e489 at time 13139, sent at time 13129 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:54515 ticks
+	LPM:512367 ticks
+	DEEPLPM:22406 ticks
+	TX:20302 ticks
+	RX:1708 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	50957 ticks
+[INFO: PowerLogging] 	LPM:	47736 ticks
+[INFO: PowerLogging] 	Deep:	490075 ticks
+[INFO: PowerLogging] 	Tx:	646 ticks
+[INFO: PowerLogging] 	Rx:	41905 ticks
+[INFO: PowerLogging] Total:	588768 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 19 from 0012.4b00.1932.e489 at time 13265, sent at time 13256 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:57549 ticks
+	LPM:540545 ticks
+	DEEPLPM:23635 ticks
+	TX:21406 ticks
+	RX:1800 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	53803 ticks
+[INFO: PowerLogging] 	LPM:	50336 ticks
+[INFO: PowerLogging] 	Deep:	516741 ticks
+[INFO: PowerLogging] 	Tx:	679 ticks
+[INFO: PowerLogging] 	Rx:	44188 ticks
+[INFO: PowerLogging] Total:	620880 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 20 from 0012.4b00.1932.e489 at time 13399, sent at time 13390 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:60554 ticks
+	LPM:570199 ticks
+	DEEPLPM:25053 ticks
+	TX:22595 ticks
+	RX:1892 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	56666 ticks
+[INFO: PowerLogging] 	LPM:	53115 ticks
+[INFO: PowerLogging] 	Deep:	545503 ticks
+[INFO: PowerLogging] 	Tx:	712 ticks
+[INFO: PowerLogging] 	Rx:	46629 ticks
+[INFO: PowerLogging] Total:	655284 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 21 from 0012.4b00.1932.e489 at time 13524, sent at time 13516 (latency is 8)
+[INFO: MyApp     ] Sending node power info:
+	CPU:63582 ticks
+	LPM:598013 ticks
+	DEEPLPM:26324 ticks
+	TX:23702 ticks
+	RX:1984 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	59515 ticks
+[INFO: PowerLogging] 	LPM:	55760 ticks
+[INFO: PowerLogging] 	Deep:	572124 ticks
+[INFO: PowerLogging] 	Tx:	745 ticks
+[INFO: PowerLogging] 	Rx:	48914 ticks
+[INFO: PowerLogging] Total:	687399 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 22 from 0012.4b00.1932.e489 at time 13651, sent at time 13640 (latency is 11)
+[INFO: MyApp     ] Sending node power info:
+	CPU:66717 ticks
+	LPM:625942 ticks
+	DEEPLPM:27373 ticks
+	TX:24810 ticks
+	RX:2076 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	62363 ticks
+[INFO: PowerLogging] 	LPM:	58369 ticks
+[INFO: PowerLogging] 	Deep:	598783 ticks
+[INFO: PowerLogging] 	Tx:	778 ticks
+[INFO: PowerLogging] 	Rx:	51201 ticks
+[INFO: PowerLogging] Total:	719515 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 23 from 0012.4b00.1932.e489 at time 13784, sent at time 13776 (latency is 8)
+[INFO: MyApp     ] Sending node power info:
+	CPU:69759 ticks
+	LPM:655840 ticks
+	DEEPLPM:28838 ticks
+	TX:25997 ticks
+	RX:2168 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	65226 ticks
+[INFO: PowerLogging] 	LPM:	61092 ticks
+[INFO: PowerLogging] 	Deep:	627598 ticks
+[INFO: PowerLogging] 	Tx:	811 ticks
+[INFO: PowerLogging] 	Rx:	53596 ticks
+[INFO: PowerLogging] Total:	753916 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 24 from 0012.4b00.1932.e489 at time 13911, sent at time 13901 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:72782 ticks
+	LPM:683653 ticks
+	DEEPLPM:30115 ticks
+	TX:27108 ticks
+	RX:2260 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	68079 ticks
+[INFO: PowerLogging] 	LPM:	63526 ticks
+[INFO: PowerLogging] 	Deep:	654429 ticks
+[INFO: PowerLogging] 	Tx:	844 ticks
+[INFO: PowerLogging] 	Rx:	55882 ticks
+[INFO: PowerLogging] Total:	786034 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 25 from 0012.4b00.1932.e489 at time 14036, sent at time 14028 (latency is 8)
+[INFO: MyApp     ] Sending node power info:
+	CPU:75805 ticks
+	LPM:711603 ticks
+	DEEPLPM:31255 ticks
+	TX:28221 ticks
+	RX:2352 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	71051 ticks
+[INFO: PowerLogging] 	LPM:	66006 ticks
+[INFO: PowerLogging] 	Deep:	681084 ticks
+[INFO: PowerLogging] 	Tx:	929 ticks
+[INFO: PowerLogging] 	Rx:	58131 ticks
+[INFO: PowerLogging] Total:	818141 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 26 from 0012.4b00.1932.e489 at time 14162, sent at time 14153 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:78848 ticks
+	LPM:739528 ticks
+	DEEPLPM:32728 ticks
+	TX:29318 ticks
+	RX:2444 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	73901 ticks
+[INFO: PowerLogging] 	LPM:	68585 ticks
+[INFO: PowerLogging] 	Deep:	707770 ticks
+[INFO: PowerLogging] 	Tx:	962 ticks
+[INFO: PowerLogging] 	Rx:	60406 ticks
+[INFO: PowerLogging] Total:	850256 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 27 from 0012.4b00.1932.e489 at time 14296, sent at time 14287 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:81847 ticks
+	LPM:769183 ticks
+	DEEPLPM:34153 ticks
+	TX:30504 ticks
+	RX:2536 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	76761 ticks
+[INFO: PowerLogging] 	LPM:	71376 ticks
+[INFO: PowerLogging] 	Deep:	736526 ticks
+[INFO: PowerLogging] 	Tx:	995 ticks
+[INFO: PowerLogging] 	Rx:	62850 ticks
+[INFO: PowerLogging] Total:	884663 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 28 from 0012.4b00.1932.e489 at time 14421, sent at time 14413 (latency is 8)
+[INFO: MyApp     ] Sending node power info:
+	CPU:84870 ticks
+	LPM:796997 ticks
+	DEEPLPM:35427 ticks
+	TX:31611 ticks
+	RX:2628 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	79609 ticks
+[INFO: PowerLogging] 	LPM:	74017 ticks
+[INFO: PowerLogging] 	Deep:	763147 ticks
+[INFO: PowerLogging] 	Tx:	1028 ticks
+[INFO: PowerLogging] 	Rx:	65133 ticks
+[INFO: PowerLogging] Total:	916773 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 29 from 0012.4b00.1932.e489 at time 14549, sent at time 14537 (latency is 12)
+[INFO: MyApp     ] Sending node power info:
+	CPU:87992 ticks
+	LPM:824930 ticks
+	DEEPLPM:36486 ticks
+	TX:32684 ticks
+	RX:2772 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	82571 ticks
+[INFO: PowerLogging] 	LPM:	76811 ticks
+[INFO: PowerLogging] 	Deep:	789797 ticks
+[INFO: PowerLogging] 	Tx:	1061 ticks
+[INFO: PowerLogging] 	Rx:	67465 ticks
+[INFO: PowerLogging] Total:	949179 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 30 from 0012.4b00.1932.e489 at time 14681, sent at time 14672 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:91029 ticks
+	LPM:854811 ticks
+	DEEPLPM:37974 ticks
+	TX:33943 ticks
+	RX:2956 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	85434 ticks
+[INFO: PowerLogging] 	LPM:	79598 ticks
+[INFO: PowerLogging] 	Deep:	818260 ticks
+[INFO: PowerLogging] 	Tx:	1094 ticks
+[INFO: PowerLogging] 	Rx:	69908 ticks
+[INFO: PowerLogging] Total:	983292 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 31 from 0012.4b00.1932.e489 at time 14808, sent at time 14798 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:94058 ticks
+	LPM:882622 ticks
+	DEEPLPM:39247 ticks
+	TX:35050 ticks
+	RX:3048 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	88291 ticks
+[INFO: PowerLogging] 	LPM:	82238 ticks
+[INFO: PowerLogging] 	Deep:	844881 ticks
+[INFO: PowerLogging] 	Tx:	1127 ticks
+[INFO: PowerLogging] 	Rx:	72192 ticks
+[INFO: PowerLogging] Total:	1015410 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 32 from 0012.4b00.1932.e489 at time 14932, sent at time 14923 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:97189 ticks
+	LPM:910559 ticks
+	DEEPLPM:40292 ticks
+	TX:36156 ticks
+	RX:3140 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	91145 ticks
+[INFO: PowerLogging] 	LPM:	84829 ticks
+[INFO: PowerLogging] 	Deep:	871546 ticks
+[INFO: PowerLogging] 	Tx:	1160 ticks
+[INFO: PowerLogging] 	Rx:	74478 ticks
+[INFO: PowerLogging] Total:	1047520 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 33 from 0012.4b00.1932.e489 at time 15059, sent at time 15049 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:100225 ticks
+	LPM:938493 ticks
+	DEEPLPM:41761 ticks
+	TX:37264 ticks
+	RX:3232 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	94001 ticks
+[INFO: PowerLogging] 	LPM:	87422 ticks
+[INFO: PowerLogging] 	Deep:	898213 ticks
+[INFO: PowerLogging] 	Tx:	1193 ticks
+[INFO: PowerLogging] 	Rx:	76762 ticks
+[INFO: PowerLogging] Total:	1079636 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 34 from 0012.4b00.1932.e489 at time 15193, sent at time 15184 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:103230 ticks
+	LPM:968156 ticks
+	DEEPLPM:43173 ticks
+	TX:38449 ticks
+	RX:3324 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	96871 ticks
+[INFO: PowerLogging] 	LPM:	90195 ticks
+[INFO: PowerLogging] 	Deep:	926976 ticks
+[INFO: PowerLogging] 	Tx:	1226 ticks
+[INFO: PowerLogging] 	Rx:	79207 ticks
+[INFO: PowerLogging] Total:	1114042 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 35 from 0012.4b00.1932.e489 at time 15319, sent at time 15310 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:106251 ticks
+	LPM:995973 ticks
+	DEEPLPM:44447 ticks
+	TX:39556 ticks
+	RX:3416 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	99839 ticks
+[INFO: PowerLogging] 	LPM:	92738 ticks
+[INFO: PowerLogging] 	Deep:	953575 ticks
+[INFO: PowerLogging] 	Tx:	1259 ticks
+[INFO: PowerLogging] 	Rx:	81491 ticks
+[INFO: PowerLogging] Total:	1146152 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 36 from 0012.4b00.1932.e489 at time 15445, sent at time 15434 (latency is 11)
+[INFO: MyApp     ] Sending node power info:
+	CPU:109277 ticks
+	LPM:1023922 ticks
+	DEEPLPM:45585 ticks
+	TX:40662 ticks
+	RX:3508 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	102703 ticks
+[INFO: PowerLogging] 	LPM:	95307 ticks
+[INFO: PowerLogging] 	Deep:	980262 ticks
+[INFO: PowerLogging] 	Tx:	1292 ticks
+[INFO: PowerLogging] 	Rx:	83773 ticks
+[INFO: PowerLogging] Total:	1178272 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 37 from 0012.4b00.1932.e489 at time 15578, sent at time 15570 (latency is 8)
+[INFO: MyApp     ] Sending node power info:
+	CPU:112316 ticks
+	LPM:1054059 ticks
+	DEEPLPM:46816 ticks
+	TX:41848 ticks
+	RX:3600 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	105577 ticks
+[INFO: PowerLogging] 	LPM:	98073 ticks
+[INFO: PowerLogging] 	Deep:	1009024 ticks
+[INFO: PowerLogging] 	Tx:	1325 ticks
+[INFO: PowerLogging] 	Rx:	86215 ticks
+[INFO: PowerLogging] Total:	1212674 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 38 from 0012.4b00.1932.e489 at time 15705, sent at time 15695 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:115341 ticks
+	LPM:1081877 ticks
+	DEEPLPM:48085 ticks
+	TX:42954 ticks
+	RX:3692 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	108444 ticks
+[INFO: PowerLogging] 	LPM:	100702 ticks
+[INFO: PowerLogging] 	Deep:	1035645 ticks
+[INFO: PowerLogging] 	Tx:	1358 ticks
+[INFO: PowerLogging] 	Rx:	88498 ticks
+[INFO: PowerLogging] Total:	1244791 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 39 from 0012.4b00.1932.e489 at time 15829, sent at time 15820 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:118371 ticks
+	LPM:1109811 ticks
+	DEEPLPM:49234 ticks
+	TX:44014 ticks
+	RX:3784 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	111411 ticks
+[INFO: PowerLogging] 	LPM:	103146 ticks
+[INFO: PowerLogging] 	Deep:	1062345 ticks
+[INFO: PowerLogging] 	Tx:	1443 ticks
+[INFO: PowerLogging] 	Rx:	90698 ticks
+[INFO: PowerLogging] Total:	1276902 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 40 from 0012.4b00.1932.e489 at time 15956, sent at time 15946 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:121366 ticks
+	LPM:1138004 ticks
+	DEEPLPM:50485 ticks
+	TX:45119 ticks
+	RX:3876 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	114281 ticks
+[INFO: PowerLogging] 	LPM:	105758 ticks
+[INFO: PowerLogging] 	Deep:	1088976 ticks
+[INFO: PowerLogging] 	Tx:	1476 ticks
+[INFO: PowerLogging] 	Rx:	92981 ticks
+[INFO: PowerLogging] Total:	1309015 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 41 from 0012.4b00.1932.e489 at time 16089, sent at time 16081 (latency is 8)
+[INFO: MyApp     ] Sending node power info:
+	CPU:124369 ticks
+	LPM:1167665 ticks
+	DEEPLPM:51900 ticks
+	TX:46304 ticks
+	RX:3968 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	117161 ticks
+[INFO: PowerLogging] 	LPM:	108521 ticks
+[INFO: PowerLogging] 	Deep:	1117739 ticks
+[INFO: PowerLogging] 	Tx:	1509 ticks
+[INFO: PowerLogging] 	Rx:	95424 ticks
+[INFO: PowerLogging] Total:	1343421 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 42 from 0012.4b00.1932.e489 at time 16215, sent at time 16206 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:127601 ticks
+	LPM:1195451 ticks
+	DEEPLPM:52994 ticks
+	TX:47377 ticks
+	RX:4112 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	120032 ticks
+[INFO: PowerLogging] 	LPM:	111151 ticks
+[INFO: PowerLogging] 	Deep:	1144348 ticks
+[INFO: PowerLogging] 	Tx:	1542 ticks
+[INFO: PowerLogging] 	Rx:	97708 ticks
+[INFO: PowerLogging] Total:	1375531 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 43 from 0012.4b00.1932.e489 at time 16342, sent at time 16332 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:130632 ticks
+	LPM:1223172 ticks
+	DEEPLPM:54355 ticks
+	TX:48482 ticks
+	RX:4204 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	122987 ticks
+[INFO: PowerLogging] 	LPM:	113665 ticks
+[INFO: PowerLogging] 	Deep:	1170996 ticks
+[INFO: PowerLogging] 	Tx:	1575 ticks
+[INFO: PowerLogging] 	Rx:	100019 ticks
+[INFO: PowerLogging] Total:	1407648 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 44 from 0012.4b00.1932.e489 at time 16475, sent at time 16467 (latency is 8)
+[INFO: MyApp     ] Sending node power info:
+	CPU:133675 ticks
+	LPM:1253309 ticks
+	DEEPLPM:55582 ticks
+	TX:49665 ticks
+	RX:4296 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	125867 ticks
+[INFO: PowerLogging] 	LPM:	116397 ticks
+[INFO: PowerLogging] 	Deep:	1199786 ticks
+[INFO: PowerLogging] 	Tx:	1608 ticks
+[INFO: PowerLogging] 	Rx:	102462 ticks
+[INFO: PowerLogging] Total:	1442050 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 45 from 0012.4b00.1932.e489 at time 16602, sent at time 16592 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:136701 ticks
+	LPM:1281130 ticks
+	DEEPLPM:56847 ticks
+	TX:50769 ticks
+	RX:4388 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	128850 ticks
+[INFO: PowerLogging] 	LPM:	118932 ticks
+[INFO: PowerLogging] 	Deep:	1226385 ticks
+[INFO: PowerLogging] 	Tx:	1641 ticks
+[INFO: PowerLogging] 	Rx:	104747 ticks
+[INFO: PowerLogging] Total:	1474167 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 46 from 0012.4b00.1932.e489 at time 16726, sent at time 16717 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:139725 ticks
+	LPM:1309077 ticks
+	DEEPLPM:57989 ticks
+	TX:51876 ticks
+	RX:4480 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	131724 ticks
+[INFO: PowerLogging] 	LPM:	121482 ticks
+[INFO: PowerLogging] 	Deep:	1253072 ticks
+[INFO: PowerLogging] 	Tx:	1674 ticks
+[INFO: PowerLogging] 	Rx:	107030 ticks
+[INFO: PowerLogging] Total:	1506278 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 47 from 0012.4b00.1932.e489 at time 16853, sent at time 16843 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:142760 ticks
+	LPM:1336999 ticks
+	DEEPLPM:59471 ticks
+	TX:52982 ticks
+	RX:4572 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	134598 ticks
+[INFO: PowerLogging] 	LPM:	124054 ticks
+[INFO: PowerLogging] 	Deep:	1279739 ticks
+[INFO: PowerLogging] 	Tx:	1707 ticks
+[INFO: PowerLogging] 	Rx:	109314 ticks
+[INFO: PowerLogging] Total:	1538391 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 48 from 0012.4b00.1932.e489 at time 16986, sent at time 16978 (latency is 8)
+[INFO: MyApp     ] Sending node power info:
+	CPU:145770 ticks
+	LPM:1366661 ticks
+	DEEPLPM:60879 ticks
+	TX:54164 ticks
+	RX:4664 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	137479 ticks
+[INFO: PowerLogging] 	LPM:	126817 ticks
+[INFO: PowerLogging] 	Deep:	1308501 ticks
+[INFO: PowerLogging] 	Tx:	1740 ticks
+[INFO: PowerLogging] 	Rx:	111759 ticks
+[INFO: PowerLogging] Total:	1572797 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 49 from 0012.4b00.1932.e489 at time 17112, sent at time 17103 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:148797 ticks
+	LPM:1394476 ticks
+	DEEPLPM:62149 ticks
+	TX:55270 ticks
+	RX:4756 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	140347 ticks
+[INFO: PowerLogging] 	LPM:	129438 ticks
+[INFO: PowerLogging] 	Deep:	1335122 ticks
+[INFO: PowerLogging] 	Tx:	1773 ticks
+[INFO: PowerLogging] 	Rx:	114043 ticks
+[INFO: PowerLogging] Total:	1604907 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 50 from 0012.4b00.1932.e489 at time 17238, sent at time 17228 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:151828 ticks
+	LPM:1422170 ticks
+	DEEPLPM:63537 ticks
+	TX:56376 ticks
+	RX:4848 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	143221 ticks
+[INFO: PowerLogging] 	LPM:	132015 ticks
+[INFO: PowerLogging] 	Deep:	1361788 ticks
+[INFO: PowerLogging] 	Tx:	1806 ticks
+[INFO: PowerLogging] 	Rx:	116327 ticks
+[INFO: PowerLogging] Total:	1637024 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 51 from 0012.4b00.1932.e489 at time 17372, sent at time 17363 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:154873 ticks
+	LPM:1452052 ticks
+	DEEPLPM:65017 ticks
+	TX:57559 ticks
+	RX:4940 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	146107 ticks
+[INFO: PowerLogging] 	LPM:	134771 ticks
+[INFO: PowerLogging] 	Deep:	1390551 ticks
+[INFO: PowerLogging] 	Tx:	1839 ticks
+[INFO: PowerLogging] 	Rx:	118771 ticks
+[INFO: PowerLogging] Total:	1671429 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 52 from 0012.4b00.1932.e489 at time 17499, sent at time 17489 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:158014 ticks
+	LPM:1479823 ticks
+	DEEPLPM:66217 ticks
+	TX:58683 ticks
+	RX:5032 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	149075 ticks
+[INFO: PowerLogging] 	LPM:	137325 ticks
+[INFO: PowerLogging] 	Deep:	1417143 ticks
+[INFO: PowerLogging] 	Tx:	1924 ticks
+[INFO: PowerLogging] 	Rx:	121032 ticks
+[INFO: PowerLogging] Total:	1703543 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 53 from 0012.4b00.1932.e489 at time 17623, sent at time 17614 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:161038 ticks
+	LPM:1507567 ticks
+	DEEPLPM:67562 ticks
+	TX:59789 ticks
+	RX:5124 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	151943 ticks
+[INFO: PowerLogging] 	LPM:	139875 ticks
+[INFO: PowerLogging] 	Deep:	1443836 ticks
+[INFO: PowerLogging] 	Tx:	1957 ticks
+[INFO: PowerLogging] 	Rx:	123318 ticks
+[INFO: PowerLogging] Total:	1735654 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 54 from 0012.4b00.1932.e489 at time 17750, sent at time 17740 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:164169 ticks
+	LPM:1535731 ticks
+	DEEPLPM:68706 ticks
+	TX:60860 ticks
+	RX:5268 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	154955 ticks
+[INFO: PowerLogging] 	LPM:	142324 ticks
+[INFO: PowerLogging] 	Deep:	1470488 ticks
+[INFO: PowerLogging] 	Tx:	1990 ticks
+[INFO: PowerLogging] 	Rx:	125607 ticks
+[INFO: PowerLogging] Total:	1767767 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 55 from 0012.4b00.1932.e489 at time 17884, sent at time 17875 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:167177 ticks
+	LPM:1565406 ticks
+	DEEPLPM:70102 ticks
+	TX:62044 ticks
+	RX:5360 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	157950 ticks
+[INFO: PowerLogging] 	LPM:	144975 ticks
+[INFO: PowerLogging] 	Deep:	1499245 ticks
+[INFO: PowerLogging] 	Tx:	2023 ticks
+[INFO: PowerLogging] 	Rx:	128048 ticks
+[INFO: PowerLogging] Total:	1802170 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 56 from 0012.4b00.1932.e489 at time 18009, sent at time 18000 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:170205 ticks
+	LPM:1593225 ticks
+	DEEPLPM:71369 ticks
+	TX:63149 ticks
+	RX:5452 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	160822 ticks
+[INFO: PowerLogging] 	LPM:	147578 ticks
+[INFO: PowerLogging] 	Deep:	1525886 ticks
+[INFO: PowerLogging] 	Tx:	2056 ticks
+[INFO: PowerLogging] 	Rx:	130334 ticks
+[INFO: PowerLogging] Total:	1834286 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 57 from 0012.4b00.1932.e489 at time 18135, sent at time 18125 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:173315 ticks
+	LPM:1620881 ticks
+	DEEPLPM:72713 ticks
+	TX:64290 ticks
+	RX:5544 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	163696 ticks
+[INFO: PowerLogging] 	LPM:	150194 ticks
+[INFO: PowerLogging] 	Deep:	1552509 ticks
+[INFO: PowerLogging] 	Tx:	2089 ticks
+[INFO: PowerLogging] 	Rx:	132651 ticks
+[INFO: PowerLogging] Total:	1866399 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 58 from 0012.4b00.1932.e489 at time 18269, sent at time 18260 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:176361 ticks
+	LPM:1650797 ticks
+	DEEPLPM:74160 ticks
+	TX:65473 ticks
+	RX:5636 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	166578 ticks
+[INFO: PowerLogging] 	LPM:	152871 ticks
+[INFO: PowerLogging] 	Deep:	1581356 ticks
+[INFO: PowerLogging] 	Tx:	2122 ticks
+[INFO: PowerLogging] 	Rx:	135052 ticks
+[INFO: PowerLogging] Total:	1900805 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 59 from 0012.4b00.1932.e489 at time 18395, sent at time 18386 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:179385 ticks
+	LPM:1678617 ticks
+	DEEPLPM:75428 ticks
+	TX:66579 ticks
+	RX:5728 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	169448 ticks
+[INFO: PowerLogging] 	LPM:	155531 ticks
+[INFO: PowerLogging] 	Deep:	1607936 ticks
+[INFO: PowerLogging] 	Tx:	2155 ticks
+[INFO: PowerLogging] 	Rx:	137334 ticks
+[INFO: PowerLogging] Total:	1932915 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 60 from 0012.4b00.1932.e489 at time 18520, sent at time 18510 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:182412 ticks
+	LPM:1706312 ticks
+	DEEPLPM:76819 ticks
+	TX:67685 ticks
+	RX:5820 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	172318 ticks
+[INFO: PowerLogging] 	LPM:	158112 ticks
+[INFO: PowerLogging] 	Deep:	1634602 ticks
+[INFO: PowerLogging] 	Tx:	2188 ticks
+[INFO: PowerLogging] 	Rx:	139618 ticks
+[INFO: PowerLogging] Total:	1965032 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 61 from 0012.4b00.1932.e489 at time 18647, sent at time 18637 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:185446 ticks
+	LPM:1734227 ticks
+	DEEPLPM:78311 ticks
+	TX:68798 ticks
+	RX:5912 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	175191 ticks
+[INFO: PowerLogging] 	LPM:	160687 ticks
+[INFO: PowerLogging] 	Deep:	1661267 ticks
+[INFO: PowerLogging] 	Tx:	2221 ticks
+[INFO: PowerLogging] 	Rx:	141903 ticks
+[INFO: PowerLogging] Total:	1997145 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 62 from 0012.4b00.1932.e489 at time 18780, sent at time 18772 (latency is 8)
+[INFO: MyApp     ] Sending node power info:
+	CPU:188565 ticks
+	LPM:1763877 ticks
+	DEEPLPM:79619 ticks
+	TX:69980 ticks
+	RX:6004 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	178073 ticks
+[INFO: PowerLogging] 	LPM:	163442 ticks
+[INFO: PowerLogging] 	Deep:	1690031 ticks
+[INFO: PowerLogging] 	Tx:	2254 ticks
+[INFO: PowerLogging] 	Rx:	144344 ticks
+[INFO: PowerLogging] Total:	2031546 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 63 from 0012.4b00.1932.e489 at time 18906, sent at time 18897 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:191589 ticks
+	LPM:1791714 ticks
+	DEEPLPM:80872 ticks
+	TX:71088 ticks
+	RX:6096 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	180943 ticks
+[INFO: PowerLogging] 	LPM:	166069 ticks
+[INFO: PowerLogging] 	Deep:	1716650 ticks
+[INFO: PowerLogging] 	Tx:	2287 ticks
+[INFO: PowerLogging] 	Rx:	146629 ticks
+[INFO: PowerLogging] Total:	2063662 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 64 from 0012.4b00.1932.e489 at time 19032, sent at time 19022 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:194616 ticks
+	LPM:1819663 ticks
+	DEEPLPM:82008 ticks
+	TX:72192 ticks
+	RX:6188 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	183817 ticks
+[INFO: PowerLogging] 	LPM:	168643 ticks
+[INFO: PowerLogging] 	Deep:	1743315 ticks
+[INFO: PowerLogging] 	Tx:	2320 ticks
+[INFO: PowerLogging] 	Rx:	148911 ticks
+[INFO: PowerLogging] Total:	2095775 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 65 from 0012.4b00.1932.e489 at time 19166, sent at time 19157 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:197661 ticks
+	LPM:1849546 ticks
+	DEEPLPM:83487 ticks
+	TX:73374 ticks
+	RX:6280 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	186808 ticks
+[INFO: PowerLogging] 	LPM:	171315 ticks
+[INFO: PowerLogging] 	Deep:	1772058 ticks
+[INFO: PowerLogging] 	Tx:	2353 ticks
+[INFO: PowerLogging] 	Rx:	151356 ticks
+[INFO: PowerLogging] Total:	2130181 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 66 from 0012.4b00.1932.e489 at time 19292, sent at time 19283 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:200689 ticks
+	LPM:1877361 ticks
+	DEEPLPM:84755 ticks
+	TX:74481 ticks
+	RX:6372 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	189681 ticks
+[INFO: PowerLogging] 	LPM:	173911 ticks
+[INFO: PowerLogging] 	Deep:	1798699 ticks
+[INFO: PowerLogging] 	Tx:	2386 ticks
+[INFO: PowerLogging] 	Rx:	153638 ticks
+[INFO: PowerLogging] Total:	2162291 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 67 from 0012.4b00.1932.e489 at time 19418, sent at time 19408 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:203726 ticks
+	LPM:1905045 ticks
+	DEEPLPM:86148 ticks
+	TX:75587 ticks
+	RX:6464 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	192565 ticks
+[INFO: PowerLogging] 	LPM:	176497 ticks
+[INFO: PowerLogging] 	Deep:	1825346 ticks
+[INFO: PowerLogging] 	Tx:	2471 ticks
+[INFO: PowerLogging] 	Rx:	155888 ticks
+[INFO: PowerLogging] Total:	2194408 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 68 from 0012.4b00.1932.e489 at time 19543, sent at time 19534 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:206765 ticks
+	LPM:1932970 ticks
+	DEEPLPM:87624 ticks
+	TX:76703 ticks
+	RX:6556 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	195437 ticks
+[INFO: PowerLogging] 	LPM:	179052 ticks
+[INFO: PowerLogging] 	Deep:	1852030 ticks
+[INFO: PowerLogging] 	Tx:	2504 ticks
+[INFO: PowerLogging] 	Rx:	158172 ticks
+[INFO: PowerLogging] Total:	2226519 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 69 from 0012.4b00.1932.e489 at time 19677, sent at time 19668 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:209775 ticks
+	LPM:1962643 ticks
+	DEEPLPM:89018 ticks
+	TX:77886 ticks
+	RX:6648 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	198319 ticks
+[INFO: PowerLogging] 	LPM:	181809 ticks
+[INFO: PowerLogging] 	Deep:	1880794 ticks
+[INFO: PowerLogging] 	Tx:	2537 ticks
+[INFO: PowerLogging] 	Rx:	160615 ticks
+[INFO: PowerLogging] Total:	2260922 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 70 from 0012.4b00.1932.e489 at time 19803, sent at time 19794 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:212981 ticks
+	LPM:1990454 ticks
+	DEEPLPM:90115 ticks
+	TX:78955 ticks
+	RX:6792 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	201280 ticks
+[INFO: PowerLogging] 	LPM:	184526 ticks
+[INFO: PowerLogging] 	Deep:	1907232 ticks
+[INFO: PowerLogging] 	Tx:	2570 ticks
+[INFO: PowerLogging] 	Rx:	162905 ticks
+[INFO: PowerLogging] Total:	2293038 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 71 from 0012.4b00.1932.e489 at time 19929, sent at time 19919 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:216014 ticks
+	LPM:2018160 ticks
+	DEEPLPM:91488 ticks
+	TX:80060 ticks
+	RX:6884 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	204150 ticks
+[INFO: PowerLogging] 	LPM:	187181 ticks
+[INFO: PowerLogging] 	Deep:	1933820 ticks
+[INFO: PowerLogging] 	Tx:	2603 ticks
+[INFO: PowerLogging] 	Rx:	165191 ticks
+[INFO: PowerLogging] Total:	2325151 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 72 from 0012.4b00.1932.e489 at time 20063, sent at time 20054 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:219170 ticks
+	LPM:2048023 ticks
+	DEEPLPM:92875 ticks
+	TX:81242 ticks
+	RX:6976 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	207030 ticks
+[INFO: PowerLogging] 	LPM:	189936 ticks
+[INFO: PowerLogging] 	Deep:	1962588 ticks
+[INFO: PowerLogging] 	Tx:	2636 ticks
+[INFO: PowerLogging] 	Rx:	167635 ticks
+[INFO: PowerLogging] Total:	2359554 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 73 from 0012.4b00.1932.e489 at time 20189, sent at time 20180 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:222196 ticks
+	LPM:2075862 ticks
+	DEEPLPM:94124 ticks
+	TX:82347 ticks
+	RX:7068 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	209898 ticks
+[INFO: PowerLogging] 	LPM:	192561 ticks
+[INFO: PowerLogging] 	Deep:	1989208 ticks
+[INFO: PowerLogging] 	Tx:	2669 ticks
+[INFO: PowerLogging] 	Rx:	169919 ticks
+[INFO: PowerLogging] Total:	2391667 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 74 from 0012.4b00.1932.e489 at time 20314, sent at time 20304 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:225227 ticks
+	LPM:2103558 ticks
+	DEEPLPM:95509 ticks
+	TX:83449 ticks
+	RX:7160 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	212769 ticks
+[INFO: PowerLogging] 	LPM:	195141 ticks
+[INFO: PowerLogging] 	Deep:	2015874 ticks
+[INFO: PowerLogging] 	Tx:	2702 ticks
+[INFO: PowerLogging] 	Rx:	172204 ticks
+[INFO: PowerLogging] Total:	2423784 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 75 from 0012.4b00.1932.e489 at time 20440, sent at time 20431 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:228266 ticks
+	LPM:2131465 ticks
+	DEEPLPM:97004 ticks
+	TX:84566 ticks
+	RX:7252 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	215753 ticks
+[INFO: PowerLogging] 	LPM:	197627 ticks
+[INFO: PowerLogging] 	Deep:	2042515 ticks
+[INFO: PowerLogging] 	Tx:	2735 ticks
+[INFO: PowerLogging] 	Rx:	174490 ticks
+[INFO: PowerLogging] Total:	2455895 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 76 from 0012.4b00.1932.e489 at time 20574, sent at time 20565 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:231361 ticks
+	LPM:2161143 ticks
+	DEEPLPM:98308 ticks
+	TX:85746 ticks
+	RX:7344 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	218638 ticks
+[INFO: PowerLogging] 	LPM:	200327 ticks
+[INFO: PowerLogging] 	Deep:	2071334 ticks
+[INFO: PowerLogging] 	Tx:	2768 ticks
+[INFO: PowerLogging] 	Rx:	176895 ticks
+[INFO: PowerLogging] Total:	2490299 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 77 from 0012.4b00.1932.e489 at time 20699, sent at time 20691 (latency is 8)
+[INFO: MyApp     ] Sending node power info:
+	CPU:234386 ticks
+	LPM:2188964 ticks
+	DEEPLPM:99576 ticks
+	TX:86852 ticks
+	RX:7436 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	221510 ticks
+[INFO: PowerLogging] 	LPM:	202986 ticks
+[INFO: PowerLogging] 	Deep:	2097918 ticks
+[INFO: PowerLogging] 	Tx:	2801 ticks
+[INFO: PowerLogging] 	Rx:	179181 ticks
+[INFO: PowerLogging] Total:	2522414 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 78 from 0012.4b00.1932.e489 at time 20826, sent at time 20815 (latency is 11)
+[INFO: MyApp     ] Sending node power info:
+	CPU:237413 ticks
+	LPM:2216612 ticks
+	DEEPLPM:101013 ticks
+	TX:88002 ticks
+	RX:7528 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	224384 ticks
+[INFO: PowerLogging] 	LPM:	205612 ticks
+[INFO: PowerLogging] 	Deep:	2124533 ticks
+[INFO: PowerLogging] 	Tx:	2834 ticks
+[INFO: PowerLogging] 	Rx:	181512 ticks
+[INFO: PowerLogging] Total:	2554529 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 79 from 0012.4b00.1932.e489 at time 20959, sent at time 20951 (latency is 8)
+[INFO: MyApp     ] Sending node power info:
+	CPU:240457 ticks
+	LPM:2246543 ticks
+	DEEPLPM:102444 ticks
+	TX:89183 ticks
+	RX:7620 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	227265 ticks
+[INFO: PowerLogging] 	LPM:	208322 ticks
+[INFO: PowerLogging] 	Deep:	2153346 ticks
+[INFO: PowerLogging] 	Tx:	2867 ticks
+[INFO: PowerLogging] 	Rx:	183955 ticks
+[INFO: PowerLogging] Total:	2588933 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 80 from 0012.4b00.1932.e489 at time 21086, sent at time 21076 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:243568 ticks
+	LPM:2274367 ticks
+	DEEPLPM:103624 ticks
+	TX:90285 ticks
+	RX:7712 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	230101 ticks
+[INFO: PowerLogging] 	LPM:	210984 ticks
+[INFO: PowerLogging] 	Deep:	2179966 ticks
+[INFO: PowerLogging] 	Tx:	2900 ticks
+[INFO: PowerLogging] 	Rx:	186199 ticks
+[INFO: PowerLogging] Total:	2621051 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 81 from 0012.4b00.1932.e489 at time 21211, sent at time 21201 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:246594 ticks
+	LPM:2302061 ticks
+	DEEPLPM:105014 ticks
+	TX:91389 ticks
+	RX:7804 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	232975 ticks
+[INFO: PowerLogging] 	LPM:	213554 ticks
+[INFO: PowerLogging] 	Deep:	2206632 ticks
+[INFO: PowerLogging] 	Tx:	2933 ticks
+[INFO: PowerLogging] 	Rx:	188483 ticks
+[INFO: PowerLogging] Total:	2653161 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 82 from 0012.4b00.1932.e489 at time 21337, sent at time 21328 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:249662 ticks
+	LPM:2329947 ticks
+	DEEPLPM:106502 ticks
+	TX:92495 ticks
+	RX:7896 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	236026 ticks
+[INFO: PowerLogging] 	LPM:	215960 ticks
+[INFO: PowerLogging] 	Deep:	2233287 ticks
+[INFO: PowerLogging] 	Tx:	3018 ticks
+[INFO: PowerLogging] 	Rx:	190733 ticks
+[INFO: PowerLogging] Total:	2685273 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 83 from 0012.4b00.1932.e489 at time 21472, sent at time 21463 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:252684 ticks
+	LPM:2359627 ticks
+	DEEPLPM:107878 ticks
+	TX:93642 ticks
+	RX:8040 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	238916 ticks
+[INFO: PowerLogging] 	LPM:	218713 ticks
+[INFO: PowerLogging] 	Deep:	2262049 ticks
+[INFO: PowerLogging] 	Tx:	3051 ticks
+[INFO: PowerLogging] 	Rx:	193178 ticks
+[INFO: PowerLogging] Total:	2719678 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 84 from 0012.4b00.1932.e489 at time 21596, sent at time 21588 (latency is 8)
+[INFO: MyApp     ] Sending node power info:
+	CPU:255711 ticks
+	LPM:2387468 ticks
+	DEEPLPM:109123 ticks
+	TX:94746 ticks
+	RX:8132 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	241787 ticks
+[INFO: PowerLogging] 	LPM:	221323 ticks
+[INFO: PowerLogging] 	Deep:	2288682 ticks
+[INFO: PowerLogging] 	Tx:	3084 ticks
+[INFO: PowerLogging] 	Rx:	195462 ticks
+[INFO: PowerLogging] Total:	2751792 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 85 from 0012.4b00.1932.e489 at time 21723, sent at time 21712 (latency is 11)
+[INFO: MyApp     ] Sending node power info:
+	CPU:258740 ticks
+	LPM:2415180 ticks
+	DEEPLPM:110495 ticks
+	TX:95831 ticks
+	RX:8224 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	244773 ticks
+[INFO: PowerLogging] 	LPM:	223792 ticks
+[INFO: PowerLogging] 	Deep:	2315343 ticks
+[INFO: PowerLogging] 	Tx:	3117 ticks
+[INFO: PowerLogging] 	Rx:	197728 ticks
+[INFO: PowerLogging] Total:	2783908 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 86 from 0012.4b00.1932.e489 at time 21856, sent at time 21848 (latency is 8)
+[INFO: MyApp     ] Sending node power info:
+	CPU:261784 ticks
+	LPM:2445298 ticks
+	DEEPLPM:111738 ticks
+	TX:97012 ticks
+	RX:8316 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	247661 ticks
+[INFO: PowerLogging] 	LPM:	226536 ticks
+[INFO: PowerLogging] 	Deep:	2344112 ticks
+[INFO: PowerLogging] 	Tx:	3150 ticks
+[INFO: PowerLogging] 	Rx:	200170 ticks
+[INFO: PowerLogging] Total:	2818309 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 87 from 0012.4b00.1932.e489 at time 21983, sent at time 21973 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:264810 ticks
+	LPM:2473119 ticks
+	DEEPLPM:113005 ticks
+	TX:98117 ticks
+	RX:8408 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	250536 ticks
+[INFO: PowerLogging] 	LPM:	229172 ticks
+[INFO: PowerLogging] 	Deep:	2370719 ticks
+[INFO: PowerLogging] 	Tx:	3183 ticks
+[INFO: PowerLogging] 	Rx:	202465 ticks
+[INFO: PowerLogging] Total:	2850427 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 88 from 0012.4b00.1932.e489 at time 22107, sent at time 22098 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:267839 ticks
+	LPM:2500765 ticks
+	DEEPLPM:114441 ticks
+	TX:99267 ticks
+	RX:8500 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	253454 ticks
+[INFO: PowerLogging] 	LPM:	231683 ticks
+[INFO: PowerLogging] 	Deep:	2397398 ticks
+[INFO: PowerLogging] 	Tx:	3216 ticks
+[INFO: PowerLogging] 	Rx:	204790 ticks
+[INFO: PowerLogging] Total:	2882535 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 89 from 0012.4b00.1932.e489 at time 22234, sent at time 22225 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:270877 ticks
+	LPM:2528738 ticks
+	DEEPLPM:115871 ticks
+	TX:100371 ticks
+	RX:8592 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	256327 ticks
+[INFO: PowerLogging] 	LPM:	234260 ticks
+[INFO: PowerLogging] 	Deep:	2424065 ticks
+[INFO: PowerLogging] 	Tx:	3249 ticks
+[INFO: PowerLogging] 	Rx:	207074 ticks
+[INFO: PowerLogging] Total:	2914652 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 90 from 0012.4b00.1932.e489 at time 22368, sent at time 22359 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:273971 ticks
+	LPM:2558401 ticks
+	DEEPLPM:117192 ticks
+	TX:101552 ticks
+	RX:8684 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	259215 ticks
+[INFO: PowerLogging] 	LPM:	237013 ticks
+[INFO: PowerLogging] 	Deep:	2452828 ticks
+[INFO: PowerLogging] 	Tx:	3282 ticks
+[INFO: PowerLogging] 	Rx:	209517 ticks
+[INFO: PowerLogging] Total:	2949056 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 91 from 0012.4b00.1932.e489 at time 22493, sent at time 22485 (latency is 8)
+[INFO: MyApp     ] Sending node power info:
+	CPU:277000 ticks
+	LPM:2586222 ticks
+	DEEPLPM:118456 ticks
+	TX:102655 ticks
+	RX:8776 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	262092 ticks
+[INFO: PowerLogging] 	LPM:	239630 ticks
+[INFO: PowerLogging] 	Deep:	2479449 ticks
+[INFO: PowerLogging] 	Tx:	3315 ticks
+[INFO: PowerLogging] 	Rx:	211801 ticks
+[INFO: PowerLogging] Total:	2981171 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 92 from 0012.4b00.1932.e489 at time 22620, sent at time 22609 (latency is 11)
+[INFO: MyApp     ] Sending node power info:
+	CPU:280137 ticks
+	LPM:2613903 ticks
+	DEEPLPM:119751 ticks
+	TX:103758 ticks
+	RX:8868 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	264972 ticks
+[INFO: PowerLogging] 	LPM:	242201 ticks
+[INFO: PowerLogging] 	Deep:	2506114 ticks
+[INFO: PowerLogging] 	Tx:	3348 ticks
+[INFO: PowerLogging] 	Rx:	214085 ticks
+[INFO: PowerLogging] Total:	3013287 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 93 from 0012.4b00.1932.e489 at time 22753, sent at time 22745 (latency is 8)
+[INFO: MyApp     ] Sending node power info:
+	CPU:283184 ticks
+	LPM:2643802 ticks
+	DEEPLPM:121209 ticks
+	TX:104939 ticks
+	RX:8960 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	267857 ticks
+[INFO: PowerLogging] 	LPM:	244951 ticks
+[INFO: PowerLogging] 	Deep:	2534879 ticks
+[INFO: PowerLogging] 	Tx:	3381 ticks
+[INFO: PowerLogging] 	Rx:	216528 ticks
+[INFO: PowerLogging] Total:	3047687 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 94 from 0012.4b00.1932.e489 at time 22880, sent at time 22870 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:286212 ticks
+	LPM:2671622 ticks
+	DEEPLPM:122475 ticks
+	TX:106043 ticks
+	RX:9052 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	270737 ticks
+[INFO: PowerLogging] 	LPM:	247626 ticks
+[INFO: PowerLogging] 	Deep:	2561443 ticks
+[INFO: PowerLogging] 	Tx:	3414 ticks
+[INFO: PowerLogging] 	Rx:	218864 ticks
+[INFO: PowerLogging] Total:	3079806 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 95 from 0012.4b00.1932.e489 at time 23006, sent at time 22995 (latency is 11)
+[INFO: MyApp     ] Sending node power info:
+	CPU:289240 ticks
+	LPM:2699315 ticks
+	DEEPLPM:123866 ticks
+	TX:107148 ticks
+	RX:9144 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	273790 ticks
+[INFO: PowerLogging] 	LPM:	250055 ticks
+[INFO: PowerLogging] 	Deep:	2588360 ticks
+[INFO: PowerLogging] 	Tx:	3499 ticks
+[INFO: PowerLogging] 	Rx:	221113 ticks
+[INFO: PowerLogging] Total:	3112205 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 96 from 0012.4b00.1932.e489 at time 23131, sent at time 23122 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:292358 ticks
+	LPM:2727233 ticks
+	DEEPLPM:125271 ticks
+	TX:108321 ticks
+	RX:9328 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	276662 ticks
+[INFO: PowerLogging] 	LPM:	252528 ticks
+[INFO: PowerLogging] 	Deep:	2614838 ticks
+[INFO: PowerLogging] 	Tx:	3532 ticks
+[INFO: PowerLogging] 	Rx:	223398 ticks
+[INFO: PowerLogging] Total:	3144028 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 97 from 0012.4b00.1932.e489 at time 23265, sent at time 23256 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:295369 ticks
+	LPM:2756896 ticks
+	DEEPLPM:126676 ticks
+	TX:109501 ticks
+	RX:9420 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	279550 ticks
+[INFO: PowerLogging] 	LPM:	255320 ticks
+[INFO: PowerLogging] 	Deep:	2643562 ticks
+[INFO: PowerLogging] 	Tx:	3565 ticks
+[INFO: PowerLogging] 	Rx:	225877 ticks
+[INFO: PowerLogging] Total:	3178432 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 98 from 0012.4b00.1932.e489 at time 23390, sent at time 23381 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:298496 ticks
+	LPM:2784703 ticks
+	DEEPLPM:127854 ticks
+	TX:110569 ticks
+	RX:9564 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	282426 ticks
+[INFO: PowerLogging] 	LPM:	257900 ticks
+[INFO: PowerLogging] 	Deep:	2670221 ticks
+[INFO: PowerLogging] 	Tx:	3598 ticks
+[INFO: PowerLogging] 	Rx:	228162 ticks
+[INFO: PowerLogging] Total:	3210547 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 99 from 0012.4b00.1932.e489 at time 23517, sent at time 23506 (latency is 11)
+[INFO: MyApp     ] Sending node power info:
+	CPU:301527 ticks
+	LPM:2812418 ticks
+	DEEPLPM:129222 ticks
+	TX:111670 ticks
+	RX:9656 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	285306 ticks
+[INFO: PowerLogging] 	LPM:	260472 ticks
+[INFO: PowerLogging] 	Deep:	2696885 ticks
+[INFO: PowerLogging] 	Tx:	3631 ticks
+[INFO: PowerLogging] 	Rx:	230448 ticks
+[INFO: PowerLogging] Total:	3242663 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 100 from 0012.4b00.1932.e489 at time 23650, sent at time 23642 (latency is 8)
+[INFO: MyApp     ] Sending node power info:
+	CPU:304572 ticks
+	LPM:2842298 ticks
+	DEEPLPM:130701 ticks
+	TX:112852 ticks
+	RX:9748 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	288199 ticks
+[INFO: PowerLogging] 	LPM:	263221 ticks
+[INFO: PowerLogging] 	Deep:	2725647 ticks
+[INFO: PowerLogging] 	Tx:	3664 ticks
+[INFO: PowerLogging] 	Rx:	232891 ticks
+[INFO: PowerLogging] Total:	3277067 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 101 from 0012.4b00.1932.e489 at time 23777, sent at time 23767 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:307604 ticks
+	LPM:2870118 ticks
+	DEEPLPM:131963 ticks
+	TX:113956 ticks
+	RX:9840 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	291080 ticks
+[INFO: PowerLogging] 	LPM:	265840 ticks
+[INFO: PowerLogging] 	Deep:	2752265 ticks
+[INFO: PowerLogging] 	Tx:	3697 ticks
+[INFO: PowerLogging] 	Rx:	235177 ticks
+[INFO: PowerLogging] Total:	3309185 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 102 from 0012.4b00.1932.e489 at time 23901, sent at time 23892 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:310741 ticks
+	LPM:2897800 ticks
+	DEEPLPM:133256 ticks
+	TX:115059 ticks
+	RX:9932 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	293959 ticks
+[INFO: PowerLogging] 	LPM:	268403 ticks
+[INFO: PowerLogging] 	Deep:	2778930 ticks
+[INFO: PowerLogging] 	Tx:	3730 ticks
+[INFO: PowerLogging] 	Rx:	237461 ticks
+[INFO: PowerLogging] Total:	3341292 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 103 from 0012.4b00.1932.e489 at time 24028, sent at time 24018 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:313867 ticks
+	LPM:2925746 ticks
+	DEEPLPM:134625 ticks
+	TX:116160 ticks
+	RX:10024 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	296845 ticks
+[INFO: PowerLogging] 	LPM:	270971 ticks
+[INFO: PowerLogging] 	Deep:	2805597 ticks
+[INFO: PowerLogging] 	Tx:	3763 ticks
+[INFO: PowerLogging] 	Rx:	239745 ticks
+[INFO: PowerLogging] Total:	3373413 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 104 from 0012.4b00.1932.e489 at time 24162, sent at time 24153 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:316965 ticks
+	LPM:2955410 ticks
+	DEEPLPM:135942 ticks
+	TX:117341 ticks
+	RX:10116 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	299736 ticks
+[INFO: PowerLogging] 	LPM:	273720 ticks
+[INFO: PowerLogging] 	Deep:	2834361 ticks
+[INFO: PowerLogging] 	Tx:	3796 ticks
+[INFO: PowerLogging] 	Rx:	242189 ticks
+[INFO: PowerLogging] Total:	3407817 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 105 from 0012.4b00.1932.e489 at time 24288, sent at time 24278 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:319994 ticks
+	LPM:2983230 ticks
+	DEEPLPM:137204 ticks
+	TX:118446 ticks
+	RX:10208 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	302735 ticks
+[INFO: PowerLogging] 	LPM:	276236 ticks
+[INFO: PowerLogging] 	Deep:	2860959 ticks
+[INFO: PowerLogging] 	Tx:	3829 ticks
+[INFO: PowerLogging] 	Rx:	244470 ticks
+[INFO: PowerLogging] Total:	3439930 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 106 from 0012.4b00.1932.e489 at time 24413, sent at time 24403 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:323023 ticks
+	LPM:3010931 ticks
+	DEEPLPM:138588 ticks
+	TX:119549 ticks
+	RX:10300 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	305619 ticks
+[INFO: PowerLogging] 	LPM:	278780 ticks
+[INFO: PowerLogging] 	Deep:	2887646 ticks
+[INFO: PowerLogging] 	Tx:	3862 ticks
+[INFO: PowerLogging] 	Rx:	246754 ticks
+[INFO: PowerLogging] Total:	3472045 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 107 from 0012.4b00.1932.e489 at time 24547, sent at time 24538 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:326072 ticks
+	LPM:3040813 ticks
+	DEEPLPM:140063 ticks
+	TX:120729 ticks
+	RX:10392 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	308513 ticks
+[INFO: PowerLogging] 	LPM:	281522 ticks
+[INFO: PowerLogging] 	Deep:	2916411 ticks
+[INFO: PowerLogging] 	Tx:	3895 ticks
+[INFO: PowerLogging] 	Rx:	249196 ticks
+[INFO: PowerLogging] Total:	3506446 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 108 from 0012.4b00.1932.e489 at time 24674, sent at time 24664 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:329105 ticks
+	LPM:3068635 ticks
+	DEEPLPM:141321 ticks
+	TX:121831 ticks
+	RX:10484 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	311399 ticks
+[INFO: PowerLogging] 	LPM:	284134 ticks
+[INFO: PowerLogging] 	Deep:	2943031 ticks
+[INFO: PowerLogging] 	Tx:	3928 ticks
+[INFO: PowerLogging] 	Rx:	251478 ticks
+[INFO: PowerLogging] Total:	3538564 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 109 from 0012.4b00.1932.e489 at time 24799, sent at time 24789 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:332140 ticks
+	LPM:3096291 ticks
+	DEEPLPM:142742 ticks
+	TX:122961 ticks
+	RX:10576 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	314300 ticks
+[INFO: PowerLogging] 	LPM:	286734 ticks
+[INFO: PowerLogging] 	Deep:	2969643 ticks
+[INFO: PowerLogging] 	Tx:	4013 ticks
+[INFO: PowerLogging] 	Rx:	253756 ticks
+[INFO: PowerLogging] Total:	3570677 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 110 from 0012.4b00.1932.e489 at time 24925, sent at time 24916 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:335176 ticks
+	LPM:3124233 ticks
+	DEEPLPM:144203 ticks
+	TX:124090 ticks
+	RX:10668 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	317178 ticks
+[INFO: PowerLogging] 	LPM:	289243 ticks
+[INFO: PowerLogging] 	Deep:	2996363 ticks
+[INFO: PowerLogging] 	Tx:	4046 ticks
+[INFO: PowerLogging] 	Rx:	256039 ticks
+[INFO: PowerLogging] Total:	3602784 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 111 from 0012.4b00.1932.e489 at time 25059, sent at time 25050 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:338190 ticks
+	LPM:3153922 ticks
+	DEEPLPM:145580 ticks
+	TX:125271 ticks
+	RX:10760 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	320071 ticks
+[INFO: PowerLogging] 	LPM:	291995 ticks
+[INFO: PowerLogging] 	Deep:	3025127 ticks
+[INFO: PowerLogging] 	Tx:	4079 ticks
+[INFO: PowerLogging] 	Rx:	258483 ticks
+[INFO: PowerLogging] Total:	3637193 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 112 from 0012.4b00.1932.e489 at time 25184, sent at time 25175 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:341330 ticks
+	LPM:3181724 ticks
+	DEEPLPM:146750 ticks
+	TX:126374 ticks
+	RX:10852 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	322955 ticks
+[INFO: PowerLogging] 	LPM:	294601 ticks
+[INFO: PowerLogging] 	Deep:	3051747 ticks
+[INFO: PowerLogging] 	Tx:	4112 ticks
+[INFO: PowerLogging] 	Rx:	260766 ticks
+[INFO: PowerLogging] Total:	3669303 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 113 from 0012.4b00.1932.e489 at time 25310, sent at time 25300 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:344450 ticks
+	LPM:3209443 ticks
+	DEEPLPM:148024 ticks
+	TX:127476 ticks
+	RX:10944 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	325845 ticks
+[INFO: PowerLogging] 	LPM:	297169 ticks
+[INFO: PowerLogging] 	Deep:	3078413 ticks
+[INFO: PowerLogging] 	Tx:	4145 ticks
+[INFO: PowerLogging] 	Rx:	263054 ticks
+[INFO: PowerLogging] Total:	3701427 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 114 from 0012.4b00.1932.e489 at time 25444, sent at time 25435 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:347513 ticks
+	LPM:3239273 ticks
+	DEEPLPM:149539 ticks
+	TX:128664 ticks
+	RX:11088 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	328748 ticks
+[INFO: PowerLogging] 	LPM:	299943 ticks
+[INFO: PowerLogging] 	Deep:	3107131 ticks
+[INFO: PowerLogging] 	Tx:	4178 ticks
+[INFO: PowerLogging] 	Rx:	265546 ticks
+[INFO: PowerLogging] Total:	3735822 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 115 from 0012.4b00.1932.e489 at time 25570, sent at time 25560 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:350543 ticks
+	LPM:3267147 ticks
+	DEEPLPM:150746 ticks
+	TX:129767 ticks
+	RX:11180 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	331744 ticks
+[INFO: PowerLogging] 	LPM:	302420 ticks
+[INFO: PowerLogging] 	Deep:	3133776 ticks
+[INFO: PowerLogging] 	Tx:	4211 ticks
+[INFO: PowerLogging] 	Rx:	267831 ticks
+[INFO: PowerLogging] Total:	3767940 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 116 from 0012.4b00.1932.e489 at time 25695, sent at time 25685 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:353573 ticks
+	LPM:3294846 ticks
+	DEEPLPM:152131 ticks
+	TX:130872 ticks
+	RX:11272 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	334629 ticks
+[INFO: PowerLogging] 	LPM:	304962 ticks
+[INFO: PowerLogging] 	Deep:	3160462 ticks
+[INFO: PowerLogging] 	Tx:	4244 ticks
+[INFO: PowerLogging] 	Rx:	270116 ticks
+[INFO: PowerLogging] Total:	3800053 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 117 from 0012.4b00.1932.e489 at time 25822, sent at time 25812 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:356696 ticks
+	LPM:3322770 ticks
+	DEEPLPM:153522 ticks
+	TX:131976 ticks
+	RX:11364 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	337512 ticks
+[INFO: PowerLogging] 	LPM:	307522 ticks
+[INFO: PowerLogging] 	Deep:	3187129 ticks
+[INFO: PowerLogging] 	Tx:	4277 ticks
+[INFO: PowerLogging] 	Rx:	272399 ticks
+[INFO: PowerLogging] Total:	3832163 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 118 from 0012.4b00.1932.e489 at time 25956, sent at time 25947 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:359710 ticks
+	LPM:3352433 ticks
+	DEEPLPM:154925 ticks
+	TX:133157 ticks
+	RX:11456 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	340405 ticks
+[INFO: PowerLogging] 	LPM:	310272 ticks
+[INFO: PowerLogging] 	Deep:	3215892 ticks
+[INFO: PowerLogging] 	Tx:	4310 ticks
+[INFO: PowerLogging] 	Rx:	274843 ticks
+[INFO: PowerLogging] Total:	3866569 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 119 from 0012.4b00.1932.e489 at time 26081, sent at time 26072 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:362740 ticks
+	LPM:3380254 ticks
+	DEEPLPM:156186 ticks
+	TX:134260 ticks
+	RX:11548 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	343289 ticks
+[INFO: PowerLogging] 	LPM:	312879 ticks
+[INFO: PowerLogging] 	Deep:	3242511 ticks
+[INFO: PowerLogging] 	Tx:	4343 ticks
+[INFO: PowerLogging] 	Rx:	277127 ticks
+[INFO: PowerLogging] Total:	3898679 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 120 from 0012.4b00.1932.e489 at time 26207, sent at time 26197 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:365773 ticks
+	LPM:3407955 ticks
+	DEEPLPM:157565 ticks
+	TX:135362 ticks
+	RX:11640 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	346173 ticks
+[INFO: PowerLogging] 	LPM:	315448 ticks
+[INFO: PowerLogging] 	Deep:	3269176 ticks
+[INFO: PowerLogging] 	Tx:	4376 ticks
+[INFO: PowerLogging] 	Rx:	279412 ticks
+[INFO: PowerLogging] Total:	3930797 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 121 from 0012.4b00.1932.e489 at time 26341, sent at time 26332 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:368904 ticks
+	LPM:3437841 ticks
+	DEEPLPM:158955 ticks
+	TX:136541 ticks
+	RX:11732 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	349065 ticks
+[INFO: PowerLogging] 	LPM:	318194 ticks
+[INFO: PowerLogging] 	Deep:	3297939 ticks
+[INFO: PowerLogging] 	Tx:	4409 ticks
+[INFO: PowerLogging] 	Rx:	281855 ticks
+[INFO: PowerLogging] Total:	3965198 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 122 from 0012.4b00.1932.e489 at time 26466, sent at time 26458 (latency is 8)
+[INFO: MyApp     ] Sending node power info:
+	CPU:372044 ticks
+	LPM:3465644 ticks
+	DEEPLPM:160124 ticks
+	TX:137643 ticks
+	RX:11824 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	351959 ticks
+[INFO: PowerLogging] 	LPM:	320740 ticks
+[INFO: PowerLogging] 	Deep:	3324614 ticks
+[INFO: PowerLogging] 	Tx:	4442 ticks
+[INFO: PowerLogging] 	Rx:	284090 ticks
+[INFO: PowerLogging] Total:	3997313 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 123 from 0012.4b00.1932.e489 at time 26592, sent at time 26582 (latency is 10)
+[INFO: MyApp     ] Sending node power info:
+	CPU:375163 ticks
+	LPM:3493357 ticks
+	DEEPLPM:161405 ticks
+	TX:138747 ticks
+	RX:11916 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	354845 ticks
+[INFO: PowerLogging] 	LPM:	323332 ticks
+[INFO: PowerLogging] 	Deep:	3351252 ticks
+[INFO: PowerLogging] 	Tx:	4475 ticks
+[INFO: PowerLogging] 	Rx:	286347 ticks
+[INFO: PowerLogging] Total:	4029429 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 124 from 0012.4b00.1932.e489 at time 26718, sent at time 26709 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:378204 ticks
+	LPM:3521050 ticks
+	DEEPLPM:163110 ticks
+	TX:139858 ticks
+	RX:12008 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	357726 ticks
+[INFO: PowerLogging] 	LPM:	325899 ticks
+[INFO: PowerLogging] 	Deep:	3377911 ticks
+[INFO: PowerLogging] 	Tx:	4508 ticks
+[INFO: PowerLogging] 	Rx:	288610 ticks
+[INFO: PowerLogging] Total:	4061536 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
+[INFO: MyApp     ] <--- Received 125 from 0012.4b00.1932.e489 at time 26853, sent at time 26844 (latency is 9)
+[INFO: MyApp     ] Sending node power info:
+	CPU:381223 ticks
+	LPM:3550621 ticks
+	DEEPLPM:164599 ticks
+	TX:141043 ticks
+	RX:12100 ticks
+[INFO: MyApp     ] Own power info: [INFO: PowerLogging] 	CPU:	360829 ticks
+[INFO: PowerLogging] 	LPM:	328492 ticks
+[INFO: PowerLogging] 	Deep:	3406621 ticks
+[INFO: PowerLogging] 	Tx:	4593 ticks
+[INFO: PowerLogging] 	Rx:	291017 ticks
+[INFO: PowerLogging] Total:	4095942 ticks
+[INFO: PowerLogging] Energest ticks/second: 32768
+[PRI : TSCH Sched] ----- start slotframe list -----
+[PRI : TSCH Sched] Slotframe Handle 0, size 7
+[PRI : TSCH Sched] * Link Options 0f, type 1, timeslot 0, channel offset 0, address ffff.ffff.ffff.ffff
+[PRI : TSCH Sched] * Link Options 02, type 0, timeslot 1, channel offset 1, address 0012.4b00.1932.e489
+[PRI : TSCH Sched] ----- end slotframe list -----
