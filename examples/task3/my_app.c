@@ -58,7 +58,7 @@
 
 /* Log configuration */
 #include "sys/log.h"
-#define LOG_MODULE "App"
+#define LOG_MODULE "MyApp"
 #define LOG_LEVEL LOG_LEVEL_INFO
 
 /* Configuration */
@@ -121,6 +121,7 @@ PROCESS_THREAD(my_app, ev, data)
 
   PROCESS_END();
 }
+
 /*---------------------------------------------------------------------------*/
 PROCESS(myapp_power_logging, "Power use logging");
 /*---------------------------------------------------------------------------*/
