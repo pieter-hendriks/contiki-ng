@@ -44,12 +44,7 @@
 #include "net/mac/tsch/tsch.h"
 #include "net/routing/routing.h"
 
-#define DEBUG DEBUG_PRINT
-#include "net/ipv6/uip-debug.h"
-
 #include "sys/energest.h"
-
-
 
 /* All eneergy consumptions are in mW, data from:
    Accurate Online Energy Consumption Estimation of IoT Devices Using Energest
@@ -64,6 +59,7 @@ const float wc_Tx =  0.03112 * vcc * 1000;
 
 /*---------------------------------------------------------------------------*/
 PROCESS(node_process, "RPL Node");
+
 /*---------------------------------------------------------------------------*/
 PROCESS_THREAD(node_process, ev, data)
 {
@@ -71,7 +67,7 @@ PROCESS_THREAD(node_process, ev, data)
 
   PROCESS_BEGIN();
 
-  is_coordinator = 1;
+  is_coordinator = 0;
 
 #if CONTIKI_TARGET_COOJA || CONTIKI_TARGET_Z1
   is_coordinator = (node_id == 1);
