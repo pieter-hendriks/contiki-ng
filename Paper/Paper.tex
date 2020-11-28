@@ -1,0 +1,266 @@
+\documentclass[conference]{IEEEtran}
+%\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{amsmath,amssymb,amsfonts}
+%\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{cite}
+\usepackage{url}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{Sensors Lab Conference}
+
+\author{\IEEEauthorblockN{Gabriele Paris}
+\IEEEauthorblockA{\textit{Dept physic} \\
+\textit{University of Antwerp}\\
+Antwerp, Belgium \\
+gabriele.paris@student.uantwerpen.be}
+\and
+% Cut out 3rd author block as Miroslav is not contributing.
+\IEEEauthorblockN{Pieter Hendriks}
+\IEEEauthorblockA{\textit{Dept computer science} \\
+\textit{University of Antwerp}\\
+Antwerp, Belgium \\
+pieter.hendriks@student.uantwerpen.be}
+}
+
+\maketitle
+
+\begin{abstract}
+In this study, we assess the performance of TSCH using the Contiki-NG operating system on Zolertia RE-mote (Rev. B) nodes. We'll show that, in two node networks, the leaf node consumes more power than the root node. Further, we'll assess the performance of the TSCH mode over various distances.
+\end{abstract}
+
+\begin{IEEEkeywords}
+6TiSCH, 6TSCH, Contiki-NG, Energest, IEEE 802.15.4, Power Consumption, Range, Time Slotted Channel Hopping, TiSCH, TSCH, Zolertia
+\end{IEEEkeywords}
+
+\section{Introduction}
+The IETF IPv6 over the TSCH mode of IEEE802.15.4e (6TiSCH) working group has standardized a set of protocols to enable low power industrial-grade IPv6 networks. 6TiSCH proposes a protocol stack rooted in the Time Slotted Channel Hopping (TSCH) mode of the IEEE802.15.4-2015 standard, supports multi-hop topologies with the IPv6 Routing Protocol for Low-Power and Lossy Networks (RPL) routing protocol, and is IPv6-ready through 6LoWPAN\cite{6tischDef}.
+
+Contiki-NG is an operating system for resource-constrained devices in the Internet of Things. Contiki-NG contains an RFC-compliant, low-power IPv6 communication stack, enabling Internet connectivity. The system runs on a variety of platforms based on energy-efficient architectures such as the ARM Cortex-M3/M4 and the Texas Instruments MSP430. The code footprint is on the order of a 100 kB, and the memory usage can be configured to be as low as 10 kB. 
+
+This paper serves as an initial look at the performance of TSCH on the Contiki-NG operating system. Specifically, we're going to look at the energy consumption by the TSCH network stack vs the 6TiSCH network stack. We'll also analyze the TSCH joining process. Finally, we'll see how much impact the distance between node has on the network. 
+
+\section{Related Work}
+\subsection{Throughput Analysis} \cite{ThroughputEvaluation} In this paper, an analysis of the throughput performance of TSCH networks is made. They show which parameters of the TSCH networks (node count, hop count, ...) influence the throughput metric in what way. Our research focuses on different performance characteristics of the TSCH implementation and can be useful alongside these results. 
+
+\section{Analysing the 6TiSCH energy consumption}
+\label{section:task1}
+In the first analysis, we compared the energy consumption during a certain time period of the entire 6TiSCH stack to when only enabling the TSCH MAC layer (without link-layer security) after network convergence.\\
+The full stack can be seen as in Figure \ref{fig:6tischStack}.
+
+
+For both analyses, we report on the consumption of the root and the leaf node separately.\\
+Following we remark differences in energy consumption between the root and the leaf node in the two different scenarios.
+
+The Time-Slotted Channel Hopping (TSCH) mode for medium access control (MAC) included in the standard IEEE 802.15.4 has been designed as the multichannel MAC protocol for Low-power and lossy networks (LLNs), a key component of the Internet of Things (IoT). Its ﬂexibility makes the TSCH mode a very promising candidate for the future of the MAC layer in LLNs. As such, its performance under different conditions must be assessed, so that accurate guidelines for its application can be drawn\cite{TSCHExperimentEval}.
+\begin{figure}[]
+	\centering
+	\includegraphics[width=.25\textwidth,keepaspectratio]{6TiSCH-Protocol-Stack.png}
+	\caption{6TiSCH Protocol Stack\cite{TimeCritical6tisch}.}
+	\label{fig:6tischStack}
+\end{figure}
+
+
+the physical setup of the experiment consists of two Zolertia  Remote RevB boards placed at a fixed distance of approximately 20 cm as shown in Figure \ref{fig:exp1Topology}.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.35\textwidth,keepaspectratio]{exp1Topology.pdf}
+	\caption{Network topology for 6TiSCH energy consumption analysis.}
+	\label{fig:exp1Topology}
+\end{figure}
+The basic setup for the following analysis are a root (coordinator) node and a leaf node that exchange the same ammount of data packets.\\
+Both nodes are configured to measure the energy consumption by the Energest\footnote{https://github.com/contiki-ng/contiki-ng/wiki/Documentation:-Energest} module available in Contiki-ng\footnote{https://github.com/contiki-ng}.\\
+The Energest module can be used to implement lightweight, software-based energy estimation approach for resource-constrained IoT devices. By tracking the time various hardware states such as the radio is turned on, and by knowing the power consumption of the state, it is possible to estimate the energy consumption\cite{contiki-NGWiki}.\\
+The energy consumption is measured referring to the following formula:
+\begin{equation}
+	E_{tot}=\sum_{c \in state}^{N_{s}}E_{s}=\sum_{s \in state}^{N_{s}}I_s  \cdot V_{cc} \cdot t
+\end{equation}
+Where $V_{cc}$ is the supply voltage, fixed as a constant at the value $3.3V$, $I_s$ is provided by the Table \ref{tab:CurrentConsumption} column \textit{Device profiling}\cite{EnergyConsumption}, and $t$ is measured using Energest.\\
+All measurements are performed in a span of 15 minutes each.
+\begin{table}[htbp]
+	\begin{center}
+		\begin{tabular}{ccc}
+			\hline
+			\textbf{State}    & \textbf{\begin{tabular}[c]{@{}c@{}}CC2538\\ datasheet\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Device\\ profiling\end{tabular}} \\ \hline
+			\textbf{CPU}      & 20 mA                                                               & 15.35mA                                                             \\
+			\textbf{LPM}      & 0.6 mA                                                              & 9.59 mA                                                             \\
+			\textbf{Deep LPM} & 0.0013 mA                                                           & 2.58 mA                                                             \\
+			\textbf{LISTEN}   & 24 mA                                                               & 28.32 mA                                                            \\
+			\textbf{Rx}       & 27 mA                                                               & 30.14 mA                                                            \\
+			\textbf{Tx}       & 34 mA                                                               & 31.12 mA                                                            \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption{Comparison between values from the datasheet and N6705B DC Power Analyzer radio.\cite{EnergyConsumption}}
+	\label{tab:CurrentConsumption}
+\end{table}
+\subsection{Only TSCH MAC layer}
+In the first part of the experiment, we used only the stack till the MAC layer (TSCH) as shown in Figure \ref{fig:6tischStack}.\\
+We proceeded as explained in the setup to measure the energy consumption between leaf and root node.\\
+Results are reported in Table \ref{tab:MACOnly}.
+\begin{table}[h]
+	\centering
+	\begin{tabular}{llllll}
+		\hline
+		\textbf{Node} & \multicolumn{1}{c}{\textbf{CPU}} & \multicolumn{1}{c}{\textbf{LPM}} & \multicolumn{1}{c}{\textbf{Deep}} & \multicolumn{1}{c}{\textbf{Tx}} & \multicolumn{1}{c}{\textbf{Rx}} \\ \hline
+		\textbf{Leaf} & 3.330 mJ                         & 314.385 mJ                       & 85.143 mJ                         & 1.132 mJ                        & 993.527 mJ                      \\
+		\textbf{Root} & 3.330 mJ                         & 314.385 mJ                       & 85.143 mJ                         & 1.132 mJ                        & 993.527 mJ                      \\ \hline
+	\end{tabular}
+	\caption{Average power consumption comparison between root and leaf node per state, TSCH MAC only.}
+	\label{tab:MACOnly}
+\end{table}
+What we can see is that data from root and leaf nodes show no variation, and the energy consumed from both of them is the same.
+\subsection{Full stack}
+The next experiment is as cited in the section \ref{section:task1} introduction related to the energy consumption once the full 6TiSCH stack has been enabled (except for the security layer).\\
+The setup of this experiment is the same to the previous one.
+Two boards 10cm apart from each other (\ref{fig:exp1Topology}) are running the same source code.\\
+In this scenario, we have a coordinator node and a leaf node.\\
+No messages are exchanged between the two if not for standard 6TiSCH service messages.\\
+We proceeded as explained in the setup to measure the energy consumption between leaf and root node.\\
+Results are reported in Table \ref{tab:FullStack}.
+\begin{table}[h]
+	\centering
+	\begin{tabular}{llllll}
+		\hline
+		\textbf{Node} &
+		\multicolumn{1}{c}{\textbf{CPU}} &
+		\multicolumn{1}{c}{\textbf{LPM}} &
+		\multicolumn{1}{c}{\textbf{Deep}} &
+		\multicolumn{1}{c}{\textbf{Tx}} &
+		\multicolumn{1}{c}{\textbf{Rx}} \\ \hline
+		\textbf{Leaf} &
+		5.00 mJ &
+		313.341 mJ &
+		85.143 mJ &
+		80.121 mJ &
+		98.362 mJ \\
+		\textbf{Root} &
+		3.890 mJ &
+		310.560 mJ &
+		84.209 mJ &
+		0 mJ &
+		33.879 mJ \\ \hline
+	\end{tabular}
+	\caption{Average power consumption per state between root and leaf node, full 6TiSCH  stack.}
+	\label{tab:FullStack}
+\end{table}
+\subsection{Final comparison}
+As a final comparison, we compared the total energy usage between root and leaf nodes in the two configurations.
+What we measured has been reported as Table \ref{tab:exp1Comparison}.
+\begin{table}[h]
+	\centering
+	\begin{tabular}{cll}
+		\hline
+		\textbf{Node} & \multicolumn{1}{c}{\textbf{MAC only}} & \multicolumn{1}{c}{\textbf{Full stack}} \\ \hline
+		\textbf{Leaf} & 1.398 J                                & 0.582 J                                  \\
+		\textbf{Root} & 1.398 J                                & 0.433 J                                  \\ \hline
+	\end{tabular}
+	\caption{Energy comparison between leaf and root node in MAC only and full stack configurations.}
+	\label{tab:exp1Comparison}
+\end{table}
+
+%\section{Analysing the TSCH joining process}
+%\label{section:task2}
+% Miroslav not handing in, so no work here.
+%
+%			¯\_( ͡° ͜ʖ ͡°)_/¯
+%
+
+\section{Analysing range capabilities}
+\label{section:task3}
+
+\subsection{Approach} 
+
+In order to properly analyse the range capabilities, we must first define a test structure that will be repeated at each range. The test in this case is sending 120 packets (1 per second, 52 data bytes each) over a specified range (varying between 1 and 100 meters) so we can show the performance characteristics of TSCH as the distance between nodes varies. The data payload size was chosen out of convenience, as each packet carries metrics from the sender and they happened to be 52 bytes in size. Varying this packet size will result in different performance metrics and so must be addressed \ref{section:futurework}. 
+
+Due to time constraints, combined with other obligations, the full scope of the experiments in this section has not yet been carried out. A brief comparison is made (showing the methodology) between nodes with 1 meter seperation and nodes with 5 meters seperation. Further work must be done to complete this analysis \ref{section:futurework}.
+
+As of now, though, we can show that the TSCH functionality is essentially unchanged when we're looking at 1 vs 5 meters seperation between the two nodes. The power requirements are within margin of error, there is no significant packet loss in either case. The longer distance has a slightly higher latency (potentially caused by more retransmissions, we'll need to look at this \ref{section:futurework}).
+
+For this analysis, we disabled the 6TiSCH stack (using only the TSCH mac layer) and ensured no security was enabled. No further changes to the Contiki-NG network stack were required. 
+
+\subsection{Results}
+
+\subsubsection{1 meter separation}
+\label{section:1metersep}
+First, we'll compare the latencies. At 1 meter seperation, we found, on average, 9.29 timeslots delay between the enqueueing of the packet on the sender's side and the arrival on the receiver's side \ref{fig:latencies1m}. Presumably, a majority of this time is spent in the queue (or in re-transmissions), but this will be verified later \ref{section:futurework}.  Over the distance of 1 meter, there is 100\% packet arrival rate.
+
+Regarding power use, then, we see that the leaf node consumes more power than the root node does. This is shown in \ref{fig:powerState1m}, combined with the current draw for each power state as described in \ref{tab:CurrentConsumption}. Overall, we find that the leaf node has used approximately 4.35 joules of energy whereas that value is only 2.58 joules for the root node. Since each packet carried a data payload of 52 bytes, we find the following power requirements: roughly 89 $\frac{mJ}{kbit}$ for the leaf node and  53 $\frac{mJ}{kbit}$ for the root node.
+
+%\begin{figure}[]
+%	\centering
+%	\includegraphics[width=.5\textwidth,keepaspectratio]{1m_latencies.png}
+%	\caption{Latencies for packets sent between two nodes at 1 meter seperation.}
+%	\label{fig:latencies1m}
+%\end{figure}
+%\begin{figure}[]
+%	\centering
+%	\includegraphics[width=.5\textwidth,keepaspectratio]{5m_latencies.png}
+%	\caption{Latencies for packets sent between two nodes at 5 meter seperation.}
+%	\label{fig:latencies5m}
+%\end{figure}
+
+
+\subsubsection{5 meters separation}
+
+When we increase the distance to 5 meters, not much changes. As the distance is still very small (and should be easily within range), this is to be expected. The packet delivery ratio is still at 100\%, latency is slightly increased to rougly 9.33 slots (but this could be within margin of error -  we should look at retransmission rates to verify \ref{section:futurework}). 
+
+The energy consumption is essentially the same, they are definitely within margin of error for our current test setup and so will not be discussed further than they have been in \ref{section:1metersep}. 
+
+
+%\begin{figure}[]
+%	\centering
+%	\includegraphics[width=.5\textwidth,keepaspectratio]{1m_powerStates.png}
+%	\caption{The time a node spends in each power state at 1 meter seperation.}
+%	\label{fig:powerState1m}
+%\end{figure}
+%\begin{figure}[]
+%	\centering
+%	\includegraphics[width=.5\textwidth,keepaspectratio]{5m_powerStates.png}
+%	\caption{The time a node spends in each power state at 5 meters seperation.}
+%	\label{fig:powerState5m}
+%\end{figure}
+
+
+
+%PACKET ARRIVAL RATE: 1.0
+%AVERAGE LATENCY: 9.291666666666666
+%LEAF ENERGY CONSUMPTION: 4.347331036560059 J
+%ROOT ENERGY CONSUMPTION: 2.577431278930664 J
+%Since each packet carried a data payload of 52 bytes, that's
+%	LEAF: 10.701122551532452 J/kbit
+%	ROOT: 6.344446225060096 J/kbit
+%PACKET ARRIVAL RATE: 1.0
+%AVERAGE LATENCY: 9.333333333333334
+%LEAF ENERGY CONSUMPTION: 4.345094247253417 J
+%ROOT ENERGY CONSUMPTION: 2.578182406585693 J
+%Since each packet carried a data payload of 52 bytes, that's
+%	LEAF: 10.695616608623796 J/kbit
+%	ROOT: 6.346295154672475 J/kbit
+
+
+\section{Future Work}
+
+\label{section:futurework}
+\begin{itemize}
+\item Analyze the TSCH joining process
+\item Perform the experiments as required for \ref{section:task3}
+\item Further discuss the current results in \ref{section:task3}
+\item Further analyze the found flaws in \ref{section:task3}
+\end{itemize}
+
+\begin{thebibliography}{00}
+\bibitem{contiki-NGWiki} Adam Dunkels, \url {https://github.com/contiki-ng/contiki-ng/wiki}
+\bibitem{6tischDef} X. Vilajosana, T. Watteyne, T. Chang, M. Vučinić, S. Duquennoy and P. Thubert, "IETF 6TiSCH: A Tutorial," in IEEE Communications Surveys \& Tutorials, vol. 22, no. 1, pp. 595-615, Firstquarter 2020, doi: 10.1109/COMST.2019.2939407.
+\bibitem{TimeCritical6tisch} Karaagac, Abdulkadir \& Haxhibeqiri, Jetmir \& Moerman, Ingrid \& Hoebeke, Jeroen. (2018). Time-critical communication in 6TiSCH networks. 161-166. 10.1109/WCNCW.2018.8368987. 
+\bibitem{EnergyConsumption} Sabovic, Adnan \& Delgado, Carmen \& Bauwens, Jan \& De Poorter, Eli \& Famaey, Jeroen. (2019). Accurate Online Energy Consumption Estimation of IoT Devices Using Energest. 363-373. 10.1007/978-3-030-33506-9\_32. 
+\bibitem{ThroughputEvaluation} Lee, S. B., Kim, E. J., \& Lim, Y. (2018). Contiki-NG-based IEEE 802.15. 4 TSCH Throughput Evaluation. In Proceedings of the Korean Institute of Information and Commucation Sciences Conference (pp. 577-578). The Korea Institute of Information and Commucation Engineering.
+\bibitem{TSCHExperimentEval} García Algora, Carlos \& Alfonso Reguera, Vitalio. (2018). Experimental evaluation of IEEE 802.15.4 TSCH on a 6TiSCH network. 39. 70-78. 
+\end{thebibliography}
+
+\end{document}
