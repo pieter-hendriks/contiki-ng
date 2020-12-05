@@ -36,7 +36,7 @@ In this study, we assess the performance of TSCH using the Contiki-NG operating 
 \end{abstract}
 
 \begin{IEEEkeywords}
-6TiSCH, 6TSCH, Contiki-NG, Energest, IEEE 802.15.4, Power Consumption, Range, Time Slotted Channel Hopping, TiSCH, TSCH, Zolertia
+6TiSCH, Contiki-NG, Energest, IEEE 802.15.4, Power Consumption, Range, Time Slotted Channel Hopping, TiSCH, TSCH, Zolertia
 \end{IEEEkeywords}
 
 \section{Introduction}
@@ -44,10 +44,16 @@ The IETF IPv6 over the TSCH mode of IEEE802.15.4e (6TiSCH) working group has sta
 
 Contiki-NG is an operating system for resource-constrained devices in the Internet of Things. Contiki-NG contains an RFC-compliant, low-power IPv6 communication stack, enabling Internet connectivity. The system runs on a variety of platforms based on energy-efficient architectures such as the ARM Cortex-M3/M4 and the Texas Instruments MSP430. The code footprint is on the order of a 100 kB, and the memory usage can be configured to be as low as 10 kB. 
 
-This paper serves as an initial look at the performance of TSCH on the Contiki-NG operating system. Specifically, we're going to look at the energy consumption by the TSCH network stack vs the 6TiSCH network stack. We'll also analyze the TSCH joining process. Finally, we'll see how much impact the distance between node has on the network. 
+This paper serves as an initial look at the performance of TSCH on the Contiki-NG operating system. Specifically, we're going to look at the energy consumption by the TSCH network stack vs the 6TiSCH network stack. We'll also analyze the TSCH joining process. Finally, we'll see how much impact the distance between node has on the network.
+
+The hardware in use are Zolertia RE-Mote boards, designed jointly with universities and industry partners in RERUM European project, to ease the development of private and secure applications for IoT and Smart City applications.\\
+The RE-Mote packs several onboard resources, like an RTC, external WDT, Micro-SD, RF switch, and a Shutdown mode to reduce its power consumption down to 150nA\cite{contiki-NGWiki}.
 
 \section{Related Work}
-\subsection{Throughput Analysis} \cite{ThroughputEvaluation} In this paper, an analysis of the throughput performance of TSCH networks is made. They show which parameters of the TSCH networks (node count, hop count, ...) influence the throughput metric in what way. Our research focuses on different performance characteristics of the TSCH implementation and can be useful alongside these results. 
+\subsection{Accurate energy consumption using Energest}
+In section \ref{section:task1} of this paper, we focus on the analysis of the energy consumption between leaf and root node. This analysis can be done by knowing different parameters like current, tension, and time.\\
+tension is always $3.3V$, current instead should be correctly provided in the board datasheet, previous works have shown that real current consumption values are different from the datasheet provided ones\cite{EnergyConsumption}, in this paper, we are going to use such current measurements to determine the energy consumption.
+\subsection{Throughput Analysis} In this paper, an analysis of the throughput performance of TSCH networks is made. They show which parameters of the TSCH networks (node count, hop count, ...) influence the throughput metric in what way. Our research focuses on different performance characteristics of the TSCH implementation and can be useful alongside these results\cite{ThroughputEvaluation}. 
 
 \section{Analysing the 6TiSCH energy consumption}
 \label{section:task1}
@@ -79,7 +85,7 @@ Both nodes are configured to measure the energy consumption by the Energest\foot
 The Energest module can be used to implement lightweight, software-based energy estimation approach for resource-constrained IoT devices. By tracking the time various hardware states such as the radio is turned on, and by knowing the power consumption of the state, it is possible to estimate the energy consumption\cite{contiki-NGWiki}.\\
 The energy consumption is measured referring to the following formula:
 \begin{equation}
-	E_{tot}=\sum_{c \in state}^{N_{s}}E_{s}=\sum_{s \in state}^{N_{s}}I_s  \cdot V_{cc} \cdot t
+	E_{tot}=\sum_{s \in state}^{N_{s}}E_{s}=\sum_{s \in state}^{N_{s}}I_s  \cdot V_{cc} \cdot t
 \end{equation}
 Where $V_{cc}$ is the supply voltage, fixed as a constant at the value $3.3V$, $I_s$ is provided by the Table \ref{tab:CurrentConsumption} column \textit{Device profiling}\cite{EnergyConsumption}, and $t$ is measured using Energest.\\
 All measurements are performed in a span of 15 minutes each.
@@ -100,7 +106,9 @@ All measurements are performed in a span of 15 minutes each.
 	\label{tab:CurrentConsumption}
 \end{table}
 \subsection{Only TSCH MAC layer}
-In the first part of the experiment, we used only the stack till the MAC layer (TSCH) as shown in Figure \ref{fig:6tischStack}.\\
+In the first part of the experiment, we used only the stack till the MAC layer (TSCH) as shown in Figure \ref{fig:6tischStack}.
+In TSCH networks, every node follows a time-synchronized schedule. This schedule instructs every node about exactly what to do and avoids wasting valuable energy. The TSCH schedule is divided into time slots. The duration of a time slot is typically 10 ms or 15 ms and sufficient to transmit a packet of the maximum size of 127 bytes, immediately followed by an optional acknowledgment frame indicating that the packet was successfully received. Multiple time slots are grouped into a slot frame, and the size of a slot frame defines the width of the schedule. These slot frames repeat continuously over time. TSCH also allows one to use multiple frequencies, leading to a two-dimensional matrix of cells. The number of available frequencies actually determines the height of the schedule\cite{AccurateEnergyTSCH}.
+
 We proceeded as explained in the setup to measure the energy consumption between leaf and root node.\\
 Results are reported in Table \ref{tab:MACOnly}.
 \begin{table}[h]
@@ -114,7 +122,22 @@ Results are reported in Table \ref{tab:MACOnly}.
 	\caption{Average power consumption comparison between root and leaf node per state, TSCH MAC only.}
 	\label{tab:MACOnly}
 \end{table}
-What we can see is that data from root and leaf nodes show no variation, and the energy consumed from both of them is the same.
+What we can see is that data from root and leaf nodes show no variation, and the energy consumed from both of them is the same.\\
+In a TSCH network The root needs to control the way the network is formed, including how new nodes join and how already joined nodes advertise the presence of the network, this is all encoded in the TSCH RFC\footnote{https://tools.ietf.org/html/rfc7554}.\\
+The root node during network convergence needs to:
+\begin{itemize}
+	\item Define the Information Elements included in the Enhanced Beacons, advertising the presence of the network;
+	\item for a new node define rules to process and filter received EBs;
+	\item Define the joining procedure.  This might include a mechanism to assign a unique 16-bit address to a node and the management of initial keying material;
+	\item Define a mechanism to secure the joining process and the subsequent optional process of scheduling more communication cells.
+\end{itemize}
+After the network has been formed it must be mantained, this implies that the root node must:
+\begin{itemize}
+	\item Manage each node's time source neighbor;
+	\item Define a mechanism for a node to update the join priority it announces in its EB;
+	\item Schedule transmissions of EBs to advertise the presence of the network.
+\end{itemize}
+We can therefore say that, atleast for two node, the workload on the root is not enought to show a difference in energy consumption during the stated time spam.
 \subsection{Full stack}
 The next experiment is as cited in the section \ref{section:task1} introduction related to the energy consumption once the full 6TiSCH stack has been enabled (except for the security layer).\\
 The setup of this experiment is the same to the previous one.
@@ -260,7 +283,10 @@ The energy consumption is essentially the same, they are definitely within margi
 \bibitem{TimeCritical6tisch} Karaagac, Abdulkadir \& Haxhibeqiri, Jetmir \& Moerman, Ingrid \& Hoebeke, Jeroen. (2018). Time-critical communication in 6TiSCH networks. 161-166. 10.1109/WCNCW.2018.8368987. 
 \bibitem{EnergyConsumption} Sabovic, Adnan \& Delgado, Carmen \& Bauwens, Jan \& De Poorter, Eli \& Famaey, Jeroen. (2019). Accurate Online Energy Consumption Estimation of IoT Devices Using Energest. 363-373. 10.1007/978-3-030-33506-9\_32. 
 \bibitem{ThroughputEvaluation} Lee, S. B., Kim, E. J., \& Lim, Y. (2018). Contiki-NG-based IEEE 802.15. 4 TSCH Throughput Evaluation. In Proceedings of the Korean Institute of Information and Commucation Sciences Conference (pp. 577-578). The Korea Institute of Information and Commucation Engineering.
-\bibitem{TSCHExperimentEval} García Algora, Carlos \& Alfonso Reguera, Vitalio. (2018). Experimental evaluation of IEEE 802.15.4 TSCH on a 6TiSCH network. 39. 70-78. 
+\bibitem{TSCHExperimentEval} García Algora, Carlos \& Alfonso Reguera, Vitalio. (2018). Experimental evaluation of IEEE 802.15.4 TSCH on a 6TiSCH network. 39. 70-78.
+\bibitem{AccurateEnergyTSCH} Accurate Energy Consumption Modeling of IEEE 802.15.4e TSCH Using Dual-BandOpenMote Hardware
+Glenn Daneels, Esteban Municio, Bruno Van de Velde, Glenn Ergeerts, Maarten Weyn, Steven Latré, \& Jeroen Famaey
+
 \end{thebibliography}
 
 \end{document}
