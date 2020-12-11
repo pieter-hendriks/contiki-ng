@@ -1,9 +1,8 @@
 # Fdb version 3
-["pdflatex"] 1607724844 "/mnt/ssdata/School/sensornets/sensors/Paper/Paper.tex" "/mnt/ssdata/School/sensornets/sensors/Paper/Paper.pdf" "Paper" 1607724844
+["pdflatex"] 1607725077 "/mnt/ssdata/School/sensornets/sensors/Paper/Paper.tex" "/mnt/ssdata/School/sensornets/sensors/Paper/Paper.pdf" "Paper" 1607725077
   "/etc/texmf/web2c/texmf.cnf" 1607176643 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/mnt/ssdata/School/sensornets/sensors/Paper/6TiSCH-Protocol-Stack.png" 0 -1 0 ""
-  "/mnt/ssdata/School/sensornets/sensors/Paper/Paper.aux" 1607724844 8 a94a2480d3289e625eea47cd1b285758 ""
-  "/mnt/ssdata/School/sensornets/sensors/Paper/Paper.tex" 1607724843 27947 d3772681362493001a7f57b31537d46f ""
+  "/mnt/ssdata/School/sensornets/sensors/Paper/Paper.aux" 1607725077 8 a94a2480d3289e625eea47cd1b285758 ""
+  "/mnt/ssdata/School/sensornets/sensors/Paper/Paper.tex" 1607725077 27969 d56d0a5fda2c6076ee34e9eb3b6f1e1b ""
   "/mnt/ssdata/School/sensornets/sensors/Paper/average_latencies.png" 0 -1 0 ""
   "/mnt/ssdata/School/sensornets/sensors/Paper/powerstates_10m.png" 0 -1 0 ""
   "/mnt/ssdata/School/sensornets/sensors/Paper/powerstates_1m.png" 0 -1 0 ""
@@ -87,10 +86,9 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1581979058 38841 ce3692aa899bb693b90b87eaa5d4d84e ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1607176649 128028 f533b797fba58d231669ea19e894e23e ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1607706449 4925415 a4cced033601ec7278ac7176ed8f5ced ""
-  "6TiSCH-Protocol-Stack.png" 0 -1 0 ""
   "IEEEtran.cls" 1604861806 281957 5b2e4fa15b0f7eabb840ebf67df4c0f7 ""
   "Paper.aux" 0 -1 0 "pdflatex"
-  "Paper.tex" 1607724843 27947 d3772681362493001a7f57b31537d46f ""
+  "Paper.tex" 1607725077 27969 d56d0a5fda2c6076ee34e9eb3b6f1e1b ""
   "average_latencies.png" 0 -1 0 ""
   "exp1Topology.pdf" 1607177117 23636 b9fbc9891e4c2591c1aa8887104eda15 ""
   "powerstates_10m.png" 0 -1 0 ""
@@ -98,8 +96,8 @@
   "transmission_reliability.png" 0 -1 0 ""
   "tsch_schedule.png" 1607714023 4779 03decfc2ba5ac2dcde3d88b30386b02d ""
   (generated)
-  "/mnt/ssdata/School/sensornets/sensors/Paper/Paper.pdf"
+  "Paper.pdf"
   "Paper.log"
   "Paper.aux"
-  "Paper.pdf"
+  "/mnt/ssdata/School/sensornets/sensors/Paper/Paper.pdf"
   "/mnt/ssdata/School/sensornets/sensors/Paper/Paper.log"

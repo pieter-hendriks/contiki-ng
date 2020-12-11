@@ -68,12 +68,12 @@ For both analyses, we report on the consumption of the root and the leaf node se
 Following we remark differences in energy consumption between the root and the leaf node in the two different scenarios.
 
 The Time-Slotted Channel Hopping (TSCH) mode for medium access control (MAC) included in the standard IEEE 802.15.4 has been designed as the multichannel MAC protocol for Low-power and lossy networks (LLNs), a key component of the Internet of Things (IoT). Its ﬂexibility makes the TSCH mode a very promising candidate for the future of the MAC layer in LLNs. As such, its performance under different conditions must be assessed, so that accurate guidelines for its application can be drawn\cite{TSCHExperimentEval}.
-\begin{figure}[]
-	\centering
-	\includegraphics[width=.25\textwidth,keepaspectratio]{6TiSCH-Protocol-Stack.png}
-	\caption{6TiSCH Protocol Stack\cite{TimeCritical6tisch}.}
-	\label{fig:6tischStack}
-\end{figure}
+%\begin{figure}[]
+%	\centering
+%	\includegraphics[width=.25\textwidth,keepaspectratio]{6TiSCH-Protocol-Stack.png}
+%	\caption{6TiSCH Protocol Stack\cite{TimeCritical6tisch}.}
+%	\label{fig:6tischStack}
+%\end{figure}
 
 
 the physical setup of the experiment consists of two Zolertia  Remote RevB boards placed at a fixed distance of approximately 20 cm as shown in Figure \ref{fig:exp1Topology}.
@@ -235,12 +235,12 @@ We use a very simple schedule for our experiments. There is a single advertising
 For these experiments, most of the default Contiki-NG network stack has been disabled. We're interested in the performance of TSCH, so our experiments interact directly with the MAC layer. To facilitate this, Contiki-NG is built with the following Makefile variables set: 
 
 \begin{itemize}
-\item MAKE_MAC=MAKE_MAC_TSCH
-\item MAKE_NET=MAKE_NET_NULLNET
-\item MAKE_ROUTING=MAKE_ROUTING_NULLROUTING
+\item MAKE\_MAC=MAKE\_MAC\_TSCH
+\item MAKE\_NET=MAKE\_NET\_NULLNET
+\item MAKE\_ROUTING=MAKE\_ROUTING\_NULLROUTING
 \end{itemize}
 
-MAKE_MAC_TSCH tells the Make system to build the TSCH MAC layer, MAKE_NET_NULLNET essentially disables the network layer, MAKE_ROUTING_NULLROUTING does the same for routing functionality. 
+MAKE\_MAC\_TSCH tells the Make system to build the TSCH MAC layer, MAKE\_NET\_NULLNET essentially disables the network layer, MAKE\_ROUTING\_NULLROUTING does the same for routing functionality. 
 
 \subsubsection{Preprocessor definitions}
 
@@ -252,7 +252,7 @@ The following values are defined in the preprocessor (some through Makefile, oth
 \item $TSCH_SCHEDULE_CONF_WITH_6TISCH_MINIMAL=0$: Disable creation of a default TSCH schedule. Instead we create our own, as described in section \ref{section:tschschedule}.
 \item $LLSEC802154_CONF_ENABLED=0$: Disable Link Layer security.
 \item $TSCH_CONF_JOIN_SECURED_ONLY=0$: Allow TSCH to join unsecured networks.
-\item $TSCH_CONF_AUTOSTART=0$: Allow the program to start TSCH manually (using the NETSTACK_MAC.on() function), rather than starting it immediately when the node powers on.
+\item $TSCH_CONF_AUTOSTART=0$: Allow the program to start TSCH manually (using the NETSTACK\_MAC.on() function), rather than starting it immediately when the node powers on.
 \end{itemize}
 
 
