@@ -1,3 +1,38 @@
 - Ensure packets are actually sent on the planned slot.
 - Split the code for each into seperate headers, and include based on MYAPP_AS_COORDINATOR
 		- Code will be a lot cleaner, the amount of #ifdef in current setup makes it hard to follow.
+
+Network time -> Done. We have ticks and reference value ticks and us for slot, so can convert.
+PHY retransmit = Done. 
+Packet drops also recorded by 0s in root node
+All distances TBD
+Graphing + output + improved text = TODO
+
+
+IMPLEMENTED:
+  Use network time to determine latencies.
+      --> in ms
+  Use PHY retransmits instead of mac arrivals (more precise)
+  Use various TX powers
+
+TEXT/GRAPH STUFF:
+  Improve graphs once data collected -> Improve output to create better format
+  Add TSCH schedule graph
+  Indicate run-to-run variance/margin of error if using it in text
+  Include conclusions.
+
+TODO:
+	Handle comments on my work. 
+    Test on all distances
+
+	  
+	
+  Other sections:
+    Then add throughput evaluation section.
+    Improve related works.
+    Better explain underlying stuff - relevant TSCH characteristics should be briefly explained, then reference to standard or smthng
+    Better explain reason behind study - Mention why what we're studying is interesting, rather than only do because assignment. 
+    Explain methodology (Topology, traffic, scheduling, netstack, ...)
+    Compare with other configurations, vary one parameter at a time.
+	
+	

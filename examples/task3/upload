@@ -23,5 +23,5 @@ else
 	exit 1
 fi
 echo "About to run the following command: make my_app.upload PORT=/dev/ttyUSB$1 COORDINATOR=$COORD"
-make my_app.upload PORT=/dev/ttyUSB$1 COORDINATOR=$COORD
+make my_app.upload -j 20 PORT=/dev/ttyUSB$1 COORDINATOR=$COORD
 
