@@ -68,12 +68,12 @@ For both analyses, we report on the consumption of the root and the leaf node se
 Following we remark differences in energy consumption between the root and the leaf node in the two different scenarios.
 
 The Time-Slotted Channel Hopping (TSCH) mode for medium access control (MAC) included in the standard IEEE 802.15.4 has been designed as the multichannel MAC protocol for Low-power and lossy networks (LLNs), a key component of the Internet of Things (IoT). Its ﬂexibility makes the TSCH mode a very promising candidate for the future of the MAC layer in LLNs. As such, its performance under different conditions must be assessed, so that accurate guidelines for its application can be drawn\cite{TSCHExperimentEval}.
-%\begin{figure}[]
-%	\centering
-%	\includegraphics[width=.25\textwidth,keepaspectratio]{6TiSCH-Protocol-Stack.png}
-%	\caption{6TiSCH Protocol Stack\cite{TimeCritical6tisch}.}
-%	\label{fig:6tischStack}
-%\end{figure}
+\begin{figure}[]
+	\centering
+	\includegraphics[width=.25\textwidth,keepaspectratio]{6TiSCH-Protocol-Stack.png}
+	\caption{6TiSCH Protocol Stack\cite{TimeCritical6tisch}.}
+	\label{fig:6tischStack}
+\end{figure}}
 
 
 the physical setup of the experiment consists of two Zolertia  Remote RevB boards placed at a fixed distance of approximately 20 cm as shown in Figure \ref{fig:exp1Topology}.
@@ -311,13 +311,12 @@ The power results, as the latency and delivery results, are incredibly similar. 
 
 Using the results from profiling the device (as in \ref{tab:CurrentConsumption}), and the Energest results we've obtained, we can compute the amount of power that is needed for each device. The leaf, overall, used approximately 3.4 J. The root used approximately 4.1 J.
 
-With a total data size of 360 kilobits (12 tests * 60 packets * 64 bytes per packet * 8 bits per byte / 1024 bits per kilobit), that corresponds to roughly 9.6 \frac{mJ}{kbit} for the leaf and 11.5 \frac{mJ}{kbit} for the root.
+With a total data size of 360 kilobits (12 tests * 60 packets * 64 bytes per packet * 8 bits per byte / 1024 bits per kilobit), that corresponds to roughly $9.6 \frac{mJ}{kbit}$ for the leaf and $11.5 \frac{mJ}{kbit}$ for the root.
 
 
 \subsection{Conclusion}
 
 The tests we ran do not offer a clear insight to the performance of TSCH in various scenarios. The different scenarios appear too close together to distinguish meaningful differences. Due to the inherent noisiness of the wireless medium, the tests should be expanded to be able to clearly spot a pattern. The duration should be extended and the difference between the values under test should increase. This way, if there is a pattern, it is less likely that a difference in noise in the medium will cause the test results to be essentially indistinguishable. 
-
 
 \section{Future Work}
 
@@ -326,38 +325,6 @@ In this study, we've only looked at the performance characteristics of the netwo
 
 \subsubsection{individually varied TX power}
 We've only considered the case where TX power is varied on both nodes. A potentially interesting follow-up to this is to consider the impact varying the parameter on one of the nodes has. This would clarify if, in order to ensure satisfactory network performance, TX power must be increased for all nodes or only for some. Our results have shown that larger TX power results in fewer retransmission (at the cost of increased power use per transmission), but we've not studied the trade-off in more detail.
-
-
-%\begin{figure}[]
-%	\centering
-%	\includegraphics[width=.5\textwidth,keepaspectratio]{1m_powerStates.png}
-%	\caption{The time a node spends in each power state at 1 meter seperation.}
-%	\label{fig:powerState1m}
-%\end{figure}
-%\begin{figure}[]
-%	\centering
-%	\includegraphics[width=.5\textwidth,keepaspectratio]{5m_powerStates.png}
-%	\caption{The time a node spends in each power state at 5 meters seperation.}
-%	\label{fig:powerState5m}
-%\end{figure}
-
-
-
-%PACKET ARRIVAL RATE: 1.0
-%AVERAGE LATENCY: 9.291666666666666
-%LEAF ENERGY CONSUMPTION: 4.347331036560059 J
-%ROOT ENERGY CONSUMPTION: 2.577431278930664 J
-%Since each packet carried a data payload of 52 bytes, that's
-%	LEAF: 10.701122551532452 J/kbit
-%	ROOT: 6.344446225060096 J/kbit
-%PACKET ARRIVAL RATE: 1.0
-%AVERAGE LATENCY: 9.333333333333334
-%LEAF ENERGY CONSUMPTION: 4.345094247253417 J
-%ROOT ENERGY CONSUMPTION: 2.578182406585693 J
-%Since each packet carried a data payload of 52 bytes, that's
-%	LEAF: 10.695616608623796 J/kbit
-%	ROOT: 6.346295154672475 J/kbit
-
 
 \begin{thebibliography}{00}
 \bibitem{contiki-NGWiki} Adam Dunkels, \url {https://github.com/contiki-ng/contiki-ng/wiki}
