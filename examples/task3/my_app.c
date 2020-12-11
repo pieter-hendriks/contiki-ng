@@ -42,6 +42,7 @@
 #include "contiki.h"
 #include "net/netstack.h"
 #include "net/nullnet/nullnet.h"
+#include "os/net/routing/routing.h"
 #include <string.h>
 #include <stdio.h> /* For printf() */
 #include <stdlib.h> // malloc
@@ -52,7 +53,8 @@
 #include "net/mac/tsch/tsch-types.h"
 #include "os/sys/platform.h"
 #include "os/net/packetbuf.h"
-
+#include "os/storage/cfs/cfs-coffee.h"
+#include "os/dev/radio.h"
 /* Log configuration */
 #include "sys/log.h"
 #define LOG_MODULE "MyApp"
@@ -64,177 +66,398 @@
 // Define the runtime, coordinator will run longer to allow attachment etc.
 // We start counting non-coord runtime from when attachment occurs.
 #if MYAPP_AS_COORDINATOR == 1
-#define RUNTIME CLOCK_SECOND * 240
+#define RUNTIME CLOCK_SECOND * 60
 static bool hasReceived = false;
 #elif MYAPP_AS_COORDINATOR == 0
-#define RUNTIME CLOCK_SECOND * 120
+#define RUNTIME CLOCK_SECOND * 60
 #endif
+
+#if MYAPP_AS_COORDINATOR == 1
+#define SUFFIX "_coordinator"
+#else
+#define SUFFIX "_leaf"
+#endif
+
+// Vary between 0xFF, 0x00 and the default value (TBD)
+#define APP_TX_POWER 0xFF
+
+
+#define MYFILENAME "MYAPP_UNIVANTW_OUTPUTFILE"
+#define FILE_WRITE_ERROR "Error - output too long, probably. Possibly some other issue."
+#define FILE_WRITE_ERROR_SIZE 62
+
+static struct etimer runtime_timer;
 
 // #if MAC_CONF_WITH_TSCH
 #if MYAPP_AS_COORDINATOR == 0
 static linkaddr_t coordinator_addr =  {{ 0x00,0x12,0x4b,0x00,0x19,0x32,0xe2,0x61 }};
-//static linkaddr_t sender_addr = {{ 0x00,0x12,0x4b,0x00,0x19,0x32,0xe4,0x89 }};
+#else
+static linkaddr_t sender_addr = {{ 0x00,0x12,0x4b,0x00,0x19,0x32,0xe4,0x89 }};
 #endif
 // #endif /* MAC_CONF_WITH_TSCH */
-
+static int filehandle = -1;
 /*---------------------------------------------------------------------------*/
 PROCESS(my_app, "MyApplication");
 /*---------------------------------------------------------------------------*/
+#if MYAPP_AS_COORDINATOR == 1
+static uint64_t rxTime[60];
+
 void input_callback(const void *data, uint16_t len,
-  const linkaddr_t *src, const linkaddr_t *dest)
+	const linkaddr_t *src, const linkaddr_t *dest)
 {
+	LOG_INFO("Receive entered\n");
+	LOG_INFO("Current: %lu\n", clock_seconds());
 	// Sanity check, ensure the packet is the size we expect.
-  if (len == PACKET_SIZE) {// Commented because was having issues with this parameter. 
-	// TODO: REMOVE ABOVE COMMENT, needs to work with length check somehow.
-		#if MYAPP_AS_COORDINATOR == 1
-    unsigned count;
-		uint16_t currentOffset = 0;
-    memcpy(&count, data + currentOffset, sizeof(count)); currentOffset += sizeof(count);
-		uint64_t sentTime;
-		memcpy(&sentTime, data + currentOffset, sizeof(sentTime)); currentOffset += sizeof(sentTime);
-    LOG_INFO("<--- Received %u from ", count);
-    LOG_INFO_LLADDR(src);
-		LOG_INFO_(" at time %"PRIu64", sent at time %"PRIu64" (latency is %"PRIu64")", tsch_get_network_uptime_ticks(), sentTime, tsch_get_network_uptime_ticks() - sentTime);
-    LOG_INFO_("\n");
-		uint64_t senderPower[5] = {0, 0, 0, 0, 0};
-		memcpy(&(senderPower[0]), data + currentOffset, sizeof(uint64_t)); currentOffset += sizeof(uint64_t);
-		memcpy(&(senderPower[1]), data + currentOffset, sizeof(uint64_t)); currentOffset += sizeof(uint64_t);
-		memcpy(&(senderPower[2]), data + currentOffset, sizeof(uint64_t)); currentOffset += sizeof(uint64_t);
-		memcpy(&(senderPower[3]), data + currentOffset, sizeof(uint64_t)); currentOffset += sizeof(uint64_t);
-		memcpy(&(senderPower[4]), data + currentOffset, sizeof(uint64_t)); currentOffset += sizeof(uint64_t);
-		LOG_INFO("Sending node power info:\n\tCPU:%"PRIu64" ticks\n\tLPM:%"PRIu64" ticks\n\tDEEPLPM:%"PRIu64" ticks\n\tTX:%"PRIu64" ticks\n\tRX:%"PRIu64" ticks\n", senderPower[0], senderPower[1], senderPower[2], senderPower[3], senderPower[4]);
+	if (len == PACKET_SIZE) 
+	{
 
+		//logPowerUse();
 
-		LOG_INFO("Own power info: ");
-		logPowerUse();
+		if (!hasReceived)
+		{
+			for (int i = 0; i < 60; ++i)
+				rxTime[i] = 0; // 0 is before the node connects so invalid value for any received packet.
 
-		if (!hasReceived) {
 			hasReceived = true;
 			energest_init();
 			LOG_INFO("Received first packet - assuming network convergence, now resetting power info.\n");
-			struct tsch_slotframe* sf = tsch_schedule_get_slotframe_by_handle(0);
-			if (sf == 0) {
-				LOG_ERR("No tsch_slotframe with handle 0, this should be impossible.");
-			}
+			// struct tsch_slotframe* sf = tsch_schedule_get_slotframe_by_handle(APP_SLOTFRAME_HANDLE);
+			// if (sf == 0) {
+			// 	LOG_ERR("No tsch_slotframe with app handle, this should be impossible.");
+			// }
 			// sf valid, check for links now
 			// Might need to implement while (link == 0) --> try different channel/timeslots, in order to avoid removing other links.
 			// for param1:  * b0 = Transmit, b1 = Receive, b2 = Shared, b3 = Timekeeping, b4 = reserved
-			tsch_schedule_add_link(sf, LINK_OPTION_RX, LINK_TYPE_NORMAL, src, 1, 1, 1);
+			// tsch_schedule_add_link(sf, LINK_OPTION_RX, LINK_TYPE_NORMAL, src, 1, 1, 1);
+			tsch_schedule_print();
+			// LOG_WARN("Setting root alive time to 65 wall seconds");
+			// LOG_INFO("Current: %lu\n", clock_seconds());
+			// etimer_set(&runtime_timer, CLOCK_SECOND * 65); // 60 second run time + some extra leeway
 		}
-		tsch_schedule_print();
-		#else
-		LOG_INFO("Woahhhhhh dude, sender has received a packet!");
-		#endif
-	//if(len != PACKET_SIZE) {
-  } else {
+		else 
+		{
+			uint8_t index = ((char*)(data))[0]; // Get packet index
+			LOG_INFO("Received packet index %u\n", index);
+			rxTime[index] = tsch_get_network_uptime_ticks();
+		}
+	} 
+	else 
+	{
 		LOG_INFO("Received packet with different length (%u), from ", len);
 		LOG_INFO_LLADDR(src);
 		LOG_INFO_(".\n");
 	}
 }
+#endif
 /*---------------------------------------------------------------------------*/
+#if MYAPP_AS_COORDINATOR == 0 
+static uint8_t numtx[60];
+static uint64_t sendTime[60];
+static uint64_t scheduleTime[60];
 
 void send_callback(void *ptr, int status, int num_tx) {
-	uint64_t time = tsch_get_network_uptime_ticks();
-	LOG_INFO("Packet actually sent (send callback) at %"PRIu64". Status = %i, num_tx = %i \n", time, status, num_tx);
+	static uint8_t count = -1;
+	if (count != (uint8_t)(-1)) {
+		numtx[count] = num_tx;
+		sendTime[count] = tsch_get_network_uptime_ticks();
+	}
+	++count;
+	if (count == 60) {
+
+		char buffer[1024];
+		char* bufferptr = buffer;
+		memset(bufferptr, 0, 1024);
+		int size = 1024;
+		int ret = snprintf(bufferptr, size, "numtx = [");
+		bufferptr += ret; size -= ret;
+		for (uint8_t i = 0; i < 59; ++i) {
+			// output all but last
+			ret = snprintf(bufferptr, size, "%u, ", numtx[i]);
+			bufferptr += ret; size -= ret;
+		}
+		ret = snprintf(bufferptr, size, "%u]\n", numtx[59]);
+		bufferptr += ret; size -= ret;
+		if (ret > 0 && size > 0) {
+			filehandle = cfs_open(MYFILENAME, CFS_WRITE | CFS_APPEND);
+			ret = cfs_write(filehandle, buffer, 1024-size);
+			cfs_close(filehandle);
+		} else {
+			LOG_ERR("Failed write");
+		}
+
+		size = 1024; bufferptr = buffer;
+		memset(bufferptr, 0, 1024);
+		ret = snprintf(bufferptr, size, "scheduleTimes = [");
+		bufferptr += ret; size -= ret;
+		for (uint8_t i = 0; i < 59; ++i) {
+			// output all but last
+			ret = snprintf(bufferptr, size, "%"PRIu64", ", scheduleTime[i]);
+			bufferptr += ret; size -= ret;
+		}
+		ret = snprintf(bufferptr, size, "%"PRIu64"]\n", scheduleTime[59]);
+		bufferptr += ret; size -= ret;
+		if (ret > 0 && size > 0) {
+			filehandle = cfs_open(MYFILENAME, CFS_WRITE | CFS_APPEND);
+			ret = cfs_write(filehandle, buffer, 1024-size);
+			cfs_close(filehandle);
+		} else {
+			LOG_ERR("Failed write");
+		}
+	} else if (count > 60) {
+		LOG_ERR("Sent more than 60 packets!");
+	}
 }
+#endif
 
 PROCESS_THREAD(my_app, ev, data)
 {
-	#if MYAPP_AS_COORDINATOR == 0
-  static struct etimer periodic_timer;
-	static unsigned count = 0; // count the amount of packets we've sent
-	#endif
-  //static uint8_t packetBuffer[PACKET_SIZE];
 	
-  PROCESS_BEGIN();
-
-	energest_init();
+	#if MYAPP_AS_COORDINATOR == 0
+		static struct etimer periodic_timer;
+		static unsigned count = 0; // count the amount of packets we've sent
+	#endif
+	
+	PROCESS_BEGIN();
 	LOG_INFO("Main thread starting.\n");
+	{
+		/*	
+			Output power options, per arch/cpu/cc2538/dev/cc2538-rf.c
+		static const output_config_t output_power[] = {
+			{  7, 0xFF },
+			{  5, 0xED },
+			{  3, 0xD5 },
+			{  1, 0xC5 },
+			{  0, 0xB6 },
+			{ -1, 0xB0 },
+			{ -3, 0xA1 },
+			{ -5, 0x91 },
+			{ -7, 0x88 },
+			{ -9, 0x72 },
+			{-11, 0x62 },
+			{-13, 0x58 },
+			{-15, 0x42 },
+			{-24, 0x00 },
+		};
+		*/
+		// Set tx power
+		//radio_result_t res = NETSTACK_RADIO.set_value(RADIO_PARAM_TXPOWER, 7);
+		//radio_result_t res = NETSTACK_RADIO.set_value(RADIO_PARAM_TXPOWER, 3);
+		radio_result_t res = NETSTACK_RADIO.set_value(RADIO_PARAM_TXPOWER, -1);
+		if (res != RADIO_RESULT_OK) {
+			LOG_ERR("Failed to set tx power");
+		} 
+	}
+	{
+	filehandle = cfs_open(MYFILENAME, CFS_READ);
+	char* readBuffer = malloc(1536);
+	memset(readBuffer, 0, 1536);
+	int ret = cfs_read(filehandle, readBuffer, 1536);
+	LOG_INFO("Outputting file read (ret=%i): \n", ret);
+	while (ret == 1536) {
+		LOG_INFO_(readBuffer);
+		LOG_INFO_("\n");
+		ret = cfs_read(filehandle, readBuffer, 1536);
+	}
+	LOG_INFO_(readBuffer);
+	LOG_INFO_("\n----------------------------\nFile read output above.\n");
+	
+	free(readBuffer);
+
+	cfs_close(filehandle);
+	cfs_remove(MYFILENAME);
+	}
+	{
+	rtimer_clock_t ticksPerSlot = tsch_timing[tsch_ts_timeslot_length];
+	tsch_get_network_uptime_ticks();
+	unsigned timePerSlot = tsch_timing_us[tsch_ts_timeslot_length];
+
+	char* buffer = malloc(128);
+	int ret = snprintf(buffer, 127, "slotTime = %u\nslotTicks = %lu\nticksPerSecond = %u\n", timePerSlot, ticksPerSlot, CLOCK_SECOND);
+	if (ret > 0 && ret < 127) {
+		filehandle = cfs_open(MYFILENAME, CFS_WRITE | CFS_APPEND);
+		cfs_write(filehandle, buffer, ret);
+		cfs_close(filehandle);
+		memset(buffer, 0, 128);
+		int temp = cfs_open(MYFILENAME, CFS_READ);
+		cfs_read(temp, buffer, ret);
+		LOG_INFO("Read just written stuff:\n");
+		LOG_INFO(buffer);
+	} else {
+		LOG_ERR("SLOT TICK WRITE ERROR");
+	}
+	free(buffer);
+	}
+	energest_init();
 	NETSTACK_MAC.init();
 	NETSTACK_RADIO.init();
 	NETSTACK_NETWORK.init();
+	#if MYAPP_AS_COORDINATOR == 1
+	NETSTACK_ROUTING.init();
+	#endif
 	tsch_set_coordinator(MYAPP_AS_COORDINATOR);
-	nullnet_set_input_callback(&input_callback);
+	#if MYAPP_AS_COORDINATOR == 0
+		LOG_INFO("Not the coordinator (DEF = %u), beginning periodic sending loop.\n", MYAPP_AS_COORDINATOR);
+		etimer_set(&periodic_timer, SEND_INTERVAL);
+		while(1) {
+			PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
+			LOG_INFO("Periodic timer ran out, performing one send iteration.\n");
+			// Don't try to send when we don't have an associated network. 
+			if (tsch_is_associated) {
+				if (count == 0) {
+					//Connected to network, set runtime
+					etimer_set(&runtime_timer, RUNTIME);
+					// Initialize our static link once we're associated
+					{
+						// First, the slotframe
+						struct tsch_slotframe *sf = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, TSCH_SCHEDULE_DEFAULT_LENGTH);
+						// Create a TX dedicated cell in (1, 1) 
+						tsch_schedule_add_link(sf, LINK_OPTION_TX, LINK_TYPE_NORMAL, &coordinator_addr, 1, 1, 1);
+						// Also create a RX dedicated cell in (0, 0), where the root advertises
+						tsch_schedule_add_link(sf, LINK_OPTION_RX, LINK_TYPE_ADVERTISING_ONLY, &tsch_broadcast_address, 0, 0, 1);
+						// Print the created schedule
+						tsch_schedule_print();
+						LOG_INFO("Created TSCH schedule. Should be printed above.\n");
+					}
+					// Send an initial packet to mark start of recording.
+					{
+						uint8_t* myBuffer = malloc(PACKET_SIZE);
+						memset(myBuffer, 0, PACKET_SIZE);
+						packetbuf_copyfrom(myBuffer, PACKET_SIZE);
+						packetbuf_set_addr(PACKETBUF_ADDR_RECEIVER, &coordinator_addr);
+						// Add our packet to TSCH send queue.
+						NETSTACK_MAC.send(&send_callback, packetbuf_dataptr());
+						free(myBuffer);
+					}
+					// reset energest after network convergence
+					energest_flush();
+					energest_init();
+				} 
+				else if (count < 60) 
+				{
+					// Clear any previously made packets.
+					packetbuf_clear();
+					// Put our stuff into the packetbuf
+					LOG_INFO("Scheduling packet!\n");
+					uint8_t* myBuffer = malloc(PACKET_SIZE);
+					uint64_t t0 = tsch_get_network_uptime_ticks();
+					scheduleTime[count] = t0;
+					memset(myBuffer, (uint8_t)(count), PACKET_SIZE);
 
-#if MYAPP_AS_COORDINATOR == 0
-	LOG_INFO("Not the coordinator (DEF = %u), beginning periodic sending loop.\n", MYAPP_AS_COORDINATOR);
-  etimer_set(&periodic_timer, SEND_INTERVAL);
-  while(1) {
-    PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
+					packetbuf_copyfrom(myBuffer, PACKET_SIZE);
+					packetbuf_set_addr(PACKETBUF_ADDR_RECEIVER, &coordinator_addr);
+					// Add our packet to TSCH send queue.
+					NETSTACK_MAC.send(&send_callback, packetbuf_dataptr());
 
-		LOG_INFO("Periodic timer ran out, performing one send iteration.\n");
-		// Don't try to send when we don't have an associated network. 
-		if (tsch_is_associated) {
-			if (count == 0) {
-				// reset energest after network convergence
-				energest_init();
-				// Initialize our static link once we're associated
-				struct tsch_slotframe* sf = tsch_schedule_get_slotframe_by_handle(0);
-				if (sf == 0) {
-					LOG_ERR("No tsch_slotframe with handle 0, this should be impossible.");
-					break;
+					//print tsch schedule
+					tsch_schedule_print();
+					++count;
+					free(myBuffer);
+				} else {
+					if (etimer_expired(&runtime_timer))
+					{
+						LOG_INFO("Runtime over!\n");
+						break;
+					}
 				}
-				// sf valid, check for links now
-				// struct tsch_link* link = 0;
-				// Might need to implement while (link == 0) --> try different channel/timeslots, in order to avoid removing other links.
-				tsch_schedule_add_link(sf, LINK_OPTION_TX, LINK_TYPE_NORMAL, &tsch_broadcast_address, 1, 1, 1);
-				LOG_INFO("Link added!");
-			}
-			// Clear any previously made packets.
-			packetbuf_clear();
-			// Put our stuff into the packetbuf
-			uint8_t* myBuffer = malloc(PACKET_SIZE);
-			uint64_t t0 = tsch_get_network_uptime_ticks();
-			uint8_t currentOffset = 0;
-			memcpy(myBuffer + currentOffset, &count, sizeof(count)); currentOffset += sizeof(count);
-			memcpy(myBuffer + currentOffset, &t0, sizeof(t0)); currentOffset += sizeof(t0);
-			uint64_t value = energest_type_time(ENERGEST_TYPE_CPU);
-			memcpy(myBuffer + currentOffset, &value, sizeof(value)); currentOffset+= sizeof(value);
-			value = energest_type_time(ENERGEST_TYPE_DEEP_LPM);
-			memcpy(myBuffer + currentOffset, &value, sizeof(value)); currentOffset+= sizeof(value);
-			value = energest_type_time(ENERGEST_TYPE_LPM);
-			memcpy(myBuffer + currentOffset, &value, sizeof(value)); currentOffset+= sizeof(value);
-			value = energest_type_time(ENERGEST_TYPE_LISTEN);
-			memcpy(myBuffer + currentOffset, &value, sizeof(value)); currentOffset+= sizeof(value);
-			value = energest_type_time(ENERGEST_TYPE_TRANSMIT);
-			memcpy(myBuffer + currentOffset, &value, sizeof(value)); currentOffset+=sizeof(value);
-
-			if (currentOffset != PACKET_SIZE) {
-				LOG_ERR("Unexpected result, buffer offset does not equal PACKET_SIZE");
-			}
-			
-			packetbuf_copyfrom(myBuffer, PACKET_SIZE);
-			packetbuf_set_addr(PACKETBUF_ADDR_RECEIVER, &coordinator_addr);
-			// Add our packet to TSCH send queue.
-			tsch_schedule_print();
-			NETSTACK_MAC.send(&send_callback, packetbuf_dataptr());
-			tsch_schedule_print();
-
-			// 
-			LOG_INFO("---> Added packet %u to send queue (with dest ", count);
-			LOG_INFO_LLADDR(&coordinator_addr);
-			LOG_INFO_(") at time %"PRIu64".", t0);
-			LOG_INFO_("\n");
-
-			// Update packet count
-			++count;
-			free(myBuffer);
-		} else {
-			if (!tsch_is_coordinator) {
-				LOG_INFO("Not sending because not associated yet.\n");
-				count = 0;
 			} else {
-				LOG_INFO("Not associated, am coordinator. Should be impossible.\n");
+				if (!tsch_is_coordinator) {
+					LOG_INFO("Not sending because not associated yet (or association broke).\n");
+					count = 0;
+				} else {
+					LOG_INFO("Not associated, am coordinator. Should be impossible.\n");
+				}
+			}
+			etimer_reset(&periodic_timer);
+		}
+		
+	#else
+	{
+
+		// Set tsch schedule
+		{
+			struct tsch_slotframe *sf = tsch_schedule_add_slotframe(APP_SLOTFRAME_HANDLE, TSCH_SCHEDULE_DEFAULT_LENGTH);
+
+			// Add advertising link to slot (0, 0)
+			tsch_schedule_add_link(sf, LINK_OPTION_RX | LINK_OPTION_TX | LINK_OPTION_SHARED | LINK_OPTION_TIME_KEEPING, LINK_TYPE_ADVERTISING_ONLY, &tsch_broadcast_address, 0, 0, 1);
+			// Add RX dedicated link to (1, 1)
+			tsch_schedule_add_link(sf, LINK_OPTION_RX, LINK_TYPE_NORMAL, &sender_addr, 1, 1, 1);
+		}
+		//etimer_set(&runtime_timer, CLOCK_SECOND * 120);
+		nullnet_set_input_callback(&input_callback);
+		LOG_INFO("The coordinator (DEF = %u).\n", MYAPP_AS_COORDINATOR);
+
+		// Check network convergence once per second,
+		while (!hasReceived) {
+			etimer_set(&runtime_timer, CLOCK_SECOND);
+			PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&runtime_timer));
+		}
+		// Once we're alive, stay alive for 65 seconds, then write to file.
+		etimer_set(&runtime_timer, RUNTIME);
+		PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&runtime_timer));
+		LOG_INFO("Coordinator wait over.\n");
+		LOG_INFO("Current: %lu\n", clock_seconds());
+		LOG_INFO("Writing coordinator's file:");
+		
+		{
+			int size = 1024;
+			char buffer[size];
+			char* bufferptr = buffer;
+
+			int ret = snprintf(bufferptr, size, "rxTimes = [");
+			size -= ret; bufferptr += ret;
+			for (int i = 0; i < 59; ++i) {
+				ret = snprintf(bufferptr, size, "%"PRIu64", ", rxTime[i]);
+				bufferptr += ret; size -= ret;
+			}
+			ret = snprintf(bufferptr, size, "%"PRIu64"]\n", rxTime[59]);
+			bufferptr += ret; size -= ret;
+			if (ret > 0 && size > 0) {
+				filehandle = cfs_open(MYFILENAME, CFS_WRITE | CFS_APPEND);
+				cfs_write(filehandle, buffer, 1024 - size);
+				cfs_close(filehandle);
+				LOG_INFO("Wrote to file: ");
+				LOG_INFO_(buffer);
+				LOG_INFO_("\n");
+			} else {
+				LOG_ERR("Write out failed.");
 			}
 		}
-    etimer_reset(&periodic_timer);
-  }
-#else
-	LOG_INFO("The coordinator (DEF = %u).\n", MYAPP_AS_COORDINATOR);
-#endif
+	}
+	#endif
+	{
+		// Update energest values.
+		energest_flush();
+		char* buffer = malloc(1024);
+		int ret = snprintf(buffer, 1024, "cpu_time"SUFFIX" = %"PRIu64"\ncpu_sleep_time"SUFFIX" = %"PRIu64"\ncpu_deepsleep_time"SUFFIX" = %"PRIu64"\nradio_rx_time"SUFFIX" = %"PRIu64"\nradio_tx_time"SUFFIX" = %"PRIu64"\nrtimerTicksPerSecond = %u\n", 
+																energest_type_time(ENERGEST_TYPE_CPU),
+																energest_type_time(ENERGEST_TYPE_LPM),
+																energest_type_time(ENERGEST_TYPE_DEEP_LPM),
+																energest_type_time(ENERGEST_TYPE_TRANSMIT),
+																energest_type_time(ENERGEST_TYPE_LISTEN),
+																RTIMER_ARCH_SECOND
+											);
+		if (ret < 0 || ret > 1024) {
+			LOG_ERR("Failed to write power states.");
+		} else {
+			filehandle = cfs_open(MYFILENAME, CFS_WRITE | CFS_APPEND);
+			cfs_write(filehandle, buffer, ret);
+			cfs_close(filehandle);
+		}
+
+	}
 	// LOG_INFO("Process ending, shutting down main thread, setting input_callback to null.\n");
-  // nullnet_set_input_callback(NULL);
-  PROCESS_END();
+	// nullnet_set_input_callback(NULL);
+	nullnet_set_input_callback(NULL);
+	cfs_close(filehandle);
+	LOG_INFO("Process end!\n");
+	// Turn off radio to save energy after we conclude one experiment run.
+	tsch_disassociate();
+	NETSTACK_RADIO.off();
+	NETSTACK_MAC.off();
+	// Seems the TSCH files do resurect the coordinator in this case. Not really my problem, though.
+	LOG_INFO("Turned off radio & MAC layer.\n");
+	//Re-set energest values.
+	energest_init();
+	PROCESS_END();
 }
 AUTOSTART_PROCESSES(&my_app);
