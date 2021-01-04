@@ -1,0 +1,33 @@
+
+SRC: https://www.mdpi.com/1424-8220/18/2/437/htm
+	TX power @ 0 dBm -> 33.04 mA while CPU active, 29.01 mA while CPU sleeping. 
+
+	--> In our case I guess CPU is generally active, but unsure.
+	--> Definitely need to compare to numbers we have, also might be worth incorporating into other results
+
+
+TODO:
+	2:
+		Analyse join process
+	
+	3:
+		Mention what height the nodes are at
+		Use assignment distances (obv)
+		Use legend in TSCH schedule graph
+		Fix figure references
+		Fix underscore stuff @ ENERGEST_CONF_ON itemize
+		Capitalize TX/RX every time
+		Consistent packet size pls
+			Also avoid 'out of convenience' packet size & 'because it's a nice, round number'
+		Move unchanged 1 to 5 meters stuff into resutls
+		Capitalize section titles
+		Higher TX power == higher power use observation must be supported, see paper above.
+		
+		Do range capabilities experiment 
+			--> Do multiple, repeated runs for clear data
+			--> Aggregate less - present results per distance, not just overall.	
+		Re-write text, correct spelling mistakes
+		Handle comments from review 2
+	
+
+

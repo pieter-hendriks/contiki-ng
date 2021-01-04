@@ -23,5 +23,9 @@
 // See https://github.com/contiki-ng/contiki-ng/wiki/Documentation:-TSCH-and-6TiSCH for relevant docs
 // Has configuration macros etc
 
+#define PACKET_SIZE 64 // in bytes, data section
+#define MYFILENAME "MYAPP_UNIVANTW_OUTPUTFILE"
+#define FILE_WRITE_ERROR "Error - output too long, probably. Possibly some other issue."
+#define FILE_WRITE_ERROR_SIZE 62
 
 #endif
