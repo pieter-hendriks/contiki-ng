@@ -107,7 +107,7 @@ PROCESS_THREAD(leafApplication, ev, data)
 		char* readBuffer = malloc(512);
 		memset(readBuffer, 0, 512);
 		int ret = cfs_read(filehandle, readBuffer, 512);
-			LOG_INFO_(readBuffer);
+		LOG_INFO_(readBuffer);
 		LOG_INFO("Outputting file read:\n");
 		while (ret == 512) {
 			ret = cfs_read(filehandle, readBuffer, 512);
@@ -127,7 +127,6 @@ PROCESS_THREAD(leafApplication, ev, data)
 	NETSTACK_RADIO.init();
 	NETSTACK_NETWORK.init();
 	tsch_set_coordinator(0);
-	LOG_INFO("Not the coordinator (DEF = %u), beginning periodic sending loop.\n", MYAPP_AS_COORDINATOR);
 	etimer_set(&periodic_timer, SEND_INTERVAL);
 	while(1) {
 		PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));

@@ -172,7 +172,6 @@ PROCESS_THREAD(rootApplication, ev, data)
 		}
 		//etimer_set(&runtime_timer, CLOCK_SECOND * 120);
 		nullnet_set_input_callback(&input_callback);
-		LOG_INFO("The coordinator (DEF = %u).\n", MYAPP_AS_COORDINATOR);
 
 		// Check network convergence once per second,
 		while (!hasReceived) {
