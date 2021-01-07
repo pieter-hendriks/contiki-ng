@@ -1,0 +1,14 @@
+#!/bin/sh 
+if [ "$1" -eq "0" ] || [ "$1" -eq "1" ]; then
+	make login PORT=/dev/ttyUSB$1
+else
+	if [ -z "$1" ]; then
+		echo "Please enter an argument to the script."
+		echo "Value should be either 0 or 1 (number of /dev/ttyUSBx port)"
+		echo "If another value is required, please update the script."
+	else
+		echo "Invalid argument value: '$1', please use '0' or '1'"
+		echo "Or update the script, if another value is required."
+	fi
+fi
+

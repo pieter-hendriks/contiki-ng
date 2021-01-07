@@ -20,6 +20,14 @@
 #define LOG_MODULE "MyApp"
 #define LOG_LEVEL LOG_LEVEL_INFO
 
+void input_callback(const void *data, uint16_t len,
+	const linkaddr_t *src, const linkaddr_t *dest)
+{
+	
+}
+
+
+
 PROCESS(root_app, "ROOT_APP");
 static linkaddr_t sender_addr = {{ 0x00,0x12,0x4b,0x00,0x19,0x32,0xe4,0x89 }};
 
@@ -28,6 +36,8 @@ PROCESS_THREAD(root_app, ev, data)
 	PROCESS_BEGIN();
 	// Root node in the task2 scenario. 
 	{
+		// Set the callback for packet arrival
+		nullnet_set_input_callback(&input_callback);
 		// Set as TSCH coordinator.
 		tsch_set_coordinator(1);
 		// Reset energest, and initialize all layers.

@@ -1,0 +1,18 @@
+Root:
+	Implement the received packet callback such that it:
+		Records the energy/time information
+		Resets the values so that a new recording may start
+			-- Doing it this way means we need to discard first measurement (since root might have been running before leaf, adding noise to measurements - especially if left on for a while)
+
+Leaf:
+	Implement packet send when associated, allowing root to also reset its power values.
+		-- In send callback (if status == 0), record data and reset our values/interfaces
+		-- If status != 0, probably output some warning message indicating result isn't great then re-send the packet.
+Both:
+	Implement varying of EB period and channel hopping sequence 
+		Shorter EB period will increase root power use and decrease connection time (in theory)
+		Shorter (fewer channels) channel hopping sequence will decrease connection time, not sure what it will do to energy use
+			-- Probably in noisy environments, this reduces performance? Might need to verify this.
+
+
+Then gather data and write the paper text. Not much code complexity in this one, but data gathering requires extensive test runtime.
