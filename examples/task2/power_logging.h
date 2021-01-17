@@ -4,10 +4,8 @@
 #define SENSORNETS_INC_POWER_LOGGING_H_
 #include "sys/energest.h"
 #include "sys/log.h"
-
-#define LOG_MODULE "PowerLogging"
 #define LOG_LEVEL LOG_LEVEL_INFO
-
+#define LOG_MODULE "SENSORNETS"
 /* All eneergy consumptions are in mW, data from:
    Accurate Online Energy Consumption Estimation of IoT Devices Using Energest
 */

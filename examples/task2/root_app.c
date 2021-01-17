@@ -17,16 +17,32 @@
 #include "os/dev/radio.h"
 /* Log configuration */
 #include "sys/log.h"
+#include "helpers.h"
 #define LOG_MODULE "MyApp"
 #define LOG_LEVEL LOG_LEVEL_INFO
 
+
+// In this task, we should consider the energy used during the connection process.
+// In order to do so, the node will send a packet when it has connected, so we should record the 
+// statistics when we receive that packet. Immediately after, we will reset the parameters 
+// so that the next interval can be recorded.
 void input_callback(const void *data, uint16_t len,
 	const linkaddr_t *src, const linkaddr_t *dest)
 {
-	
+	uint8_t buffer; 
+	memcpy(&buffer, data, 1);
+	if (buffer == 0) {
+		// First iteration, simply reset our numbers and move on
+		resetEnergy();
+		return;
+	}
+	// For all other iterations, we should log the information to files.
+	// Time is recorded on the leaf side, we only care about energy.
+	logEnergy();
+	if (buffer == TASK2_ITERATIONCOUNT) {
+		outputAllFiles();
+	}
 }
-
-
 
 PROCESS(root_app, "ROOT_APP");
 static linkaddr_t sender_addr = {{ 0x00,0x12,0x4b,0x00,0x19,0x32,0xe4,0x89 }};
@@ -36,15 +52,12 @@ PROCESS_THREAD(root_app, ev, data)
 	PROCESS_BEGIN();
 	// Root node in the task2 scenario. 
 	{
+		// Perform interface and energy resets/setup
+		doInitialSetup();
 		// Set the callback for packet arrival
 		nullnet_set_input_callback(&input_callback);
 		// Set as TSCH coordinator.
 		tsch_set_coordinator(1);
-		// Reset energest, and initialize all layers.
-		energest_init();
-		NETSTACK_RADIO.init();
-		NETSTACK_MAC.init();
-		NETSTACK_NETWORK.init();
 	}
 	// Set tsch schedule
 	{
@@ -55,6 +68,7 @@ PROCESS_THREAD(root_app, ev, data)
 		tsch_schedule_add_link(sf, LINK_OPTION_RX, LINK_TYPE_NORMAL, &sender_addr, 1, 1, 1);
 	}
 	// Root doesn't need to do anything else, we just need to make sure it's broadcasting the EBs.
+	// And responding to any received packets.
 	PROCESS_END();
 }
 
