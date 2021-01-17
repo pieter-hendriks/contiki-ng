@@ -9,8 +9,6 @@ PROJECT_SOURCEFILES += helpers.c
 
 # Set energest ON
 CFLAGS += -Xpreprocessor -DENERGEST_CONF_ON=1
-# Set no minimal 6TSCH schedule - we configure our own
-CFLAGS += -Xpreprocessor -DTSCH_SCHEDULE_CONF_WITH_6TISCH_MINIMAL=0 
 
 CONTIKI_PROJECT = task2_root task2_leaf
 all: $(CONTIKI_PROJECT) 
