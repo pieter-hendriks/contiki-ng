@@ -71,6 +71,10 @@
 #define LOG_MODULE "TSCH"
 #define LOG_LEVEL LOG_LEVEL_MAC
 
+// Association callback function
+void(*tsch_association_callback)();
+void(*tsch_disassociation_callback)();
+
 /* The address of the last node we received an EB from (other than our time source).
  * Used for recovery */
 static linkaddr_t last_eb_nbr_addr;
@@ -164,6 +168,16 @@ static void packet_input(void);
 /* Getters and setters */
 
 /*---------------------------------------------------------------------------*/
+
+void
+tsch_set_association_callback(void(*fn)()) {
+	tsch_association_callback = fn;
+}
+void
+tsch_set_disassociation_callback(void(*fn)()) {
+	tsch_disassociation_callback = fn;
+}
+
 void
 tsch_set_coordinator(int enable)
 {
@@ -574,6 +588,9 @@ tsch_disassociate(void)
     tsch_is_associated = 0;
     tsch_adaptive_timesync_reset();
     process_poll(&tsch_process);
+		if (tsch_disassociation_callback) {
+			tsch_disassociation_callback();
+		}
   }
 }
 /*---------------------------------------------------------------------------*/
@@ -718,6 +735,9 @@ tsch_associate(const struct input_packet *input_eb, rtimer_clock_t timestamp)
 
       /* Update global flags */
       tsch_is_associated = 1;
+			if (tsch_association_callback) {
+				tsch_association_callback();
+			}
       tsch_is_pan_secured = frame.fcf.security_enabled;
       tx_count = 0;
       rx_count = 0;
@@ -1061,6 +1081,8 @@ tsch_init(void)
 
   tsch_stats_init();
 }
+#undef LOG_LEVEL
+#define LOG_LEVEL LOG_LEVEL_WARN
 /*---------------------------------------------------------------------------*/
 /* Function send for TSCH-MAC, puts the packet in packetbuf in the MAC queue */
 static void

@@ -188,6 +188,14 @@ PROCESS_NAME(tsch_pending_events_process);
 
 /********** Functions *********/
 
+
+/**
+ * Set the function to be called once node successfully associates with TSCH network.
+ * 
+ * \param fn The callback function to be called when association occurs.
+ */
+void tsch_set_association_callback(void(*fn)());
+void tsch_set_disassociation_callback(void(*fn)());
 /**
  * Set the TSCH join priority (JP)
  *
