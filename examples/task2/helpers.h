@@ -14,10 +14,11 @@
 
 void removeOldFiles();
 void resetInterfaces();
-void logToFile(char* filename, uint64_t value);
-void logEnergy();
-void outputFileContents(char* filename);
-void outputAllFiles();
+void logToFile(int filehandle, char* prefix, uint64_t value);
+void logEnergy(int filehandle);
+void outputFileContents(int filehandle);
+void outputEnergyFiles();
+void outputTimeFiles();
 void resetEnergy();
 void doInitialSetup();
 
