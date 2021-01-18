@@ -11,6 +11,7 @@ CFLAGS += -Xpreprocessor -DTSCH_SCHEDULE_CONF_WITH_6TISCH_MINIMAL=0 # Set to dis
 #modules += os/services/simple_energest
 #CFLAGS += -Xpreprocessor -DTSCH_CONF_JOIN_HOPPING_SEQUENCE='(uint8_t[]){26}'
 
+PROJECT_SOURCEFILES += helpers.c
 CONTIKI_PROJECT = my_leaf_app my_coordinator_app
 all: $(CONTIKI_PROJECT)
 

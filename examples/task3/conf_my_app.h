@@ -22,4 +22,17 @@
 #define FILE_WRITE_ERROR "Error - output too long, probably. Possibly some other issue."
 #define FILE_WRITE_ERROR_SIZE 62
 
+#define PACKET_COUNT 60
+#define EXPERIMENT_COUNT 1
+
+// Vary between 7 dBm for high, 0 dBm for default and -7 dBm for low
+#define APP_TX_POWER_DEFAULT 0
+#define APP_TX_POWER_LOW -7
+#define APP_TX_POWER_HIGH 7
+
+// Define some sentinel values to mark certain events
+#define SENTINEL_INITIAL 255
+#define SENTINEL_FINAL 254
+#define SENTINEL_EXPERIMENT_DONE 253
+
 #endif

@@ -11,6 +11,7 @@ TODO:
 		Analyse join process
 	
 	3:
+		Add introduction for range capabilities
 		Mention what height the nodes are at
 		Use assignment distances (obv)
 		Use legend in TSCH schedule graph
@@ -22,12 +23,12 @@ TODO:
 		Move unchanged 1 to 5 meters stuff into resutls
 		Capitalize section titles
 		Higher TX power == higher power use observation must be supported, see paper above.
-		
+		Power use per test, not averaged over everything
 		Do range capabilities experiment 
 			--> Do multiple, repeated runs for clear data
 			--> Aggregate less - present results per distance, not just overall.	
 		Re-write text, correct spelling mistakes
-		Handle comments from review 2
+		
 	
 
 
