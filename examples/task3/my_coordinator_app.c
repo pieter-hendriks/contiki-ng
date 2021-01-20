@@ -27,6 +27,7 @@ static linkaddr_t sender_addr = {{ 0x00,0x12,0x4b,0x00,0x19,0x32,0xe4,0x89 }};
 static uint64_t rxTime[60];
 
 static bool done = false;
+static bool experimentDone = false;
 
 void pollMyApp();
 void initialize();
@@ -65,12 +66,19 @@ void markExperimentDone() {
 	writeRxTimes(filehandle);
 	cfs_close(filehandle);
 	memset(rxTime, 0, 60*8);
+	experimentDone = true;
 }
 void markFinalize() {
+	if (!experimentDone) {
+		markExperimentDone();
+	} // if we missed experiment done packet, still save
 	done = true;
 	pollMyApp();
 }
 void markNextExperiment() {
+	if (!experimentDone) {
+		markExperimentDone();
+	}// if we missed experiment done packet, still save
 	energest_flush();
 	energest_init();
 }
