@@ -1,7 +1,8 @@
 #include "conf_my_app.h"
 #include "helpers.h"
 #define LOG_LEVEL LOG_LEVEL_INFO
-#define LOG_MODULE "SENSORNETS"
+#define LOG_MODULE "HELPERS"
+
 void outputFileContents(int filehandle) {
 	char* buffer = calloc(128, 1);
 	int read = cfs_read(filehandle, buffer, 128);
@@ -28,9 +29,17 @@ void logEnergy(int filehandle) {
 	logToFile(filehandle, TXPREFIX, energest_type_time(ENERGEST_TYPE_TRANSMIT));
 	logToFile(filehandle, RXPREFIX, energest_type_time(ENERGEST_TYPE_LISTEN));
 }
+void logEnergySerial() {
+	energest_flush();
+	logSerial(CPUPREFIX, energest_type_time(ENERGEST_TYPE_CPU));
+	logSerial(LPMPREFIX, energest_type_time(ENERGEST_TYPE_LPM));
+	logSerial(DLPMPREFIX, energest_type_time(ENERGEST_TYPE_DEEP_LPM));
+	logSerial(TXPREFIX, energest_type_time(ENERGEST_TYPE_TRANSMIT));
+	logSerial(RXPREFIX, energest_type_time(ENERGEST_TYPE_LISTEN));
+}
 
 void doInitialSetup() {
-	removeOldFiles();
+	// removeOldFiles();
 	resetInterfaces();
 	resetEnergy();
 }
@@ -49,6 +58,12 @@ void logToFile(int filehandle, char* prefix, uint64_t value)
 		filehandle = -1;
 	}
 }
+
+void logSerial(char* prefix, uint64_t value) 
+{
+	LOG_INFO("%s%"PRIu64"\n", prefix, value);
+}
+
 
 void resetInterfaces() {
 	NETSTACK_RADIO.init();

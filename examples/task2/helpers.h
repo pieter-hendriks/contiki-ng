@@ -15,7 +15,9 @@
 void removeOldFiles();
 void resetInterfaces();
 void logToFile(int filehandle, char* prefix, uint64_t value);
+void logSerial(char* prefix, uint64_t value);
 void logEnergy(int filehandle);
+void logEnergySerial();
 void outputFileContents(int filehandle);
 void outputEnergyFiles();
 void outputTimeFiles();

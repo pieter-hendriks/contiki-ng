@@ -55,7 +55,7 @@ void input_callback(const void *data, uint16_t len,
 {
 	LOG_INFO("INCOMING PACKET RECEIVED FROM ");
 	LOG_INFO_LLADDR(src);
-	LOG_INFO("\n");
+	LOG_INFO_("\n");
 	uint8_t buffer; 
 	memcpy(&buffer, data, 1);
 	if (buffer == 0) {
@@ -63,11 +63,10 @@ void input_callback(const void *data, uint16_t len,
 		resetEnergy();
 		return;
 	}
-	// For all other iterations, we should log the information to files.
+	// For all other iterations, we should log information
 	// Time is recorded on the leaf side, we only care about energy.
-	logEnergy();
+	logEnergySerial();
 	if (buffer == TASK2_ITERATIONCOUNT) {
-		outputAllFiles();
 		done = true;
 		root_app.needspoll = true;
 	}
