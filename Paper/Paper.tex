@@ -48,9 +48,8 @@ In this paper, we assess the energy performance of TSCH and 6TiSCH using the Con
 These boards are part of the IoT hardware family, and they allow for the creation of a network minimizing energy consumption.\\
 We perform different experiments aiming to evaluate various parameters such as energy consumption or latency between the boards in a two node network.\\
 We consider three different analyses in this paper. First, we compare the energy use when using a full network stack to the energy use when only having the TSCH MAC layer enabled. Second, we look at the TSCH association process and analyze the time and energy required for each node. Finally, we consider the impact distancing the nodes from each other has on network reliability and energy consumption. 
-\cite{TODO: FIX ABSTRACT}
-For each experiment, we report and explain how the introduced variations in the network affect the measured values.
-Comparing the energy usage we found that in a MAC only configuration the leaf and root node have the same energy consumption, such value diminishes for both of them if the full stack is enabled.
+Comparing the energy usage we found that in a MAC only configuration the leaf and root node have the same energy consumption, such value diminishes for both of them if the full stack is enabled. 
+The join process is mostly impacted by the length of the hopping sequence, though the EB period also has significant impact. Distance between the nodes starts impacting performance noticeably (from our tested distances) at 50m, leading to completely unacceptable performance at low TX powers when reaching 100m.
 \end{abstract}
 
 \begin{IEEEkeywords}
