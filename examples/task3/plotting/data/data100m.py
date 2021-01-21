@@ -35,10 +35,10 @@ def_cpu_deepsleep_time_coordinator = 1763852
 def_radio_rx_time_coordinator = 2419
 def_radio_tx_time_coordinator = 143130
 
-low_cpu_time_coordinator = 55394
-low_cpu_sleep_time_coordinator = 356345
-low_cpu_deepsleep_time_coordinator = 3554156
-low_radio_rx_time_coordinator = 4145
-low_radio_tx_time_coordinator = 286998
+low_cpu_time_coordinator = 30603
+low_cpu_sleep_time_coordinator = 183192
+low_cpu_deepsleep_time_coordinator = 1759362
+low_radio_rx_time_coordinator = 2071
+low_radio_tx_time_coordinator = 143498
 
 

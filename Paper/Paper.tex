@@ -8,6 +8,7 @@
 \usepackage{xcolor}
 \usepackage{float}
 \usepackage{url}
+\usepackage{multirow}
 \usepackage{biblatex}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
@@ -222,13 +223,14 @@ What we measured has been reported as \tabref{tab:exp1Comparison}.
 
 \section{Energy consumption during the TSCH join process}
 \label{section:task2}
-%\section{Analysing the TSCH joining process}
-%\label{section:task2}
-% Miroslav not handing in, so no work here.
-%
-%			¯\_( ͡° ͜ʖ ͡°)_/¯
-%
 
+
+
+\subsection{Disclaimer}
+
+An oversight during the initial experiments for this section caused all the data to be invalid. Since command line defines (set in the Makefile) are used to set the behaviour for the TSCH layer, a recompile of the files setting the configured values is required for them to take effect. Since those files are not changed in between compilations, the Make build system does not automatically re-compile them when the Makefile changes. During our initial experiment set, these were the only changes made in between runs of the software. 
+
+Initial dataset considered 
 
 
 \section{Impact of distance on energy consumption and network reliability}
@@ -245,10 +247,19 @@ We study a two-node TSCH network. Both nodes are Zolertia RE-mote (Rev. B) board
 
 The nodes always remain within line of sight, at equal heights (elevated 1 meter above the ground). The only physical parameter being varied (other than those outside our control) is the distance between them. For our range analysis, we consider four distances: 1 meter, 10 meters, 50 meters and 100 meters. The node positions at each distance were marked, to ensure they were positioned as reliably as possible.
 
+\figref{fig:distance} shows a satellite image of where the measurements were taken. In this image, white and red dots were added marking the locations. The white dot is the location the static root node was placed. Then each red dot marks one of the locations that the leaf was placed in to perform our testing. 
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.48\textwidth,keepaspectratio]{figures/distance}
+	\caption{Satellite image of the location the measurements were made}
+	\label{fig:distance}
+\end{figure}
+
 \subsubsection{TX power}
 \label{section:txpower}
 
-For each distance in the experiment, we also consider the impact of the TX power parameter. This value sets the intensity of the signal transmission. A larger TX power value leads to increased energy consumption\cite{AccurateEnergyTSCH}. The amount of extra energy consumed by varying this value is left outside the scope of this study, because our study is limited to observing time spent in each energy state. The associated current draw for each energy state (used to compute final energy consumption values) is obtained through spec sheets or device profiling results (see \tabref{tab:CurrentConsumption}). We consider 3 distinct values for this parameter: 7 dBm, 0 dBm and -7 dBm. 
+For each distance in the experiment, we also consider the impact of the TX power parameter. This value sets the intensity of the signal transmission. A larger TX power value leads to increased energy consumption\cite{AccurateEnergyTSCH}. The amount of extra energy consumed by varying this value is left outside the scope of this study, because our study is limited to observing time spent in each energy state. We do have access to the required hardware to accurately determine how much power the device is drawing in any given energy state. The associated current draw for each energy state (used to compute final energy consumption values) is obtained through spec sheets or device profiling results (see \tabref{tab:CurrentConsumption}). We consider 3 distinct values for this parameter: 7 dBm, 0 dBm and -7 dBm. 
 
 
 \subsubsection{Traffic characteristics}
@@ -264,7 +275,7 @@ We use a very simple schedule for our experiments. There is a single advertising
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=.4\textwidth,keepaspectratio]{figures/tsch_schedule.png}
+	\includegraphics[width=.48\textwidth,keepaspectratio]{figures/tsch_schedule.png}
 	\caption{TSCH Schedule as used in the range analysis experiments}
 	\label{fig:TSCHSchedule}
 \end{figure}
@@ -303,49 +314,78 @@ The following values are defined in the preprocessor (some through Makefile, oth
 
 \subsection{Results}
 
+
+\subsubsection{Network reliability}
+The PHY delivery ratio for packets is somewhat interchangeable for all TX powers at low distances. This is clear from \figref{fig:txattempts}. At higher distances, though, it becomes clear that the lower TX power struggles significantly more than the high TX power. In fact, while the TX power set to 7 dBm at 100 meters manages to deliver 100\% of packets, the -7 dBm TX power setting fails to do so. At 50m, it failed to deliver 2 out of 60 packets. At 100 meters, that shot up to 19/60. It is clear, then, that for two nodes that are separated by 100 meters, a TX power setting of -7 dBm is woefully insufficient. 
+
+
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=.48\textwidth,keepaspectratio]{figures/latencies.png}
-	\caption{The average packet latencies for each distance/power combination}
-	\label{fig:averagelatencies}
-\end{figure}
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=.48\textwidth,keepaspectratio]{figures/transmission_reliability.png}
+	\includegraphics[width=.48\textwidth,keepaspectratio]{figures/retransmissions}
 	\caption{Overview of amount of transmission attempts are made on average to send a single packet}
 	\label{fig:txattempts}
 \end{figure}
 
-In our current test scenario, there is no meaningful difference between the various power levels when it comes to transmission reliability. The amount of transmission attempts that must be made per packet are essentially identical (and almost equal to 1) for all tested scenario's. 
 
-Another observation we can make, which is influenced by the transmission reliability, is the packet latency. In \figref{fig:averagelatencies}, the latencies are shown, averaged over the experiment run, per tested scenario. 
-
-The latencies shown in \figref{fig:averagelatencies} are grouped very closely together, just over 80 milliseconds. Since the default TSCH slot length is 10 milliseconds, and the slot frame has 7 slots, it takes just over the duration of a slotframe for a packet to go from being queued in the leaf node to arriving at the root (give or take clock drift since the last TSCH time synchronization). This seems a little high, given the limited amount of traffic being generated. 
-
+This is also clearly visible in the packet latencies, as seen in \figref{fig:averagelatencies}. Clearly, as distance increases, so does the experienced packet latency. It is important to note that \figref{fig:averagelatencies} does not account for packets that did not arrive - it simply leaves them out of the calculation. This was done because no meaningful latency can be ascribed to a packet that did not arrive correctly. It clearly shows that as the distance increases and/or TX power decreases, the latency increases. The degree to which that happens, though, is underrepresented due to this fact.
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=.48\textwidth,keepaspectratio]{figures/powerstates_10m.png}
-	\caption{The power states for the nodes when 10 meters apart}
-	\label{fig:power10m}
+	\includegraphics[width=.48\textwidth,keepaspectratio]{figures/latencies}
+	\caption{The average packet latencies for each distance/power combination}
+	\label{fig:averagelatencies}
+\end{figure}
+
+\subsubsection{Energy use}
+
+\figref{fig:leaf_allstates} shows what percentage of time the leaf node spends in each power state in each of the experiments. The energy states are remarkably similar in all cases. The power states at 100m, -7 dBm are slightly offset from the rest of them. Presumably, because of the extra necessary re-transmissions, both the CPU and the radio are not able to sleep, or deep sleep, quite as often as they otherwise would. With the difference being so small, though, it is clear that the code we wrote has minimal impact on the device power states. 
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.48\textwidth,keepaspectratio]{figures/leaf_allstates}
+	\caption{Power states for the leaf node, over all experiment setups}
+	\label{fig:leaf_allstates}
+\end{figure}
+
+In \figref{fig:leaf_radiostates} we zoom in on the radio power states (RX and TX). Here it is clear that the large distance, low TX power configuration uses relatively more radio time than the others, both RX and TX. That both increase seems intuitively correct, as retransmissions being necessary would require additional radio awake time. It is interesting that the RX time seems to increase relatively more than the TX time. This could be explained by the fact that when a node receives the ACK for a packet it has sent, it no longer needs to listen, allowing it to shut down the radio sooner. When the transmission fails, the radio has to be on for a longer period of time, causing a larger discrepancy. 
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.48\textwidth,keepaspectratio]{figures/leaf_rx_tx}
+	\caption{Power states for the leaf node, zoomed in on radio states only}
+	\label{fig:leaf_radiostates}
+\end{figure}
+
+
+We also look at the root node's power results, in \figref{fig:root_allstates} and \figref{fig:root_radiostates}. These are even more similar than the leaf node's are, nearly identical in all cases. This is expected, though. The root application we are using does not, itself, transmit data. Rather, it only records its own energy state information when data is received from the leaf node. A very large majority of the time, the root application is simply sleeping. 
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.48\textwidth,keepaspectratio]{figures/root_allstates}
+	\caption{Power states for the leaf node, over all experiment setups}
+	\label{fig:root_allstates}
 \end{figure}
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=.48\textwidth,keepaspectratio]{figures/powerstates_1m.png}
-	\caption{The power states for the nodes when 1 meter apart}
-	\label{fig:power1m}
+	\includegraphics[width=.48\textwidth,keepaspectratio]{figures/root_rx_tx}
+	\caption{Power states for the leaf node, zoomed in on radio states only}
+	\label{fig:root_radiostates}
 \end{figure}
 
-The power results, as the latency and delivery results, are incredibly similar. This is trivially clear when comparing \figref{fig:power1m} and \figref{fig:power10m} - they are nearly identical. 
 
-Using the results from profiling the device (as in \tabref{tab:CurrentConsumption}), and the Energest results we've obtained, we can compute the amount of power that is needed for each device. The leaf, overall, used approximately 3.4 J. The root used approximately 4.1 J.
+We use the values obtained through device profiling in \tabref{tab:CurrentConsumption} to estimate the node power use. This computation does not take into account the impact of the varied TX power parameter. As discussed in \secref{section:txpower}, it is not feasible for us to correctly assess power use while taking that parameter into account. 
 
-With a total data size of 360 kilobits (12 tests * 60 packets * 64 bytes per packet * 8 bits per byte / 1024 bits per kilobit), that corresponds to roughly $9.6 \frac{mJ}{kbit}$ for the leaf and $11.5 \frac{mJ}{kbit}$ for the root.
+In order to maintain clarity despite this restriction, we keep separate counts for the power used by the radio and the power used by the processor. It is thus important to note that for all figures in \tabref{tab:t3_powerresults}, the radio power use results are not quite as accurate as they could be. Both -7 dBm and 0 dBm values are higher than they should be (-7 dBm more so than 0 dBm), while 7 dBm's stated values are lower than they should be (the source of our data (\cite{EnergyConsumption}) does not mention changing the TX power, so presumably it was left at its default value of 3 dBm). 
+
+It is clear that, for the most part, the power use is close to identical for every considered scenario. As the distance increases, a slight increase in radio power use can be seen in all cases. More so in the low TX power cases. Given the results seen in \figref{fig:leaf_radiostates} and \figref{fig:root_radiostates}, that is to be expected. 
+
+Each experiment transmitted 30720 bits (64 bytes * 60 packets * 8 bits per byte). Using that fact, we can compute the amount of energy per kilobit that was transmitted or received (for leaf and root, respectively). These numbers can be found in \tabref{tab:t3_powerperkilobit}. 
 
 
 \subsection{Conclusion}
 
-The tests we ran do not offer a clear insight to the performance of TSCH in various scenarios. The different scenarios appear too close together to distinguish meaningful differences. Due to the inherent noisiness of the wireless medium, the tests should be expanded to be able to clearly spot a pattern. The duration should be extended and the difference between the values under test should increase. This way, if there is a pattern, it is less likely that a difference in noise in the medium will cause the test results to be essentially indistinguishable. 
+The software we implemented barely influenced the power state the device was in. CPU-wise, this matches our expectations. Our program is written such that there is minimal computation required and most of the time our process sleeps, waiting for events to occur. In the case of the radio, the power use increases when more packets need to be sent. In our use-case, that is the case when retransmissions occur. If no retransmissions occur, the data sent is always the same. 
+
+We've found that the TSCH layer manages good reliability over a distance of 100m, if the TX power parameter is set high enough. For a lower value for the TX power parameter, performance is lacklustre. Clearly there is a balance to be found between adequate performance and impact on the battery life. A TX power parameter that is set unnecessarily high will impact the battery life of a node simply by requiring more power per transmission, whereas a lower value will require more power because retransmissions are more likely. For any given distance, and environment noise level, the 
 
 \section{Future Work}
 \label{section:futurework}
@@ -355,5 +395,50 @@ In this study, we've only looked at the performance characteristics of the netwo
 
 \subsubsection{Individually varied TX power}
 We've only considered the case where TX power is varied on both nodes. A potentially interesting follow-up to this is to consider the impact varying the parameter on one of the nodes has. This would clarify if, in order to ensure satisfactory network performance, TX power must be increased for all nodes or only for some. Our results have shown that larger TX power results in fewer retransmission (at the cost of increased power use per transmission\cite{AccurateEnergyTSCH}), but we've not studied the trade-off in more detail. It is conceivable to have the root node be connected to a power source, while other nodes are running on battery, for example. So an interesting study would be to only increase TX power on the root node and see if (and to what degree) that improves performance the reliability, since its energy consumption is less relevant. 
+
+\printbibliography
+
+\onecolumn
+
+\begin{table}[htbp]
+\noindent\makebox[\textwidth]{
+\begin{tabular}{c|c|c|c|c|c|c|c}
+\multicolumn{2}{c}{\multirow{2}{*}{}} & \multicolumn{2}{c}{-7 dBm} & \multicolumn{2}{c}{0 dBm} & \multicolumn{2}{c}{7 dBm} \\ \cline{3-8}
+\multicolumn{2}{c}{}                  & cpu          & radio       & cpu         & radio       & cpu         & radio       \\ \hline
+1 meter                       & root  & 0.2050 J     & 0.1367 J    & 0.2051 J    & 0.1364 J    & 0.2048 J    & 0.1363 J    \\ \cline{2-8}
+                              & leaf  & 0.1936 J     & 0.0760 J    & 0.1946 J    & 0.0759 J    & 0.1939 J    & 0.0759 J    \\ \hline
+\multirow{2}{*}{10 meters}    & root  & 0.2053 J     & 0.1371 J    & 0.2060 J    & 0.1378 J    & 0.2048 J    & 0.1365 J    \\ \cline{2-8}
+                              & leaf  & 0.1942 J     & 0.0770 J    & 0.1949 J    & 0.0765 J    & 0.1942 J    & 0.0759 J    \\ \hline
+\multirow{2}{*}{50 meters}    & root  & 0.2054 J     & 0.1372 J    & 0.2063 J    & 0.1376 J    & 0.2053 J    & 0.1365 J    \\ \cline{2-8}
+                              & leaf  & 0.1963 J     & 0.0829 J    & 0.1939 J    & 0.0780 J    & 0.1940 J    & 0.0758 J    \\ \hline
+\multirow{2}{*}{100 meters}   & root  & 0.2065 J     & 0.1382 J    & 0.2060 J    & 0.1382 J    & 0.2052 J    & 0.1373 J    \\ \cline{2-8}
+                              & leaf  & 0.2001 J     & 0.1015 J    & 0.1949 J    & 0.0811 J    & 0.1940 J    & 0.0791 J   
+                             
+\end{tabular} 
+}
+\label{tab:t3_powerresults}
+\caption{Power use for leaf and root nodes in all experiment setups}
+\end{table}
+
+\begin{table}[htbp]
+\noindent\makebox[\textwidth]{
+\begin{tabular}{c|c|c|c|c|c|c|c}
+\multicolumn{2}{c}{\multirow{2}{*}{}} & \multicolumn{2}{c}{-7 dBm} & \multicolumn{2}{c}{0 dBm} & \multicolumn{2}{c}{7 dBm} \\[3pt] \cline{3-8}
+\multicolumn{2}{c}{}                  & cpu          & radio       & cpu         & radio       & cpu         & radio       \\[3pt] \hline
+1 meter                       & root  & 6.833 $\frac{mJ}{kbit}$ & 4.557 $\frac{mJ}{kbit}$ & 6.837 $\frac{mJ}{kbit}$ & 4.547 $\frac{mJ}{kbit}$ & 6.827 $\frac{mJ}{kbit}$ & 4.543 $\frac{mJ}{kbit}$ \\[3pt] \cline{2-8}
+                              & leaf  & 6.453 $\frac{mJ}{kbit}$ & 2.53 $\frac{mJ}{kbit}$ & 6.487$\frac{mJ}{kbit}$ & 2.53 $\frac{mJ}{kbit}$ & 6.463 $\frac{mJ}{kbit}$ & 2.53 $\frac{mJ}{kbit}$ \\[3pt] \hline
+\multirow{2}{*}{10 meters}    & root  & 6.843 $\frac{mJ}{kbit}$ & 4.570 $\frac{mJ}{kbit}$ & 6.867 $\frac{mJ}{kbit}$ & 4.593 $\frac{mJ}{kbit}$ & 6.827 $\frac{mJ}{kbit}$ & 4.55 $\frac{mJ}{kbit}$ \\[3pt] \cline{2-8}
+                              & leaf  & 6.473 $\frac{mJ}{kbit}$ & 2.567 $\frac{mJ}{kbit}$ & 6.497 $\frac{mJ}{kbit}$ & 2.55 $\frac{mJ}{kbit}$ & 6.473 $\frac{mJ}{kbit}$ & 2.53 $\frac{mJ}{kbit}$ \\[3pt] \hline
+\multirow{2}{*}{50 meters}    & root  & 6.847 $\frac{mJ}{kbit}$ & 4.573 $\frac{mJ}{kbit}$ & 6.877 $\frac{mJ}{kbit}$ & 4.587 $\frac{mJ}{kbit}$ & 6.843 $\frac{mJ}{kbit}$ & 4.55 $\frac{mJ}{kbit}$ \\[3pt] \cline{2-8}
+                              & leaf  & 6.543 $\frac{mJ}{kbit}$ & 2.763 $\frac{mJ}{kbit}$ & 6.463 $\frac{mJ}{kbit}$ & 2.6 $\frac{mJ}{kbit}$ & 6.467 $\frac{mJ}{kbit}$ & 2.527 $\frac{mJ}{kbit}$ \\[3pt] \hline
+\multirow{2}{*}{100 meters}   & root  & 6.883 $\frac{mJ}{kbit}$ & 4.607 $\frac{mJ}{kbit}$ & 6.867 $\frac{mJ}{kbit}$ & 4.607 $\frac{mJ}{kbit}$ & 6.84 $\frac{mJ}{kbit}$ & 4.577 $\frac{mJ}{kbit}$ \\[3pt] \cline{2-8}
+                              & leaf  & 6.67 $\frac{mJ}{kbit}$ & 3.383 $\frac{mJ}{kbit}$ & 6.497 $\frac{mJ}{kbit}$ & 2.703 $\frac{mJ}{kbit}$ & 6.467 $\frac{mJ}{kbit}$ & 2.637 $\frac{mJ}{kbit}$
+\end{tabular}
+}
+\label{tab:t3_powerperkilobit}
+\caption{Power use for leaf and root nodes in all experiment setups}
+\end{table}
+\twocolumn
+
 
 \end{document}

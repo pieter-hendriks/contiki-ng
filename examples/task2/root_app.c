@@ -33,6 +33,8 @@ PROCESS(root_app, "ROOT_APP");
 PROCESS_THREAD(root_app, ev, data)
 {
 	PROCESS_BEGIN();
+	LOG_INFO("Root started with channel hopping sequence size: %i\n", sizeof(TSCH_DEFAULT_HOPPING_SEQUENCE) / sizeof(TSCH_DEFAULT_HOPPING_SEQUENCE[0]));
+	LOG_INFO("With EB period = %i / 128 seconds\n", TSCH_EB_PERIOD);
 	// Root node in the task2 scenario. 
 	{
 		// Perform interface and energy resets/setup
@@ -66,6 +68,8 @@ void input_callback(const void *data, uint16_t len,
 	// For all other iterations, we should log information
 	// Time is recorded on the leaf side, we only care about energy.
 	logEnergySerial();
+	// Reset after logging
+	resetEnergy();
 	if (buffer == TASK2_ITERATIONCOUNT) {
 		done = true;
 		root_app.needspoll = true;

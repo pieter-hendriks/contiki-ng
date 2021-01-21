@@ -87,7 +87,9 @@ PROCESS_THREAD(leaf_app, ev, data)
 
 void send_callback(void *ptr, int status, int num_tx) {
 	uint8_t buffer;
-	memcpy(&buffer, ptr, 1);
+	char* p = (char*) ptr + 21;
+	// Ignore the header, get our value
+	memcpy(&buffer, p, 1);
 	if (status != 0) {
 		sendPacket();
 		LOG_WARN("Re-sent marker packet for index %u. Readings may not be reliable.\n", buffer);
