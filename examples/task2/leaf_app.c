@@ -55,7 +55,8 @@ PROCESS_THREAD(leaf_app, ev, data)
 	tsch_set_association_callback(&pollMyApp);
 	tsch_set_disassociation_callback(&pollMyApp);
 	LOG_INFO("Leaf started with channel hopping sequence size: %i\n", sizeof(TSCH_DEFAULT_HOPPING_SEQUENCE) / sizeof(TSCH_DEFAULT_HOPPING_SEQUENCE[0]));
-	// Leaf node in the task2 scenario. 
+	LOG_INFO("With EB period = %i / 128 seconds\n", TSCH_EB_PERIOD);
+	// Leaf node in the task2 scenario.
 	{
 		// Perform one extra iteration because we discard results from the first one
 		for (loopIndex = 0; loopIndex <= TASK2_ITERATIONCOUNT; ++loopIndex) {
@@ -65,8 +66,6 @@ PROCESS_THREAD(leaf_app, ev, data)
 				// Reset energest, and initialize all layers.
 				resetEnergy();
 				resetTime();
-				// Configure as leaf
-				tsch_set_coordinator(0);
 			}
 			LOG_INFO("Leaf waiting for association!\n");
 			// Wait for association
@@ -93,7 +92,7 @@ void send_callback(void *ptr, int status, int num_tx) {
 		sendPacket();
 		LOG_WARN("Re-sent marker packet for index %u. Readings may not be reliable.\n", buffer);
 		return;
-	} 
+	}
 	// Only take iterations beyond the first into account
 	// Root's recording on first iteration isn't valid, so we exclude the leaf's recording as well.
 	if (buffer != 0) {
