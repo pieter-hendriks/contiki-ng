@@ -46,8 +46,9 @@ pieter.hendriks@student.uantwerpen.be}
 \begin{abstract}
 In this paper, we assess the energy performance of TSCH and 6TiSCH using the Contiki-NG operating system on Zolertia RE-mote (Rev. B) nodes.\\
 These boards are part of the IoT hardware family, and they allow for the creation of a network minimizing energy consumption.\\
-We perform different experiments aiming to evaluate various parameters such as energy consumption or latency of the boards in a two nodes network.\\
-Different measurements are performed on the boards under different conditions such as only the MAC layer enabled compared full-stack, during the joining process, and at various distances.
+We perform different experiments aiming to evaluate various parameters such as energy consumption or latency between the boards in a two node network.\\
+We consider three different analyses in this paper. First, we compare the energy use when using a full network stack to the energy use when only having the TSCH MAC layer enabled. Second, we look at the TSCH association process and analyze the time and energy required for each node. Finally, we consider the impact distancing the nodes from each other has on network reliability and energy consumption. 
+\cite{TODO: FIX ABSTRACT}
 For each experiment, we report and explain how the introduced variations in the network affect the measured values.
 \end{abstract}
 
@@ -224,14 +225,120 @@ What we measured has been reported as \tabref{tab:exp1Comparison}.
 \section{Energy consumption during the TSCH join process}
 \label{section:task2}
 
+\subsection{Introduction} 
 
+A TSCH network advertises through the broadcast of Enhanced Beacons (EB). These are frames that contain the TSCH network properties and reception of such a frame allows a node to attempt to join the TSCH network. In this section, we analyze how long it takes for a node to join an existing TSCH network. We also consider the energy used by the joining node as well as the advertising node.
+
+D. De Guglielmo et al have already done similar work\cite{JoinProcess}. They show that the channel hopping sequence length is the most important factor with regards to the association time. This analysis intends to verify that conclusion (as well as consider the impact of the EB period) and additionally consider the energy used by each node during this association process. 
 
 \subsection{Disclaimer}
+\label{sec:t2_discl}
+An oversight during the initial experiments for this section caused all the data to be invalid. Since command line defines (set in the Makefile) are used to set the behaviour for the TSCH layer, a recompile of the files setting the configured values is required for them to take effect. Since those files are not changed in between compilations, the Make build system does not automatically re-compile them when the Makefile changes. During our initial experiment set, these were the only changes made in between runs of the software. This was unfortunately uncovered too close to the submission deadline to fully correct.
 
-An oversight during the initial experiments for this section caused all the data to be invalid. Since command line defines (set in the Makefile) are used to set the behaviour for the TSCH layer, a recompile of the files setting the configured values is required for them to take effect. Since those files are not changed in between compilations, the Make build system does not automatically re-compile them when the Makefile changes. During our initial experiment set, these were the only changes made in between runs of the software. 
+Initial (incorrect) dataset considered EB periods between 1 and 16 seconds as well as channel hopping sequences between 1 and 16 channels. In order to limit the amount of time needed to perform the experiments, we limit ourselves to EB periods between 1 and 8 seconds and channel hopping sequences between 1 and 4 channels. We further limit the amount of measurements per parameter set to 25 rather than the original 50. 
 
-Initial dataset considered 
+\subsection{Configuration}
 
+The Contiki-NG operating system offers many options for configuring the TSCH joining process. We briefly discuss the most significant ones below. Any parameters that are changed for our analysis are mentioned in their respective subsections, all others are left as their default value for all performed experiments.
+
+\subsubsection{TSCH\_CONF\_MAX\_JOIN\_PRIORITY}
+This parameter sets the maximal allowed depth for a new node attempting to join the network. The TSCH coordinator is at depth 0. For any other node, the depth is defined as 1 + the depth of the node it is trying to connect through (i.e. the advertising node). In our study, we only consider two-node networks, so this parameter is essentially not relevant to our case.
+
+\subsubsection{TSCH\_CONF\_JOIN\_SECURED\_ONLY}
+This parameter sets the TSCH layer such that it only allows joining secured TSCH networks. For our experiments, this has been set to disabled. We want to minimize all non-TSCH noise on our measurements. Security layers require additional processing and thus might obscure some of the results we obtain. 
+
+\subsubsection{TSCH\_CONF\_JOIN\_MY\_PANID\_ONLY}
+This parameter sets the TSCH layer such that nodes will only join TSCH networks that are advertising the same PAN ID as they were configured with. Any other received EBs (i.e., those with a different PAN ID) are ignored. 
+
+\subsubsection{TSCH\_CONF\_ASSOCIATION\_POLL\_FREQUENCY}
+The association poll frequency set by this parameter sets the frequency with which the radio is polled during the association process. This has implications for the energy used by the system, as a higher polling rate would result in higher energy use. However, a higher polling rate might also be able to associate faster. This parameter is left as default in this analysis, but might be interesting to consider in future work.
+
+\subsubsection{TSCH\_CONF\_CHECK\_TIME\_AT\_ASSOCIATION}
+Defining this constant enables the functionality that time should be compared to local uptime at association. It will compare the ASN from the EB to the node's own uptime. This can be used to allow nodes to be configured such that they will only connect to networks that were created close to their own boot time. 
+
+\subsubsection{TSCH\_CONF\_INIT\_SCHEDULE\_FROM\_EB} 
+\label{t2_initsched}
+An EB frame can contain information elements specifying slotframe and link information. This parameter controls whether the node should initialize itself using those information elements.
+
+\subsubsection{TSCH\_CONF\_CHANNEL\_SCAN\_DURATION}
+
+\subsubsection{TSCH\_PACKET\_CONF\_EB\_WITH\_TIMESLOT\_TIMING}
+Controls whether the EB frame contains an information element specifying the network's timeslot timings.
+
+\subsubsection{TSCH\_PACKET\_CONF\_EB\_WITH\_HOPPING\_SEQUENCE} 
+Controls whether the EB frame contains an information element specifying the network's hopping sequence.
+
+\subsubsection{TSCH\_PACKET\_CONF\_EB\_WITH\_SLOTFRAME\_AND\_LINK}
+
+Controls whether the EB frame contains an information element for the slotframe and link information. This element would be used by the parameter mentioned in \secref{t2_initsched} if that parameter is set.
+
+\subsubsection{TSCH\_CONF\_EB\_PERIOD}
+How long the time between EB broadcasts should be. Defaults to 16 seconds. This parameter is varied over our experiments, between 1 and 16 seconds. 
+
+\subsubsection{TSCH\_CONF\_MAX\_EB\_PERIOD} 
+
+The maximal allowed period between EB broadcasts. Defaults to 16 seconds. It imposes an upper limit on the variable mentioned in the previous point.
+
+
+\subsubsection{TSCH\_CONF\_DEFAULT\_HOPPING\_SEQUENCE}
+The default hopping sequence that is configured for the network. This sequence may have duplicate channels and so can have arbitrary length. It is limited by another variable, see \secref{t2_maxlen}.
+
+\subsubsection{TSCH\_CONF\_JOIN\_HOPPING\_SEQUENCE}
+This constant determines the hopping sequence a node attempting to join a network will use. By default, this will be the same as the default hopping sequence for the network. It is possible to configure them differently, but our analyses do not use this option.
+
+\subsubsection{TSCH\_CONF\_HOPPING\_SEQUENCE\_MAX\_LEN}
+\label{t2_maxlen}
+This sets the maximal allowed length for a hopping sequence in the TSCH network. By default it is set to the length of the default hopping sequence. This value is 4 in the standard configuration, but is automatically changed along with the configuration of a different default hopping sequence.
+
+\subsection{Experiment setup}
+
+In this section, we consider two nodes placed 20 cm apart, with nothing between them impeding communication, as in \figref{fig:exp1Topology}. The leaf node will repeatedly associate and disassociate from the TSCH network. The root node will simply wait and output its energy statistics whenever the node associates. The leaf, similarly, will output its time taken and the energy used when association is complete. After the data has been output, the leaf node disassociates from the network and starts over.
+
+We consider the case only where the node disassociates from the network, then immediately reassociates itself. Introducing additional variance by waiting the leaf node for an arbitrary amount of time simply introduces additional noise into the measurements. It is an option that was considered, but discarded. While the effect this has on the measurements simulates a more realistic scenario (node starts listening at a random time), it simply introduces noise into our measurements that were not influenced by the variables we're attempting to isolate. In order to correctly gauge the effect each of the variables we consider has, this additional source of noise was not added.
+
+
+\subsection{Results}
+
+We see clearly that, regardless of configuration, the leaf node always spends a large amount of time in the RX state. This makes sense as it has to be listening for an EB constantly in order to connect to a network. We also see that, while this happening, it is very rare for the CPU to enter a deep sleep state. Presumably, because of the constant channel switching, the CPU has to perform some computation regularly enough to prevent long deep sleeps. This contrasts heavily with the behaviour observed when the node is connected, where the deep sleep state dominates. This is clear from all data obtained in \secref{section:task3}.
+
+
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.48\textwidth,keepaspectratio]{figures/times}
+	\caption{The average connection times per configuration. X axis is the configuration (hopping sequence length, EB period), Y axis in seconds}
+	\label{fig:t2leaf}
+\end{figure}
+
+Per \figref{fig:t2leaf}, it is clear that most of the time is spent by the leaf in the Low power mode CPU state, while listening to the channel. This is true regardless of configuration, but some configurations show higher peaks because of the longer experiment durations. It is trivially true that a longer on-time for the node leads to higher energy use and thus a distinctly higher peak in this graph. 
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.48\textwidth,keepaspectratio]{figures/leaf_powerstates}
+	\caption{The average connection times per configuration. X axis is the configuration (hopping sequence length, EB period), Y axis in seconds}
+	\label{fig:t2root}
+\end{figure}
+
+\figref{fig:t2root} shows the root power states, for each configuration. Again, we see roughly identical power state distribution for each configuration. It is notably different from the leaf power states graph in that the root node spends most of its time in the sleep state. This is to be expected as it already has all the required information to operate efficiently. 
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.48\textwidth,keepaspectratio]{figures/root_powerstates}
+	\caption{Seconds needed to successfully connect, on average, per configuration}
+	\label{fig:t2times}
+\end{figure}
+\figref{fig:t2times} shows the required connection times for each configuration. It clearly indicates that the length of the hopping sequence is a dominating factor in the estimation of TSCH association times.
+
+
+\subsection{Conclusion}
+We have shown that the hopping sequence does indeed impact the association time more than the EB period does, supporting previous research \cite{JoinProcess}. 
+
+
+\subsection{Future Work}
+\subsubsection{Full measurements} 
+As discussed in \secref{sec:t2_discl}, we have severely limited the scope of this analysis because of an oversight on our part. This oversight must be corrected in future work in order to confirm the tentative results we've presented here. 
+\subsubsection{Additional parameters}
+Considering other variables, for example, TSCH\_CONF\_ASSOCIATION\_POLL\_FREQUENCY would be interesting. There are many variables that have an impact on the TSCH association process and our analyses do not offer thorough coverage. 
 
 \section{Impact of distance on energy consumption and network reliability}
 \label{section:task3}
