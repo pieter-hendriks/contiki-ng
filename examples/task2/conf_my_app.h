@@ -15,6 +15,6 @@
 #define TXPREFIX "tx = "
 #define RXPREFIX "rx = "
 #define MYFILENAME "UNIVANTW_SENSORNET_OUTPUT"
-#define TASK2_ITERATIONCOUNT 51
+#define TASK2_ITERATIONCOUNT 25
 
 #endif

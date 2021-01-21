@@ -1,16 +1,16 @@
-TSCH_CONF_MAX_JOIN_PRIORITY: As far as I can tell, corresponds to rank of the new node in the network graph. Ie how many nodes it is removed from the root. Max then means the amount of layers we allow in the network.
-TSCH_CONF_JOIN_SECURED_ONLY: Trivial, sets wether connection to non-secured networks will be allowed
-TSCH_CONF_JOIN_MY_PANID_ONLY: Trivial. Sets wether connection to networks with other PANID will be allowed.
-TSCH_CONF_ASSOCIATION_POLL_FREQUENCY: How often the radio polls during association process
-TSCH_CONF_CHECK_TIME_AT_ASSOCIATION: Check ASN against own uptime (can be set to force nodes joining only if they started up at close to the same time)
-TSCH_CONF_INIT_SCHEDULE_FROM_EB: Initialize a schedule from EB during association. Uses slotframe and links information elements. If no, empty schedule at first.
-TSCH_CONF_CHANNEL_SCAN_DURATION: How long to scan each channel during scanning phase.
-TSCH_PACKET_CONF_EB_WITH_TIMESLOT_TIMING: Should EB include timeslot timing information element?
-TSCH_PACKET_CONF_EB_WITH_HOPPING_SEQUENCE: Should EB include hopping sequence information element?
-TSCH_PACKET_CONF_EB_WITH_SLOTFRAME_AND_LINK: Should EB include slotframe and link information element?
-TSCH_CONF_EB_PERIOD: Time between EBs
-TSCH_CONF_MAX_EB_PERIOD: Maximal allowed period between EBs (before node leaves the network? Probably not relevant for joining)
-TSCH_CONF_DEFAULT_HOPPING_SEQUENCE: hopping sequence used if not explicitly set
-TSCH_CONF_JOIN_HOPPING_SEQUENCE: Hopping sequence used for joining (the channels we scan)
-TSCH_CONF_HOPPING_SEQUENCE_MAX_LEN: Maximum length of hopping sequence. must be >= default len. 
-See https://contiki-ng.readthedocs.io/en/latest/_api/tsch-conf_8h_source.html
+TSCH\_CONF\_MAX\_JOIN\_PRIORITY: As far as I can tell, corresponds to rank of the new node in the network graph. Ie how many nodes it is removed from the root. Max then means the amount of layers we allow in the network.
+TSCH\_CONF\_JOIN\_SECURED\_ONLY: Trivial, sets wether connection to non-secured networks will be allowed
+TSCH\_CONF\_JOIN\_MY\_PANID\_ONLY: Trivial. Sets wether connection to networks with other PANID will be allowed.
+TSCH\_CONF\_ASSOCIATION\_POLL\_FREQUENCY: How often the radio polls during association process
+TSCH\_CONF\_CHECK\_TIME\_AT\_ASSOCIATION: Check ASN against own uptime (can be set to force nodes joining only if they started up at close to the same time)
+TSCH\_CONF\_INIT\_SCHEDULE\_FROM\_EB: Initialize a schedule from EB during association. Uses slotframe and links information elements. If no, empty schedule at first.
+TSCH\_CONF\_CHANNEL\_SCAN\_DURATION: How long to scan each channel during scanning phase.
+TSCH\_PACKET\_CONF\_EB\_WITH\_TIMESLOT\_TIMING: Should EB include timeslot timing information element?
+TSCH\_PACKET\_CONF\_EB\_WITH\_HOPPING\_SEQUENCE: Should EB include hopping sequence information element?
+TSCH\_PACKET\_CONF\_EB\_WITH\_SLOTFRAME\_AND\_LINK: Should EB include slotframe and link information element?
+TSCH\_CONF\_EB\_PERIOD: Time between EBs
+TSCH\_CONF\_MAX\_EB\_PERIOD: Maximal allowed period between EBs (before node leaves the network? Probably not relevant for joining)
+TSCH\_CONF\_DEFAULT\_HOPPING\_SEQUENCE: hopping sequence used if not explicitly set
+TSCH\_CONF\_JOIN\_HOPPING\_SEQUENCE: Hopping sequence used for joining (the channels we scan)
+TSCH\_CONF\_HOPPING\_SEQUENCE\_MAX\_LEN: Maximum length of hopping sequence. must be >= default len. 
+See https://contiki-ng.readthedocs.io/en/latest/\_api/tsch-conf\_8h\_source.html

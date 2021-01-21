@@ -1,542 +1,268 @@
-Starting Contiki-NG-v1.0-121-g2657a648e-dirty
-- Routing: nullrouting
-- Net: nullnet
-- MAC: TSCH
-- 802.15.4 PANID: 0xabcd
-- 802.15.4 TSCH default hopping sequence length: 1
-Node ID: 58505
-Link-layer address: 0012.4b00.1932.e489
-Zolertia RE-Mote revision B platform
-Leaf started with channel hopping sequence size: 4
-Leaf loop start!
-Leaf waiting for association!
-Starting Contiki-NG-v1.0-121-g2657a648e-dirty
-- Routing: nullrouting
-- Net: nullnet
-- MAC: TSCH
-- 802.15.4 PANID: 0xabcd
-- 802.15.4 TSCH default hopping sequence length: 1
-Node ID: 58505
-Link-layer address: 0012.4b00.1932.e489
-Zolertia RE-Mote revision B platform
-Leaf started with channel hopping sequence size: 4
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 498105
-seconds = 15
-cpu = 7972
-lpm = 488483
-deep = 1789
-tx = 38
-rx = 495855
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 460372
-seconds = 14
-cpu = 7911
-lpm = 450826
-deep = 1774
-tx = 38
-rx = 458133
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 444318
-seconds = 14
-cpu = 7681
-lpm = 434928
-deep = 1848
-tx = 38
-rx = 442005
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 414496
-seconds = 13
-cpu = 7199
-lpm = 405458
-deep = 1978
-tx = 38
-rx = 412091
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 409911
-seconds = 13
-cpu = 7093
-lpm = 401214
-deep = 1743
-tx = 38
-rx = 407700
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 497073
-seconds = 15
-cpu = 7589
-lpm = 487754
-deep = 1869
-tx = 38
-rx = 494735
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 405322
-seconds = 12
-cpu = 6761
-lpm = 396934
-deep = 1766
-tx = 38
-rx = 403091
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 499369
-seconds = 15
-cpu = 8229
-lpm = 489421
-deep = 1858
-tx = 38
-rx = 497045
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 437435
-seconds = 13
-cpu = 7263
-lpm = 428432
-deep = 1879
-tx = 38
-rx = 435090
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 524598
-seconds = 16
-cpu = 8633
-lpm = 514361
-deep = 1743
-tx = 38
-rx = 522388
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 393854
-seconds = 12
-cpu = 6581
-lpm = 385595
-deep = 1817
-tx = 38
-rx = 391574
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 393854
-seconds = 12
-cpu = 6581
-lpm = 385595
-deep = 1817
-tx = 38
-rx = 391574
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 458081
-seconds = 14
-cpu = 7588
-lpm = 448845
-deep = 1787
-tx = 38
-rx = 455828
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 442022
-seconds = 13
-cpu = 7367
-lpm = 432937
-deep = 1857
-tx = 38
-rx = 439699
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 446612
-seconds = 14
-cpu = 7408
-lpm = 437506
-deep = 1837
-tx = 38
-rx = 444309
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 515423
-seconds = 16
-cpu = 8395
-lpm = 505382
-deep = 1785
-tx = 38
-rx = 513171
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 432848
-seconds = 13
-cpu = 7192
-lpm = 423897
-deep = 1898
-tx = 38
-rx = 430484
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 421378
-seconds = 13
-cpu = 7017
-lpm = 412552
-deep = 1948
-tx = 38
-rx = 418971
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 405324
-seconds = 12
-cpu = 6793
-lpm = 396904
-deep = 1766
-tx = 38
-rx = 403092
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 400735
-seconds = 12
-cpu = 6691
-lpm = 392397
-deep = 1786
-tx = 38
-rx = 398483
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 494778
-seconds = 15
-cpu = 8125
-lpm = 484915
-deep = 1877
-tx = 38
-rx = 492435
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 469550
-seconds = 14
-cpu = 7802
-lpm = 460152
-deep = 1735
-tx = 38
-rx = 467348
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 448903
-seconds = 14
-cpu = 7442
-lpm = 439773
-deep = 1827
-tx = 38
-rx = 446611
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 416792
-seconds = 13
-cpu = 6966
-lpm = 407995
-deep = 1970
-tx = 38
-rx = 414383
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 506249
-seconds = 15
-cpu = 8353
-lpm = 496207
-deep = 1828
-tx = 38
-rx = 503956
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 471840
-seconds = 14
-cpu = 7830
-lpm = 462170
-deep = 1979
-tx = 38
-rx = 469431
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 481018
-seconds = 15
-cpu = 7913
-lpm = 471304
-deep = 1940
-tx = 38
-rx = 478611
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 458079
-seconds = 14
-cpu = 7491
-lpm = 448941
-deep = 1786
-tx = 38
-rx = 455828
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 442023
-seconds = 13
-cpu = 7367
-lpm = 432938
-deep = 1857
-tx = 38
-rx = 439700
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 481018
-seconds = 15
-cpu = 7919
-lpm = 471298
-deep = 1940
-tx = 38
-rx = 478611
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 458077
-seconds = 14
-cpu = 7587
-lpm = 448844
-deep = 1785
-tx = 38
-rx = 455826
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 409913
-seconds = 13
-cpu = 6868
-lpm = 401438
-deep = 1746
-tx = 38
-rx = 407701
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 407614
-seconds = 12
-cpu = 6799
-lpm = 399201
-deep = 1753
-tx = 38
-rx = 405395
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 797556
-seconds = 24
-cpu = 12357
-lpm = 783532
-deep = 1806
-tx = 38
-rx = 795284
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 492482
-seconds = 15
-cpu = 8094
-lpm = 482640
-deep = 1887
-tx = 38
-rx = 490130
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 403030
-seconds = 12
-cpu = 6628
-lpm = 394765
-deep = 1776
-tx = 38
-rx = 400790
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 497072
-seconds = 15
-cpu = 8072
-lpm = 487272
-deep = 1867
-tx = 38
-rx = 494738
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 405325
-seconds = 12
-cpu = 6763
-lpm = 396935
-deep = 1766
-tx = 38
-rx = 403093
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 499366
-seconds = 15
-cpu = 8053
-lpm = 489595
-deep = 1857
-tx = 38
-rx = 497042
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 405324
-seconds = 12
-cpu = 6796
-lpm = 396902
-deep = 1765
-tx = 38
-rx = 403093
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 400735
-seconds = 12
-cpu = 6692
-lpm = 392397
-deep = 1785
-tx = 38
-rx = 398484
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 494779
-seconds = 15
-cpu = 7976
-lpm = 485065
-deep = 1877
-tx = 38
-rx = 492436
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 435142
-seconds = 13
-cpu = 7259
-lpm = 426134
-deep = 1888
-tx = 38
-rx = 432787
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 423672
-seconds = 13
-cpu = 7046
-lpm = 414825
-deep = 1940
-tx = 38
-rx = 421267
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 467255
-seconds = 14
-cpu = 7649
-lpm = 458001
-deep = 1744
-tx = 38
-rx = 465045
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 515424
-seconds = 16
-cpu = 8250
-lpm = 505526
-deep = 1787
-tx = 38
-rx = 513172
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 400734
-seconds = 12
-cpu = 6691
-lpm = 392397
-deep = 1785
-tx = 38
-rx = 398483
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 396149
-seconds = 12
-cpu = 6617
-lpm = 387864
-deep = 1807
-tx = 38
-rx = 393877
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 393852
-seconds = 12
-cpu = 6514
-lpm = 385662
-deep = 1815
-tx = 38
-rx = 391574
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 492487
-seconds = 15
-cpu = 7939
-lpm = 482798
-deep = 1889
-tx = 38
-rx = 490133
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 467255
-seconds = 14
-cpu = 7661
-lpm = 457987
-deep = 1746
-tx = 38
-rx = 465044
-Leaf loop start!
-Leaf waiting for association!
-Leaf packet sent!
-ticks = 448903
-seconds = 14
-cpu = 7412
-lpm = 439803
-deep = 1827
-tx = 38
-rx = 446611
+using saved target 'zoul'
+rlwrap ../../tools/serial-io/serialdump -b115200 /dev/ttyUSB1
+connecting to /dev/ttyUSB1 [OK]
+[INFO: Main      ] Starting Contiki-NG-v1.0-131-gfed8f5d5b-dirty
+[INFO: Main      ] - Routing: nullrouting
+[INFO: Main      ] - Net: nullnet
+[INFO: Main      ] - MAC: TSCH
+[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+[INFO: Main      ] - 802.15.4 TSCH default hopping sequence length: 4
+[INFO: Main      ] Node ID: 58505
+[INFO: Main      ] Link-layer address: 0012.4b00.1932.e489
+[INFO: Zoul      ] Zolertia RE-Mote revision B platform
+[INFO: SENSORNETS] Leaf started with channel hopping sequence size: 4
+[INFO: SENSORNETS] With EB period = 512 / 128 seconds
+[INFO: SENSORNETS] Leaf loop start!
+[INFO: SENSORNETS] Leaf waiting for association!
+[INFO: SENSORNETS] Leaf packet sent!
+[INFO: SENSORNETS] First iteration send_callback. Not recording data.
+[INFO: SENSORNETS] Leaf loop start!
+[INFO: SENSORNETS] Leaf waiting for association!
+[INFO: SENSORNETS] Leaf packet sent!
+[INFO: HELPERS   ] ticks = 1343886
+[INFO: HELPERS   ] seconds = 41
+[INFO: HELPERS   ] cpu = 20495
+[INFO: HELPERS   ] lpm = 1321608
+[INFO: HELPERS   ] deep = 1926
+[INFO: HELPERS   ] tx = 38
+[INFO: HELPERS   ] rx = 1341461
+[INFO: SENSORNETS] Leaf loop start!
+[INFO: SENSORNETS] Leaf waiting for association!
+[INFO: SENSORNETS] Leaf packet sent!
+[INFO: HELPERS   ] ticks = 2327479
+[INFO: HELPERS   ] seconds = 71
+[INFO: HELPERS   ] cpu = 34848
+[INFO: HELPERS   ] lpm = 2290890
+[INFO: HELPERS   ] deep = 1884
+[INFO: HELPERS   ] tx = 38
+[INFO: HELPERS   ] rx = 2325105
+[INFO: SENSORNETS] Leaf loop start!
+[INFO: SENSORNETS] Leaf waiting for association!
+[INFO: SENSORNETS] Leaf packet sent!
+[INFO: HELPERS   ] ticks = 228690
+[INFO: HELPERS   ] seconds = 7
+[INFO: HELPERS   ] cpu = 3742
+[INFO: HELPERS   ] lpm = 223300
+[INFO: HELPERS   ] deep = 1785
+[INFO: HELPERS   ] tx = 38
+[INFO: HELPERS   ] rx = 226437
+[INFO: SENSORNETS] Leaf loop start!
+[INFO: SENSORNETS] Leaf waiting for association!
+[INFO: SENSORNETS] Leaf packet sent!
+[INFO: HELPERS   ] ticks = 127782
+[INFO: HELPERS   ] seconds = 4
+[INFO: HELPERS   ] cpu = 2093
+[INFO: HELPERS   ] lpm = 123844
+[INFO: HELPERS   ] deep = 1983
+[INFO: HELPERS   ] tx = 38
+[INFO: HELPERS   ] rx = 125377
+[INFO: SENSORNETS] Leaf loop start!
+[INFO: SENSORNETS] Leaf waiting for association!
+[INFO: SENSORNETS] Leaf packet sent!
+[INFO: HELPERS   ] ticks = 570474
+[INFO: HELPERS   ] seconds = 17
+[INFO: HELPERS   ] cpu = 8706
+[INFO: HELPERS   ] lpm = 560113
+[INFO: HELPERS   ] deep = 1795
+[INFO: HELPERS   ] tx = 38
+[INFO: HELPERS   ] rx = 568209
+[INFO: SENSORNETS] Leaf loop start!
+[INFO: SENSORNETS] Leaf waiting for association!
+[INFO: SENSORNETS] Leaf packet sent!
+[INFO: HELPERS   ] ticks = 210354
+[INFO: HELPERS   ] seconds = 6
+[INFO: HELPERS   ] cpu = 3577
+[INFO: HELPERS   ] lpm = 205047
+[INFO: HELPERS   ] deep = 1868
+[INFO: HELPERS   ] tx = 38
+[INFO: HELPERS   ] rx = 208023
+[INFO: SENSORNETS] Leaf loop start!
+[INFO: SENSORNETS] Leaf waiting for association!
+[INFO: SENSORNETS] Leaf packet sent!
+[INFO: HELPERS   ] ticks = 1937552
+[INFO: HELPERS   ] seconds = 59
+[INFO: HELPERS   ] cpu = 28623
+[INFO: HELPERS   ] lpm = 1907242
+[INFO: HELPERS   ] deep = 1830
+[INFO: HELPERS   ] tx = 38
+[INFO: HELPERS   ] rx = 1935247
+[INFO: SENSORNETS] Leaf loop start!
+[INFO: SENSORNETS] Leaf waiting for association!
+[INFO: SENSORNETS] Leaf packet sent!
+[INFO: HELPERS   ] ticks = 558993
+[INFO: HELPERS   ] seconds = 17
+[INFO: HELPERS   ] cpu = 8773
+[INFO: HELPERS   ] lpm = 548511
+[INFO: HELPERS   ] deep = 1849
+[INFO: HELPERS   ] tx = 38
+[INFO: HELPERS   ] rx = 556675
+[INFO: SENSORNETS] Leaf loop start!
+[INFO: SENSORNETS] Leaf waiting for association!
+[INFO: SENSORNETS] Leaf packet sent!
+[INFO: HELPERS   ] ticks = 481015
+[INFO: HELPERS   ] seconds = 15
+[INFO: HELPERS   ] cpu = 7771
+[INFO: HELPERS   ] lpm = 471445
+[INFO: HELPERS   ] deep = 1939
+[INFO: HELPERS   ] tx = 38
+[INFO: HELPERS   ] rx = 478611
+[INFO: SENSORNETS] Leaf loop start!
+[INFO: SENSORNETS] Leaf waiting for association!
+[INFO: SENSORNETS] Leaf packet sent!
+[INFO: HELPERS   ] ticks = 357154
+[INFO: HELPERS   ] seconds = 11
+[INFO: HELPERS   ] cpu = 6302
+[INFO: HELPERS   ] lpm = 349010
+[INFO: HELPERS   ] deep = 1982
+[INFO: HELPERS   ] tx = 38
+[INFO: HELPERS   ] rx = 354739
+[INFO: SENSORNETS] Leaf loop start!
+[INFO: SENSORNETS] Leaf waiting for association!
+[INFO: SENSORNETS] Leaf packet sent!
+[INFO: HELPERS   ] ticks = 460372
+[INFO: HELPERS   ] seconds = 14
+[INFO: HELPERS   ] cpu = 7495
+[INFO: HELPERS   ] lpm = 451242
+[INFO: HELPERS   ] deep = 1774
+[INFO: HELPERS   ] tx = 38
+[INFO: HELPERS   ] rx = 458121
+[INFO: SENSORNETS] Leaf loop start!
+[INFO: SENSORNETS] Leaf waiting for association!
+[INFO: SENSORNETS] Leaf packet sent!
+[INFO: HELPERS   ] ticks = 256228
+[INFO: HELPERS   ] seconds = 8
+[INFO: HELPERS   ] cpu = 4362
+[INFO: HELPERS   ] lpm = 250085
+[INFO: HELPERS   ] deep = 1919
+[INFO: HELPERS   ] tx = 38
+[INFO: HELPERS   ] rx = 253844
+[INFO: SENSORNETS] Leaf loop start!
+[INFO: SENSORNETS] Leaf waiting for association!
+[INFO: SENSORNETS] Leaf packet sent!
+[INFO: HELPERS   ] ticks = 118605
+[INFO: HELPERS   ] seconds = 4
+[INFO: HELPERS   ] cpu = 1982
+[INFO: HELPERS   ] lpm = 114995
+[INFO: HELPERS   ] deep = 1766
+[INFO: HELPERS   ] tx = 38
+[INFO: HELPERS   ] rx = 116368
+[INFO: SENSORNETS] Leaf loop start!
+[INFO: SENSORNETS] Leaf waiting for association!
+[INFO: SENSORNETS] Leaf packet sent!
+[INFO: HELPERS   ] ticks = 1377878
+[INFO: HELPERS   ] seconds = 42
+[INFO: HELPERS   ] cpu = 20640
+[INFO: HELPERS   ] lpm = 1355608
+[INFO: HELPERS   ] deep = 1773
+[INFO: HELPERS   ] tx = 38
+[INFO: HELPERS   ] rx = 1375624
+[INFO: SENSORNETS] Leaf loop start!
+[INFO: SENSORNETS] Leaf waiting for association!
+[INFO: SENSORNETS] Leaf packet sent!
+[INFO: HELPERS   ] ticks = 1283819
+[INFO: HELPERS   ] seconds = 39
+[INFO: HELPERS   ] cpu = 19267
+[INFO: HELPERS   ] lpm = 1262759
+[INFO: HELPERS   ] deep = 1936
+[INFO: HELPERS   ] tx = 38
+[INFO: HELPERS   ] rx = 1281394
+[INFO: SENSORNETS] Leaf loop start!
+[INFO: SENSORNETS] Leaf waiting for association!
+[INFO: SENSORNETS] Leaf packet sent!
+[INFO: HELPERS   ] ticks = 1001687
+[INFO: HELPERS   ] seconds = 31
+[INFO: HELPERS   ] cpu = 15799
+[INFO: HELPERS   ] lpm = 984113
+[INFO: HELPERS   ] deep = 1917
+[INFO: HELPERS   ] tx = 38
+[INFO: HELPERS   ] rx = 999283
+[INFO: SENSORNETS] Leaf loop start!
+[INFO: SENSORNETS] Leaf waiting for association!
+[INFO: SENSORNETS] Leaf packet sent!
+[INFO: HELPERS   ] ticks = 208054
+[INFO: HELPERS   ] seconds = 6
+[INFO: HELPERS   ] cpu = 3352
+[INFO: HELPERS   ] lpm = 202960
+[INFO: HELPERS   ] deep = 1879
+[INFO: HELPERS   ] tx = 38
+[INFO: HELPERS   ] rx = 205710
+[INFO: SENSORNETS] Leaf loop start!
+[INFO: SENSORNETS] Leaf waiting for association!
+[INFO: SENSORNETS] Leaf packet sent!
+[INFO: HELPERS   ] ticks = 593413
+[INFO: HELPERS   ] seconds = 18
+[INFO: HELPERS   ] cpu = 8977
+[INFO: HELPERS   ] lpm = 582626
+[INFO: HELPERS   ] deep = 1950
+[INFO: HELPERS   ] tx = 38
+[INFO: HELPERS   ] rx = 591006
+[INFO: SENSORNETS] Leaf loop start!
+[INFO: SENSORNETS] Leaf waiting for association!
+[INFO: SENSORNETS] Leaf packet sent!
+[INFO: HELPERS   ] ticks = 214941
+[INFO: HELPERS   ] seconds = 7
+[INFO: HELPERS   ] cpu = 3677
+[INFO: HELPERS   ] lpm = 209553
+[INFO: HELPERS   ] deep = 1848
+[INFO: HELPERS   ] tx = 38
+[INFO: HELPERS   ] rx = 212621
+[INFO: SENSORNETS] Leaf loop start!
+[INFO: SENSORNETS] Leaf waiting for association!
+[INFO: SENSORNETS] Leaf packet sent!
+[INFO: HELPERS   ] ticks = 797557
+[INFO: HELPERS   ] seconds = 24
+[INFO: HELPERS   ] cpu = 12084
+[INFO: HELPERS   ] lpm = 783809
+[INFO: HELPERS   ] deep = 1804
+[INFO: HELPERS   ] tx = 38
+[INFO: HELPERS   ] rx = 795277
+[INFO: SENSORNETS] Leaf loop start!
+[INFO: SENSORNETS] Leaf waiting for association!
+[INFO: SENSORNETS] Leaf packet sent!
+[INFO: HELPERS   ] ticks = 444313
+[INFO: HELPERS   ] seconds = 14
+[INFO: HELPERS   ] cpu = 7224
+[INFO: HELPERS   ] lpm = 435381
+[INFO: HELPERS   ] deep = 1848
+[INFO: HELPERS   ] tx = 38
+[INFO: HELPERS   ] rx = 442000
+[INFO: SENSORNETS] Leaf loop start!
+[INFO: SENSORNETS] Leaf waiting for association!
+[INFO: SENSORNETS] Leaf packet sent!
+[INFO: HELPERS   ] ticks = 481016
+[INFO: HELPERS   ] seconds = 15
+[INFO: HELPERS   ] cpu = 8362
+[INFO: HELPERS   ] lpm = 470854
+[INFO: HELPERS   ] deep = 1940
+[INFO: HELPERS   ] tx = 38
+[INFO: HELPERS   ] rx = 478599
+[INFO: SENSORNETS] Leaf loop start!
+[INFO: SENSORNETS] Leaf waiting for association!
+[INFO: SENSORNETS] Leaf packet sent!
+[INFO: HELPERS   ] ticks = 357152
+[INFO: HELPERS   ] seconds = 11
+[INFO: HELPERS   ] cpu = 5820
+[INFO: HELPERS   ] lpm = 349492
+[INFO: HELPERS   ] deep = 1980
+[INFO: HELPERS   ] tx = 38
+[INFO: HELPERS   ] rx = 354745
+[INFO: SENSORNETS] Leaf loop start!
+[INFO: SENSORNETS] Leaf waiting for association!
+[INFO: SENSORNETS] Leaf packet sent!
+[INFO: HELPERS   ] ticks = 100253
+[INFO: HELPERS   ] seconds = 3
+[INFO: HELPERS   ] cpu = 1574
+[INFO: HELPERS   ] lpm = 96969
+[INFO: HELPERS   ] deep = 1848
+[INFO: HELPERS   ] tx = 38
+[INFO: HELPERS   ] rx = 97942
+[INFO: SENSORNETS] Leaf loop start!
+[INFO: SENSORNETS] Leaf waiting for association!
+[INFO: SENSORNETS] Leaf packet sent!
+[INFO: HELPERS   ] ticks = 343398
+[INFO: HELPERS   ] seconds = 10
+[INFO: HELPERS   ] cpu = 5700
+[INFO: HELPERS   ] lpm = 336052
+[INFO: HELPERS   ] deep = 1786
+[INFO: HELPERS   ] tx = 38
+[INFO: HELPERS   ] rx = 341143
