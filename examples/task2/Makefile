@@ -12,6 +12,11 @@ CFLAGS += -Xpreprocessor -DTSCH_CONF_DEFAULT_HOPPING_SEQUENCE="(uint8_t[]){ 20 }
 #CFLAGS += -Xpreprocessor -DTSCH_CONF_DEFAULT_HOPPING_SEQUENCE="(uint8_t[]){ 16, 17, 23, 18, 26, 15, 25, 22, 19, 11, 12, 13, 24, 14, 20, 21 }" # TSCH_HOPPING_SEQUENCE_16_16
 
 
+# Configure the EB_PERIOD
+# Where 128 == CLOCK_SECOND constant (as defined by CLOCK_CONF_SECOND - 128 by default)
+CFLAGS += -Xpreprocessor -DTSCH_CONF_EB_PERIOD="4*128"
+#CFLAGS += -Xpreprocessor -DTSCH_CONF_EB_PERIOD="16*128"
+#CFLAGS += -Xpreprocessor -DTSCH_CONF_EB_PERIOD="32*128"
 
 PROJECT_SOURCEFILES += helpers.c
 

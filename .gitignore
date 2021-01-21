@@ -7,10 +7,9 @@
 *.blg
 *.run.xml
 
-
-
+__pycache__/
+examples/**/*.png
 .vscode 
 .vscode/
 build/
-/examples/task3/example_stuff/
 *.o
